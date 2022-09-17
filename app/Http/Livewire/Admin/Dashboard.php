@@ -11,7 +11,7 @@ class Dashboard extends Component
 {
 
     public function mount() {
-//        dd(array_replace(['' => 'All'], Student::getDepartments()));
+
     }
 
 

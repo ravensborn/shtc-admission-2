@@ -18,9 +18,15 @@ class StudentFactory extends Factory
      */
     public function definition()
     {
+        static $number = 1;
         $departmentId = $this->faker->numberBetween(1, 3);
         return [
             'code' => $this->faker->numberBetween(1000000, 9999999),
+            'number' => sprintf(
+                '%s%s',
+                'SHTC_',
+                str_pad((string)$number++, 6, "0", STR_PAD_LEFT)
+            ),
             'name_kurdish' => $this->faker->name,
             'name_english' => $this->faker->name,
             'uploaded_id_type' => $this->faker->numberBetween(1, 2),
@@ -54,4 +60,6 @@ class StudentFactory extends Factory
 
         ];
     }
+
+
 }

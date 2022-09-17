@@ -16,7 +16,10 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
 
+            $table->string('number');
             $table->string('code');
+
+            $table->integer('status')->default(\App\Models\Student::STATUS_DEFAULT);
 
             $table->string('name_kurdish');
             $table->string('name_english');

@@ -216,8 +216,9 @@ class Create extends Component
         $validated = $this->validate($this->rules);
         $validated['code'] = $this->unique_code(10);
 
+        $validated['number'] = Student::generateStudentNumber();
         $validated['uploaded_id_type'] = $this->uploadedIdType;
-        $validated['department_name'] = Student::getDepartment($validated['department_id']);
+        $validated['department_name'] = Student::getDepartmentName($validated['department_id']);
 
         $student = new Student;
         $student = $student->create($validated);
@@ -304,6 +305,7 @@ class Create extends Component
     {
         return substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, $limit);
     }
+
 
     public function mount() {
         //Testing mode
