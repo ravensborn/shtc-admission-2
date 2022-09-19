@@ -39,6 +39,11 @@
                        href="{{ route('admissions.create') }}">تۆمارکردنی قوتابی</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link @if(request()->is('submission/result')) active @endif"
+                       href="{{ route('admissions.result') }}">وەرگرتنەوەی ئەنجام</a>
+                </li>
+
             </ul>
             <span class="navbar-text">
       {{ config('envAccess.COLLEGE_NAME_KURDISH') }}

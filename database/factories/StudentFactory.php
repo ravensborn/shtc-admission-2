@@ -22,6 +22,7 @@ class StudentFactory extends Factory
         $departmentId = $this->faker->numberBetween(1, 3);
         return [
             'code' => $this->faker->numberBetween(1000000, 9999999),
+            'status' => $this->faker->numberBetween(1, 5),
             'number' => sprintf(
                 '%s%s',
                 'SHTC_',

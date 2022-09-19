@@ -5,7 +5,7 @@
     <div class="container">
         <span class="text-muted">Copyright &copy; {{ Date('Y') }} - </span>
         <span>
-            <a href="{{ route('login') }}" class="text-muted" style="text-decoration: none;">
+            <a href="{{ route('admin.dashboard') }}" class="text-muted" style="text-decoration: none;">
                 {{ config('envAccess.COLLEGE_NAME_KURDISH') }}
             </a>
         </span>

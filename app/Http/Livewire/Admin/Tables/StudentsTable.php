@@ -53,9 +53,10 @@ class StudentsTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("#", "number"),
-            Column::make("Code", "code"),
-            Column::make("Name", "name_english"),
+            Column::make("#", "number")->searchable(),
+            Column::make("Code", "code")->searchable(),
+            Column::make("Name", "name_english")->searchable(),
+            Column::make("Phone", "phone")->searchable(),
             Column::make("Department", "department_id")
                 ->format(function ($department_id, $row, $column) {
                     return Student::getDepartmentName($department_id);

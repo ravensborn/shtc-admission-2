@@ -15,24 +15,79 @@ class Student extends Model implements HasMedia
 
     protected $guarded = ['id'];
 
+    protected $dates = ['birthday'];
+
     const STATUS_DEFAULT = 0;
     const STATUS_PENDING = 1;
     const STATUS_ACCEPTED = 2;
     const STATUS_INCOMPLETE = 3;
+    const STATUS_POSTPONED = 4;
+    const STATUS_ABSENT = 5;
 
-    public static function getStatusArray() {
+    public static function getStatusArray()
+    {
         return [
             self::STATUS_DEFAULT => 'Default',
-            self::STATUS_PENDING => 'Pending',
-            self::STATUS_ACCEPTED => 'Accepted',
-            self::STATUS_INCOMPLETE => 'Incomplete',
+            self::STATUS_PENDING => 'تازە تۆمارکراو',
+            self::STATUS_ACCEPTED => 'وەرگیراو',
+            self::STATUS_INCOMPLETE => 'کێشەی تێدایە',
+            self::STATUS_POSTPONED => 'دواخستن',
+            self::STATUS_ABSENT => 'داپچڕان',
         ];
     }
 
-    public static function getStatusName($status) {
+    public function getUploadedIdType(): string
+    {
+        return $this->uploaded_id_type == 1 ? 'کارتی نیشتیمانی' : 'نانسنامە و ڕەگەزنامە';
+    }
+
+    public static function getStatusName($status)
+    {
         return self::getStatusArray()[$status];
     }
 
+    public function getProvinceArray() {
+        return [
+            1 => 'هەولێر',
+            2 => 'سلێمانی',
+            3 => 'دهۆك',
+            4 => 'هەلەبجە',
+            5 => 'کەرکووک',
+        ];
+    }
+
+    public function getProvince() {
+        return $this->getProvinceArray()[$this->province_id];
+    }
+
+    public function getBloodgroupArray() {
+        return [
+            1 => 'A+',
+            2 => 'A-',
+            3 => 'B+',
+            4 => 'B-',
+            5 => 'AB+',
+            6 => 'AB-',
+            7 => 'O+',
+            8 => 'O-',
+        ];
+    }
+
+    public function getBloodgroup() {
+        return $this->getBloodgroupArray()[$this->bloodgroup_id];
+    }
+
+    public function getStudentTypeArray()
+    {
+        return [
+            1 => 'دەرەکی',
+            2 => 'ناوەکی'
+        ];
+    }
+
+    public function getStudentType() {
+        return $this->getEducationTypeArray()[$this->student_type_id];
+    }
 
     public static function getDepartments(): array
     {
@@ -50,25 +105,28 @@ class Student extends Model implements HasMedia
         ];
     }
 
+    public function getDepartment(): string
+    {
+        return self::getDepartments()[$this->department_id];
+    }
+
     public static function getDepartmentName($id): string
     {
-      return self::getDepartments()[$id];
+        return self::getDepartments()[$id];
     }
 
-
-    public function getGender($value): string
+    public function getGender(): string
     {
-        return $value == 0 ? 'نێر' : 'مێ';
+        return $this->gender == 0 ? 'نێر' : 'مێ';
     }
-
 
     public function getDepartmentTypes(): array
     {
-       return [
-           1 => 'بەیانیان',
-           2 => 'پاڕالێل',
-           3 => 'ئێواران',
-       ];
+        return [
+            1 => 'بەیانیان',
+            2 => 'پاڕالێل',
+            3 => 'ئێواران',
+        ];
     }
 
     public function getStudentTypes(): array
@@ -79,7 +137,36 @@ class Student extends Model implements HasMedia
         ];
     }
 
-    private static function getLatestStudent() : object|null
+
+    public static function getDepartmentTypeArray(): array
+    {
+        return [
+            1 => 'بەیانیان',
+            2 => 'پاڕالێل',
+            3 => 'ئێواران',
+        ];
+    }
+
+    public function getDepartmentType(): string
+    {
+        return self::getDepartmentTypeArray()[$this->department_type_id];
+    }
+
+    public function getEducationTypeArray(): array
+    {
+        return [
+            1 => 'وێژەیی',
+            2 => 'زانستی',
+            3 => 'پیشەیی',
+        ];
+    }
+
+    public function getEducationType(): string
+    {
+        return $this->getEducationTypeArray()[$this->education_type_id];
+    }
+
+    private static function getLatestStudent(): object|null
     {
         return self::orderBy('id', 'DESC')->first();
     }

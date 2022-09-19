@@ -4,9 +4,46 @@
         <div class="row">
             <div class="col-12">
 
-                <h4 class="text-center mt-4">
+                <h4 class="text-center mt-4 alert alert-secondary">
                     فۆڕمی تۆمارکردنی قوتابی
                 </h4>
+
+                <hr>
+
+
+                <div class="col-12 mt-3">
+                    <div class="alert alert-info mb-0">
+                        قوتابی ئازیز، تکایە هەموو زانیاریەکان بە درووستی بنووسە، وە لەکاتی هەبوونی هەر کێشەیەك
+                        پەیوەندی بکە.
+
+                        <ul class="mt-3">
+                            <li>
+                                ئیمەیل:
+                                <span dir="ltr">
+                                    <a class="text-decoration-none text-muted" href="mailto:{{ config('envAccess.HELP_EMAIL') }}">
+                                        {{ config('envAccess.HELP_EMAIL') }}
+                                    </a>
+                                </span>
+                            </li>
+                            <li>
+                                ژمارەی هۆبەی تۆماری کۆلێژ:
+                                <span dir="ltr">
+                                    <a class="text-decoration-none text-muted" href="tel:{{ config('envAccess.TOMAR_NUMBER') }}">
+                                        {{ config('envAccess.TOMAR_NUMBER_FORMATTED') }}
+                                    </a>
+                                </span>
+                            </li>
+                            <li>
+                                لەکاتی هەبوونی کێشە لە وێبسایت:
+                                <span dir="ltr">
+                                      <a class="text-decoration-none text-muted" href="tel:{{ config('envAccess.DEVELOPER_NUMBER') }}">
+                                        {{ config('envAccess.DEVELOPER_NUMBER_FORMATTED') }}
+                                    </a>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
                 <form method="POST" enctype="multipart/form-data" wire:submit.prevent="submit">
 
@@ -47,8 +84,8 @@
 
                         <div class="col-12 mt-3">
                             <div class="alert alert-info mb-0">
-                                قوتابی ئازیز، ئەگەر زانیاری کارتی نیشتیمانی بەردەست نیە ئەوا ئەبێت بەشی ناسنامە و
-                                رەگەزنامە
+                                تێبینی، ئەگەر زانیاری کارتی نیشتیمانی بەردەست نیە ئەوا ئەبێت بەشی ناسنامە و
+                                ڕەگەزنامە
                                 پڕبکەیەوە.
                             </div>
                         </div>
@@ -620,7 +657,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div>
-                                            <label for="id_nationality" class="form-label">رەگەزنامە</label>
+                                            <label for="id_nationality" class="form-label">ژمارەی رەگەزنامە</label>
                                             <input type="text" class="form-control" wire:model.lazy="id_nationality"
                                                    id="id_nationality">
                                         </div>

@@ -8,10 +8,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css">
 
-
     <style>
         [x-cloak] {
             display: none;
+        }
+
+        .table-ltr {
+            direction: rtl !important;
+        }
+
+        .table-ltr * {
+            direction: rtl !important;
         }
     </style>
 
