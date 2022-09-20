@@ -651,7 +651,7 @@
                     <div class="col-12 mt-3">
                         <div class="card border">
                             <div class="card-header">
-                                زانیاری بەخێوکەر
+                                زانیاری قوتابی
                             </div>
                             <div class="card-body">
                                 <div class="row">

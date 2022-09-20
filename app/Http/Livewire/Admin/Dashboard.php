@@ -45,7 +45,9 @@ class Dashboard extends Component
 
     public function render()
     {
-        $this->statistics();
+        if(auth()->user()->hasRole('admin')) {
+            $this->statistics();
+        }
         return view('livewire.admin.dashboard')->extends('layouts.admin')->section('content');
     }
 }

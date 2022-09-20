@@ -10,7 +10,7 @@
     @if(!$resultPage)
 
         <div class="row mt-3">
-            <div class="col-6 offset-3">
+            <div class="col-12 offset-0 col-md-6 offset-md-3">
 
                 <div class="border shadow-sm rounded p-3">
                     <div class="text-center mb-3 alert alert-info">

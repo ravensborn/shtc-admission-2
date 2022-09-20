@@ -24,12 +24,22 @@ Auth::routes([
     'logout' => false,
 ]);
 
-Route::middleware(['role:admin'])->group(function() {
+Route::middleware(['auth'])->group(function () {
 
-    Route::get('/admin/dashboard', AdminDashboard::class)->name('admin.dashboard');
-    Route::get('/admin/student/{student}', AdminStudentShow::class)->name('admin.students.show');
+    Route::get('/admin/dashboard', AdminDashboard::class)
+        ->name('admin.dashboard');
+
+    Route::get('/admin/student/{student}', AdminStudentShow::class)
+        ->name('admin.students.show');
 
 });
+
+//Route::middleware(['role:admin'])->group(function() {
+//
+//    Route::get('/admin/dashboard', AdminDashboard::class)->name('admin.dashboard');
+//    Route::get('/admin/student/{student}', AdminStudentShow::class)->name('admin.students.show');
+//
+//});
 
 Route::get('/', Home::class)->name('home');
 

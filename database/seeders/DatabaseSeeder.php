@@ -18,10 +18,101 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        $user = \App\Models\User::factory(1)->create([
-            'name' => 'Yad Hoshyar',
-            'email' => 'yad@gmail.com'
-        ]);
+        Role::create(['name' => 'admin']);
+        Role::create(['name' => 'limited']);
+
+        Role::create(['name' => 'MIS']);
+        Role::create(['name' => 'AD']);
+        Role::create(['name' => 'VET']);
+        Role::create(['name' => 'NURSING']);
+        Role::create(['name' => 'MLT']);
+        Role::create(['name' => 'ARC']);
+        Role::create(['name' => 'BUILD']);
+        Role::create(['name' => 'TOURISM']);
+
+        $users = [
+            [
+                'name' => 'Yad Hoshyar',
+                'email' => 'yad.hoshyar@gmail.com',
+                'role_name' => 'admin',
+                'password' => 'password@1'
+            ],
+            [
+                'name' => 'Balen A.',
+                'email' => 'balen.a@shtc-tomar.com',
+                'role_name' => 'admin',
+                'password' => 'balen@1'
+            ],
+            [
+                'name' => 'Rebwar Mustafa',
+                'email' => 'rebwar.m@shtc-tomar.com',
+                'role_name' => 'MIS',
+                'password' => 'shtc2345432'
+            ],
+            [
+                'name' => 'Rizgar Shahab',
+                'email' => 'rizgar.s@shtc-tomar.com',
+                'role_name' => 'AD',
+                'password' => 'shtc8765432'
+            ],
+            [
+                'name' => 'Kaify Jabar',
+                'email' => 'kaify.j@shtc-tomar.com',
+                'role_name' => 'VET',
+                'password' => 'shtc9876543'
+            ],
+            [
+                'name' => 'Niyaz Abdulla',
+                'email' => 'niyaz.a@shtc-tomar.com',
+                'role_name' => 'NURSING',
+                'password' => 'shtc7039489'
+            ],
+            [
+                'name' => 'Hashim Hamd',
+                'email' => 'Hashim.h@shtc-tomar.com',
+                'role_name' => 'MLT',
+                'password' => 'shtc3048234'
+            ],
+            [
+                'name' => 'Jalal Fadhil',
+                'email' => 'jalal.f@shtc-tomar.com',
+                'role_name' => 'ARC',
+                'password' => 'shtc23913218'
+            ],
+            [
+                'name' => 'Aras Hussein',
+                'email' => 'aras.h@shtc-tomar.com',
+                'role_name' => 'BUILD',
+                'password' => 'shtc34093843'
+            ],
+            [
+                'name' => 'Alandi A',
+                'email' => 'alandi.a@shtc-tomar.com',
+                'role_name' => 'TOURISM',
+                'password' => 'shtc329482830'
+            ],
+        ];
+
+        foreach ($users as $user) {
+
+            \App\Models\User::factory()->create([
+                'name' => $user['name'],
+                'email' => $user['email'],
+                'password' => bcrypt($user['password'])
+            ]);
+
+            $DB_USER = User::where('email', $user['email'])->first();
+
+            if($user['role_name'] == 'admin') {
+
+                $DB_USER->assignRole($user['role_name']);
+            } else {
+
+                $DB_USER->assignRole(['limited', $user['role_name']]);
+            }
+
+        }
+
 
         \App\Models\Student::factory(100)->create();
 
@@ -38,7 +129,7 @@ class DatabaseSeeder extends Seeder
                 ->preservingOriginal()
                 ->toMediaCollection('student-photo');
 
-            if($student->uploaded_id_type == 1) {
+            if ($student->uploaded_id_type == 1) {
                 $student->addMediaFromUrl($id)
                     ->usingName('national-id-front-side')
                     ->usingFilename('national-id-front-side.png')
@@ -94,11 +185,6 @@ class DatabaseSeeder extends Seeder
                 ->toMediaCollection('food-card-photo');
 
         }
-
-        $user = User::find(1);
-
-        $adminRole = Role::create(['name' => 'admin']);
-        $user->assignRole($adminRole);
 
     }
 }

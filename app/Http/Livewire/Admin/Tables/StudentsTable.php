@@ -22,6 +22,44 @@ class StudentsTable extends DataTableComponent
         'refresh-students' => '$refresh',
     ];
 
+    public function builder(): Builder
+    {
+        $user = auth()->user();
+
+        if($user->hasRole('admin')) {
+            return Student::query();
+        }
+
+        if($user->hasRole('limited')) {
+
+            if($user->hasRole('MIS')) {
+                return Student::query()->where('department_id', 2);
+            }
+            if($user->hasRole('AD')) {
+                return Student::query()->where('department_id', 3);
+            }
+            if($user->hasRole('VET')) {
+                return Student::query()->where('department_id', 4);
+            }
+            if($user->hasRole('NURSING')) {
+                return Student::query()->where('department_id', 5);
+            }
+            if($user->hasRole('MLT')) {
+                return Student::query()->where('department_id', 6);
+            }
+            if($user->hasRole('ARC')) {
+                return Student::query()->where('department_id', 7);
+            }
+            if($user->hasRole('BUILD')) {
+                return Student::query()->where('department_id', 8);
+            }
+            if($user->hasRole('TOURISM')) {
+                return Student::query()->where('department_id', 9);
+            }
+        }
+
+    }
+
     public function configure(): void
     {
         $this->setPrimaryKey('id');
@@ -47,6 +85,13 @@ class StudentsTable extends DataTableComponent
                 ->filter(function (Builder $builder, string $value) {
                     $builder->where('status', $value);
                 }),
+            SelectFilter::make('Type')
+                ->setFilterPillTitle('Type')
+                ->setFilterPillValues(Student::getDepartmentTypes())
+                ->options(array_replace(['' => 'All'], Student::getDepartmentTypes()))
+                ->filter(function (Builder $builder, string $value) {
+                    $builder->where('department_type_id', $value);
+                }),
         ];
     }
 
@@ -61,9 +106,16 @@ class StudentsTable extends DataTableComponent
                 ->format(function ($department_id, $row, $column) {
                     return Student::getDepartmentName($department_id);
                 })->sortable(),
-
+            Column::make("Type", "department_type_id")
+                ->format(function ($department_type_id, $row, $column) {
+                    return Student::getDepartmentTypeName($department_type_id);
+                })->sortable(),
             Column::make("Status", "status")
                 ->format(function ($status, $row, $column) {
+                    if($status == Student::STATUS_PENDING) {
+                        return '';
+                    }
+
                     return Student::getStatusName($status);
                 })
                 ->sortable(),
@@ -89,8 +141,6 @@ class StudentsTable extends DataTableComponent
                 ->html(),
         ];
     }
-
-
 
     public function triggerDeleteStudent(Student $student)
     {

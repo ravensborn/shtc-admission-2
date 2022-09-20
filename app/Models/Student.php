@@ -120,13 +120,18 @@ class Student extends Model implements HasMedia
         return $this->gender == 0 ? 'نێر' : 'مێ';
     }
 
-    public function getDepartmentTypes(): array
+    public static function getDepartmentTypes(): array
     {
         return [
             1 => 'بەیانیان',
             2 => 'پاڕالێل',
             3 => 'ئێواران',
         ];
+    }
+
+    public static function getDepartmentTypeName($id): string
+    {
+        return self::getDepartmentTypes()[$id];
     }
 
     public function getStudentTypes(): array

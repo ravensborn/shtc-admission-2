@@ -1,18 +1,21 @@
 <div>
 
-    <div class="row mt-4">
-        <div class="col-12">
-            <div class="alert alert-info" style="direction: rtl;">
+    <div class="mt-4"></div>
+    @if(auth()->user()->hasRole('admin'))
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info" style="direction: rtl;">
 
-                @foreach($statistics as $name => $value)
-                    <div>
-                        {{ $name . ': ' . $value}}
-                    </div>
-                @endforeach
+                    @foreach($statistics as $name => $value)
+                        <div>
+                            {{ $name . ': ' . $value}}
+                        </div>
+                    @endforeach
 
+                </div>
             </div>
         </div>
-    </div>
+    @endif
 
     <div class="row">
         <div class="col-12">
