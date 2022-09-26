@@ -280,6 +280,20 @@
                                 </p>
                             </div>
                         @endif
+                        @if($student->hasMedia('kafala-photo'))
+                            <div class="col-6 col-sm-1 text-center">
+                                <a href="{{  $student->getFirstMedia('kafala-photo')->getFullUrl() }}">
+                                    <img
+                                            style="width: 128px"
+                                            class="img-thumbnail"
+                                            src="{{ $student->getFirstMedia('kafala-photo')->getFullUrl() }}"
+                                            alt="Student Attachment">
+                                </a>
+                                <p>
+                                    بەڵگەنامە (کەفالە)
+                                </p>
+                            </div>
+                        @endif
                 </div>
             </div>
         </div>

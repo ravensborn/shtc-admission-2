@@ -20,7 +20,8 @@
                             <li>
                                 ئیمەیل:
                                 <span dir="ltr">
-                                    <a class="text-decoration-none text-muted" href="mailto:{{ config('envAccess.HELP_EMAIL') }}">
+                                    <a class="text-decoration-none text-muted"
+                                       href="mailto:{{ config('envAccess.HELP_EMAIL') }}">
                                         {{ config('envAccess.HELP_EMAIL') }}
                                     </a>
                                 </span>
@@ -28,7 +29,8 @@
                             <li>
                                 ژمارەی هۆبەی تۆماری کۆلێژ:
                                 <span dir="ltr">
-                                    <a class="text-decoration-none text-muted" href="tel:{{ config('envAccess.TOMAR_NUMBER') }}">
+                                    <a class="text-decoration-none text-muted"
+                                       href="tel:{{ config('envAccess.TOMAR_NUMBER') }}">
                                         {{ config('envAccess.TOMAR_NUMBER_FORMATTED') }}
                                     </a>
                                 </span>
@@ -36,7 +38,8 @@
                             <li>
                                 لەکاتی هەبوونی کێشە لە وێبسایت:
                                 <span dir="ltr">
-                                      <a class="text-decoration-none text-muted" href="tel:{{ config('envAccess.DEVELOPER_NUMBER') }}">
+                                      <a class="text-decoration-none text-muted"
+                                         href="tel:{{ config('envAccess.DEVELOPER_NUMBER') }}">
                                         {{ config('envAccess.DEVELOPER_NUMBER_FORMATTED') }}
                                     </a>
                                 </span>
@@ -328,7 +331,8 @@
                                         </div>
                                         <div class="col-6">
                                             @if($pshtgere_neshtajebwn_photo)
-                                                <img src="{{ $pshtgere_neshtajebwn_photo->temporaryUrl() }}" alt="Photo" id="pshtgere_neshtajebwn_photo"
+                                                <img src="{{ $pshtgere_neshtajebwn_photo->temporaryUrl() }}" alt="Photo"
+                                                     id="pshtgere_neshtajebwn_photo"
                                                      class="img-thumbnail float-end"
                                                      style="width: auto; height: 100px;">
                                             @endif
@@ -358,7 +362,39 @@
                                         </div>
                                         <div class="col-6">
                                             @if($brwanama_12)
-                                                <img src="{{ $brwanama_12->temporaryUrl() }}" alt="Photo" id="brwanama_12"
+                                                <img src="{{ $brwanama_12->temporaryUrl() }}" alt="Photo"
+                                                     id="brwanama_12"
+                                                     class="img-thumbnail float-end"
+                                                     style="width: auto; height: 100px;">
+                                            @endif
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="card border">
+                                <div class="card-header">
+                                    بەڵێننامە (کفالە)
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                بەڵێننامە (کفالە)
+                                            </div>
+                                            <input type="file" class="form-control-file"
+                                                   wire:model.lazy="kafala"
+                                                   id="kafala">
+                                            @error('kafala')
+                                            <div class="text-danger text-start" dir="ltr">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-6">
+                                            @if($kafala)
+                                                <img src="{{ $kafala->temporaryUrl() }}" alt="Photo"
+                                                     id="brwanama_12"
                                                      class="img-thumbnail float-end"
                                                      style="width: auto; height: 100px;">
                                             @endif
