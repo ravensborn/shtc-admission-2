@@ -1,15 +1,19 @@
 <div>
-    <div class="row mt-5">
+    @if(auth()->check())
 
-        <div class="col-12">
+        <div class="row mt-5">
 
-            <div class="alert alert-info" style="direction: ltr;">
-                You are logged in as admin,
-                click <a href="{{ route('admin.select') }}">here</a> to navigate to dashboard.
+            <div class="col-12">
+
+                <div class="alert alert-info" style="direction: ltr;">
+                    You are logged in as admin,
+                    click <a href="{{ route('admin.select') }}">here</a> to navigate to dashboard.
+                </div>
             </div>
+
         </div>
 
-    </div>
+    @endif
     <div class="row mt-5">
         <div class="col-12 text-center">
 
@@ -35,7 +39,8 @@
                     <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#tutorialModal">
                         فێرکاری تۆمارکردن
                     </button>
-                    <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#helpModal">پەیوەندی</button>
+                    <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#helpModal">پەیوەندی
+                    </button>
                 </div>
             </div>
 
@@ -121,7 +126,8 @@
                         <li>
                             ئیمەیل:
                             <span dir="ltr">
-                                    <a class="text-decoration-none text-muted" href="mailto:{{ config('envAccess.HELP_EMAIL') }}">
+                                    <a class="text-decoration-none text-muted"
+                                       href="mailto:{{ config('envAccess.HELP_EMAIL') }}">
                                         {{ config('envAccess.HELP_EMAIL') }}
                                     </a>
                                 </span>
@@ -129,7 +135,8 @@
                         <li>
                             ژمارەی هۆبەی تۆماری کۆلێژ:
                             <span dir="ltr">
-                                    <a class="text-decoration-none text-muted" href="tel:{{ config('envAccess.TOMAR_NUMBER') }}">
+                                    <a class="text-decoration-none text-muted"
+                                       href="tel:{{ config('envAccess.TOMAR_NUMBER') }}">
                                         {{ config('envAccess.TOMAR_NUMBER_FORMATTED') }}
                                     </a>
                                 </span>
@@ -137,7 +144,8 @@
                         <li>
                             لەکاتی هەبوونی کێشە لە وێبسایت:
                             <span dir="ltr">
-                                      <a class="text-decoration-none text-muted" href="tel:{{ config('envAccess.DEVELOPER_NUMBER') }}">
+                                      <a class="text-decoration-none text-muted"
+                                         href="tel:{{ config('envAccess.DEVELOPER_NUMBER') }}">
                                         {{ config('envAccess.DEVELOPER_NUMBER_FORMATTED') }}
                                     </a>
                             </span>
