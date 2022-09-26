@@ -328,8 +328,37 @@
                                         </div>
                                         <div class="col-6">
                                             @if($pshtgere_neshtajebwn_photo)
-                                                <img src="{{ $pshtgere_neshtajebwn_photo->temporaryUrl() }}"
-                                                <img src="" alt="Photo" id="pshtgere_neshtajebwn_photo"
+                                                <img src="{{ $pshtgere_neshtajebwn_photo->temporaryUrl() }}" alt="Photo" id="pshtgere_neshtajebwn_photo"
+                                                     class="img-thumbnail float-end"
+                                                     style="width: auto; height: 100px;">
+                                            @endif
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="card border">
+                                <div class="card-header">
+                                    بڕوانامەی پۆلی ١٢
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                بڕوانامەی پۆلی ١٢
+                                            </div>
+                                            <input type="file" class="form-control-file"
+                                                   wire:model.lazy="brwanama_12"
+                                                   id="brwanama_12">
+                                            @error('brwanama_12')
+                                            <div class="text-danger text-start" dir="ltr">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-6">
+                                            @if($brwanama_12)
+                                                <img src="{{ $brwanama_12->temporaryUrl() }}" alt="Photo" id="brwanama_12"
                                                      class="img-thumbnail float-end"
                                                      style="width: auto; height: 100px;">
                                             @endif
@@ -527,8 +556,8 @@
                                         </div>
                                         <div class="col-md-4 mt-3 mt-md-0">
                                             <div>
-                                                <label for="degree_total" class="form-label">کۆنمرەی قوتابی
-                                                    وەرگیراو</label>
+                                                <label for="degree_total" class="form-label">کۆنمرەی پۆلی دوانزە
+                                                </label>
                                                 <input type="text" class="form-control" wire:model.lazy="degree_total"
                                                        id="degree_total">
                                             </div>

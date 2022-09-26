@@ -36,6 +36,7 @@ class Create extends Component
 
     public $psulay_xorak_photo;
     public $pshtgere_neshtajebwn_photo;
+    public $brwanama_12;
 
     public string $name_kurdish = "";
     public string $name_english = "";
@@ -88,6 +89,7 @@ class Create extends Component
 
         'psulay_xorak_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
         'pshtgere_neshtajebwn_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
+        'brwanama_12' => 'required|mimes:jpg,jpeg,png|max:5120',
 
         'name_kurdish' => 'required|max:50|min:4',
         'name_english' => 'required|max:50|min:4',
@@ -220,6 +222,8 @@ class Create extends Component
         $validated['uploaded_id_type'] = $this->uploadedIdType;
         $validated['department_name'] = Student::getDepartmentName($validated['department_id']);
 
+        $validated['status'] = Student::STATUS_PENDING;
+
         $student = new Student;
         $student = $student->create($validated);
 
@@ -292,6 +296,11 @@ class Create extends Component
             ->preservingOriginal()
             ->toMediaCollection('food-card-photo');
 
+        $student->addMedia($this->brwanama_12)
+            ->usingName('brwanama-12-photo')
+            ->usingFilename('brwanama-12-photo.' . $this->brwanama_12->getClientOriginalExtension())
+            ->preservingOriginal()
+            ->toMediaCollection('brwanama-12-photo');
 
         $this->alert('success', 'بەسەرکەوتوویی تۆمارکرا.');
 

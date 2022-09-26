@@ -10,7 +10,6 @@ class Result extends Component
 {
     use LivewireAlert;
 
-
     public $code = '';
     public $resultPage = false;
     public $student;
@@ -49,6 +48,12 @@ class Result extends Component
         $this->resultPage = false;
         $this->code = $this->student->code;
         $this->student = null;
+    }
+
+    public function mount() {
+        if(!config('envAccess.RESULT_MODE')) {
+            return redirect()->route('home');
+        }
     }
 
     public function render()

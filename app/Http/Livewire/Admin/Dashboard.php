@@ -38,10 +38,17 @@ class Dashboard extends Component
         $this->statistics = array_replace($statusResultArray, []);
     }
 
+    public int $statusId;
+
     public function mount() {
 
-    }
+        if(request()->has('status_id')) {
+            $this->statusId = request()->get('status_id');
+        } else {
+            return redirect()->route('admin.select');
+        }
 
+    }
 
     public function render()
     {

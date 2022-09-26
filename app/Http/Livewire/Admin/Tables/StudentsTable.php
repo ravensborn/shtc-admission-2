@@ -17,48 +17,60 @@ class StudentsTable extends DataTableComponent
 
     public $productToBeDeleted = null;
 
+    public int $statusId;
+
     protected $listeners = [
         'deleteStudent',
         'refresh-students' => '$refresh',
     ];
 
+
     public function builder(): Builder
     {
         $user = auth()->user();
 
-        if($user->hasRole('admin')) {
-            return Student::query();
+        $builder = Student::query();
+
+        if ($user->hasRole('admin')) {
+
         }
 
-        if($user->hasRole('limited')) {
+        if ($user->hasRole('limited')) {
 
-            if($user->hasRole('MIS')) {
-                return Student::query()->where('department_id', 2);
+            if ($user->hasRole('MIS')) {
+                $builder->where('department_id', 2);
             }
-            if($user->hasRole('AD')) {
-                return Student::query()->where('department_id', 3);
+            if ($user->hasRole('AD')) {
+                $builder->where('department_id', 3);
             }
-            if($user->hasRole('VET')) {
-                return Student::query()->where('department_id', 4);
+            if ($user->hasRole('VET')) {
+                $builder->where('department_id', 4);
             }
-            if($user->hasRole('NURSING')) {
-                return Student::query()->where('department_id', 5);
+            if ($user->hasRole('NURSING')) {
+                $builder->where('department_id', 5);
             }
-            if($user->hasRole('MLT')) {
-                return Student::query()->where('department_id', 6);
+            if ($user->hasRole('MLT')) {
+                $builder->where('department_id', 6);
             }
-            if($user->hasRole('ARC')) {
-                return Student::query()->where('department_id', 7);
+            if ($user->hasRole('ARC')) {
+                $builder->where('department_id', 7);
             }
-            if($user->hasRole('BUILD')) {
-                return Student::query()->where('department_id', 8);
+            if ($user->hasRole('BUILD')) {
+                $builder->where('department_id', 8);
             }
-            if($user->hasRole('TOURISM')) {
-                return Student::query()->where('department_id', 9);
+            if ($user->hasRole('TOURISM')) {
+                $builder->where('department_id', 9);
             }
         }
 
+        if ($this->statusId) {
+            
+            $builder->where('status', $this->statusId);
+        }
+
+        return $builder;
     }
+
 
     public function configure(): void
     {
@@ -112,9 +124,9 @@ class StudentsTable extends DataTableComponent
                 })->sortable(),
             Column::make("Status", "status")
                 ->format(function ($status, $row, $column) {
-                    if($status == Student::STATUS_PENDING) {
-                        return '';
-                    }
+//                    if ($status == Student::STATUS_PENDING) {
+//                        return '';
+//                    }
 
                     return Student::getStatusName($status);
                 })

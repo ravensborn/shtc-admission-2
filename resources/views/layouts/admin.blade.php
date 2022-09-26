@@ -38,15 +38,30 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link @if(request()->is('admin/dashboard')) active @endif" aria-current="page"--}}
+{{--                       href="{{ route('admin.dashboard') }}@if(request()->has('status_id'))?status_id={{ request()->get('status_id') }} @endif">Home</a>--}}
+{{--                </li>--}}
+
                 <li class="nav-item">
-                    <a class="nav-link @if(request()->is('admin/dashboard')) active @endif" aria-current="page"
-                       href="{{ route('admin.dashboard') }}">Home</a>
+                    <a class="nav-link @if(request()->is('/')) active @endif" aria-current="page"
+                       href="{{ route('home') }}">Home</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link"
-                       href="{{ route('admissions.create') }}">New Admission</a>
+                    <a class="nav-link @if(request()->is('admin/select')) active @endif" aria-current="page"
+                       href="{{ route('admin.select') }}">Sections</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page"
+                       href="{{ route('admin.logout') }}">Logout</a>
+                </li>
+
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link"--}}
+{{--                       href="{{ route('admissions.create') }}">New Admission</a>--}}
+{{--                </li>--}}
 
             </ul>
             <span class="navbar-text">

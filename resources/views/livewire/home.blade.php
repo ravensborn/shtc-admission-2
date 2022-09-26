@@ -1,5 +1,16 @@
 <div>
     <div class="row mt-5">
+
+        <div class="col-12">
+
+            <div class="alert alert-info" style="direction: ltr;">
+                You are logged in as admin,
+                click <a href="{{ route('admin.select') }}">here</a> to navigate to dashboard.
+            </div>
+        </div>
+
+    </div>
+    <div class="row mt-5">
         <div class="col-12 text-center">
 
 

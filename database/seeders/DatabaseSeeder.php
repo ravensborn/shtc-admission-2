@@ -29,8 +29,21 @@ class DatabaseSeeder extends Seeder
         Role::create(['name' => 'ARC']);
         Role::create(['name' => 'BUILD']);
         Role::create(['name' => 'TOURISM']);
+        Role::create(['name' => 'STATISTICS_ONLY']);
 
         $users = [
+//            [
+//                'name' => 'Yad Hoshyar',
+//                'email' => 'yad@gmail.com',
+//                'role_name' => 'admin',
+//                'password' => 'password'
+//            ],
+            [
+                'name' => 'Dr. Abdoulkhaliq Nadir',
+                'email' => 'dr.abdoulkhaliq@shtc-tomar.com',
+                'role_name' => 'admin',
+                'password' => 'dym65849'
+            ],
             [
                 'name' => 'Yad Hoshyar',
                 'email' => 'yad.hoshyar@gmail.com',

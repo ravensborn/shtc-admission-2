@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Home as Home;
 use App\Http\Livewire\Admin\Dashboard as AdminDashboard;
+use App\Http\Livewire\Admin\ChooseAnOption as AdminChooseAnOption;
 use App\Http\Livewire\Admin\Students\Show as AdminStudentShow;
 use App\Http\Livewire\Admissions\Create as AdmissionCreate;
 use App\Http\Livewire\Admissions\Result as AdmissionResult;
@@ -24,10 +25,18 @@ Auth::routes([
     'logout' => false,
 ]);
 
+Route::get('/logout', function () {
+    auth()->logout();
+    return redirect()->route('login');
+})->name('admin.logout');
+
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/admin/dashboard', AdminDashboard::class)
         ->name('admin.dashboard');
+
+    Route::get('/admin/select', AdminChooseAnOption::class)
+        ->name('admin.select');
 
     Route::get('/admin/student/{student}', AdminStudentShow::class)
         ->name('admin.students.show');

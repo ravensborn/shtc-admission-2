@@ -29,7 +29,7 @@
                             زانیاری قوتابی
                         </th>
                         <th colspan="2">
-                            زانیاری بەخێوکەر
+{{--                            زانیاری بەخێوکەر--}}
                         </th>
                     </tr>
                     <tr>
@@ -266,6 +266,20 @@
                             </p>
                         </div>
                     @endif
+                        @if($student->hasMedia('brwanama-12-photo'))
+                            <div class="col-6 col-sm-1 text-center">
+                                <a href="{{  $student->getFirstMedia('brwanama-12-photo')->getFullUrl() }}">
+                                    <img
+                                            style="width: 128px"
+                                            class="img-thumbnail"
+                                            src="{{ $student->getFirstMedia('brwanama-12-photo')->getFullUrl() }}"
+                                            alt="Student Attachment">
+                                </a>
+                                <p>
+                                    بڕوانامەی پۆلی ١٢
+                                </p>
+                            </div>
+                        @endif
                 </div>
             </div>
         </div>

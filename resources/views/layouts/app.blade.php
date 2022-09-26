@@ -28,26 +28,33 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <span class="navbar-text">
+
+                   <a class="nav-link aria-current="
+                      href="{{ route('home') }}">
+                  {{ config('envAccess.COLLEGE_NAME_KURDISH') }}
+                  </a>
+      </span>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link @if(request()->is('/')) active @endif" aria-current="page"
                        href="{{ route('home') }}">سەرەتا</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link @if(request()->is('submission/create')) active @endif"
+                    <a class="nav-link @if(request()->is('admissions/create')) active @endif"
                        href="{{ route('admissions.create') }}">تۆمارکردنی قوتابی</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link @if(request()->is('submission/result')) active @endif"
-                       href="{{ route('admissions.result') }}">وەرگرتنەوەی ئەنجام</a>
-                </li>
+                @if(config('envAccess.RESULT_MODE'))
+                    <li class="nav-item">
+                        <a class="nav-link @if(request()->is('admissions/result')) active @endif"
+                           href="{{ route('admissions.result') }}">وەرگرتنەوەی ئەنجام</a>
+                    </li>
+                @endif
 
             </ul>
-            <span class="navbar-text">
-      {{ config('envAccess.COLLEGE_NAME_KURDISH') }}
-      </span>
+
         </div>
     </div>
 </nav>
