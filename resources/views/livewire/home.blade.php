@@ -17,17 +17,20 @@
     <div class="row mt-5">
         <div class="col-12 text-center">
 
+            <div class="row pb-3 fw-bold" style="font-size: 42px; color: #084298">
+                کۆلێژی تەکنیکی شەقڵاوە
+            </div>
 
             <div class="row border-bottom pb-3">
                 <div class="col-6 col-md-3">
-                    <img src="{{ asset('logos/epu.png') }}"
-                         style="width: 100%"
-                         alt="EPU Logo">
+{{--                    <img src="{{ asset('logos/epu.png') }}"--}}
+{{--                         style="width: 100%"--}}
+{{--                         alt="EPU Logo">--}}
                 </div>
                 <div class="col-6 col-md-3">
-                    <img src="{{ asset('logos/stc.png') }}"
-                         style="width: 100%"
-                         alt="EPU Logo">
+{{--                    <img src="{{ asset('logos/stc.png') }}"--}}
+{{--                         style="width: 100%"--}}
+{{--                         alt="EPU Logo">--}}
                 </div>
             </div>
 
@@ -72,12 +75,6 @@
                     <ul class="text-start">
                         <li>
                             تەکنەلۆجیای زانیاری
-                        </li>
-                        <li>
-                            تەکنیکی تەلارسازی
-                        </li>
-                        <li>
-                            بیناکاری
                         </li>
                         <li>سیستەمی
                             زانیاری
