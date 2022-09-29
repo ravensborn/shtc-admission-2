@@ -36,7 +36,7 @@
                                 </span>
                             </li>
                             <li>
-                                لەکاتی هەبوونی کێشە لە وێبسایت:
+                                ژمارەی هۆبەی تەکنیکی:
                                 <span dir="ltr">
                                       <a class="text-decoration-none text-muted"
                                          href="tel:{{ config('envAccess.DEVELOPER_NUMBER') }}">
@@ -719,40 +719,8 @@
                                 زانیاری قوتابی
                             </div>
                             <div class="card-body">
+
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <div>
-                                            <label for="id_nationality" class="form-label">ژمارەی رەگەزنامە</label>
-                                            <input type="text" class="form-control" wire:model.lazy="id_nationality"
-                                                   id="id_nationality">
-                                        </div>
-                                        @error('id_nationality')
-                                        <div class="text-danger" dir="ltr">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-4 mt-3 mt-md-0">
-                                        <div>
-                                            <label for="id_number" class="form-label">ژمارەی ناسنامە</label>
-                                            <input type="text" class="form-control" wire:model.lazy="id_number"
-                                                   id="id_number">
-                                        </div>
-                                        @error('id_number')
-                                        <div class="text-danger" dir="ltr">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-4 mt-3 mt-md-0">
-                                        <div>
-                                            <label for="id_issue_place" class="form-label">شوێنی دەرچوونی
-                                                ناسنامە</label>
-                                            <input type="text" class="form-control" wire:model.lazy="id_issue_place"
-                                                   id="id_issue_place">
-                                        </div>
-                                        @error('id_issue_place')
-                                        <div class="text-danger" dir="ltr">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="row mt-4">
                                     <div class="col-md-4">
                                         <div>
                                             <label for="province_id" class="form-label">پارێزگا</label>

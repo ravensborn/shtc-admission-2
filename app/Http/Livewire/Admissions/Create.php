@@ -63,9 +63,6 @@ class Create extends Component
     public string $parent_occupation = "";
     public string $parent_phone = "";
 
-    public string $id_nationality = "";
-    public string $id_number = "";
-    public string $id_issue_place = "";
     public string $province_id = "";
     public string $district = "";
     public string $sub_district = "";
@@ -118,9 +115,6 @@ class Create extends Component
         'parent_occupation' => 'required|max:255',
         'parent_phone' => 'required|max:255',
 
-        'id_nationality' => 'required|max:255',
-        'id_number' => 'required|max:255',
-        'id_issue_place' => 'required|max:255',
         'province_id' => 'required|in:1,2,3,4,5',
         'district' => 'required|max:255',
         'sub_district' => 'required|max:255',

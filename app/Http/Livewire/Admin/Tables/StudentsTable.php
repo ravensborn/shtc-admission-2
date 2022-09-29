@@ -148,7 +148,11 @@ class StudentsTable extends DataTableComponent
                     $viewBtn = '<a href="' . route('admin.students.show', $id) . '" class="btn btn-warning btn-sm"><span class="icon"> <i class="lni lni-user"></i></span></a>';
 
 
-                    return $div . $viewBtn . '&nbsp;' . $deleteBtn . $closeDiv;
+                    if(auth()->user()->hasRole('admin')) {
+                        return $div . $viewBtn . '&nbsp;' . $deleteBtn . $closeDiv;
+                    } else {
+                        return $div . $viewBtn . '&nbsp;' . $closeDiv;
+                    }
                 })
                 ->html(),
         ];

@@ -43,9 +43,6 @@ return new class extends Migration
             $table->string('parent_name');
             $table->string('parent_occupation');
             $table->string('parent_phone');
-            $table->string('id_nationality');
-            $table->string('id_number');
-            $table->string('id_issue_place');
             $table->integer('province_id');
             $table->string('district');
             $table->string('sub_district');

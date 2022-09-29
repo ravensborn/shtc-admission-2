@@ -15,7 +15,9 @@ class Dashboard extends Component
     public function statistics()
     {
 
+        $studentCount = Student::all()->count();
         $statusResultArray = [];
+        $statusResultArray['ژمارەی قوتابیان'] = $studentCount;
         $statusList = Student::getStatusArray();
         foreach ($statusList as $status_id => $status) {
             if($status_id == 0) {

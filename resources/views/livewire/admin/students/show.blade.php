@@ -53,20 +53,20 @@
                     <tr>
                         <td>بەرواری لەدایكبوون:</td>
                         <td>{{ $student->birthday->format('d-m-Y') }}</td>
-                        <td>ژمارەی رەگەزنامە:</td>
-                        <td>{{ $student->id_nationality }}</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>شوێنی لەدایكبوون:</td>
                         <td>{{ $student->birthplace }}</td>
-                        <td>ژمارەی ناسنامە:</td>
-                        <td>{{ $student->id_number }}</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>نەتەوە:</td>
                         <td>{{ $student->nationality }}</td>
-                        <td>شوێنی دەرچوونی ناسنامە:</td>
-                        <td>{{ $student->id_issue_place }}</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>دەرچووی ئامادەیی:</td>
@@ -210,13 +210,13 @@
                             </p>
                         </div>
                     @endif
-                    @if($student->hasMedia('karty_zanyari_front_side_photo'))
+                    @if($student->hasMedia('karty-zanyari-front-side-photo'))
                         <div class="col-6 col-sm-1 text-center">
-                            <a href="{{ $student->getFirstMedia('karty_zanyari_front_side_photo')->getFullUrl() }}">
+                            <a href="{{ $student->getFirstMedia('karty-zanyari-front-side-photo')->getFullUrl() }}">
                                 <img
                                         style="width: 128px"
                                         class="img-thumbnail"
-                                        src="{{ $student->getFirstMedia('karty_zanyari_front_side_photo')->getFullUrl() }}"
+                                        src="{{ $student->getFirstMedia('karty-zanyari-front-side-photo')->getFullUrl() }}"
                                         alt="Student Attachment">
                             </a>
                             <p>
@@ -224,13 +224,13 @@
                             </p>
                         </div>
                     @endif
-                    @if($student->hasMedia('karty_zanyari_back_side_photo'))
+                    @if($student->hasMedia('karty-zanyari-back-side-photo'))
                         <div class="col-6 col-sm-1 text-center">
-                            <a href="{{ $student->getFirstMedia('karty_zanyari_back_side_photo')->getFullUrl()}}">
+                            <a href="{{ $student->getFirstMedia('karty-zanyari-back-side-photo')->getFullUrl()}}">
                                 <img
                                         style="width: 128px"
                                         class="img-thumbnail"
-                                        src="{{ $student->getFirstMedia('karty_zanyari_back_side_photo')->getFullUrl() }}"
+                                        src="{{ $student->getFirstMedia('karty-zanyari-back-side-photo')->getFullUrl() }}"
                                         alt="Student Attachment">
                             </a>
                             <p>

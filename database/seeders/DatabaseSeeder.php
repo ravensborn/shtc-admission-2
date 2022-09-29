@@ -81,8 +81,8 @@ class DatabaseSeeder extends Seeder
                 'password' => 'shtc7039489'
             ],
             [
-                'name' => 'Hashim Hamd',
-                'email' => 'Hashim.h@shtc-tomar.com',
+                'name' => 'Ali Zainal',
+                'email' => 'ali.z@shtc-tomar.com',
                 'role_name' => 'MLT',
                 'password' => 'shtc3048234'
             ],

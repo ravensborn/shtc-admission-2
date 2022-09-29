@@ -139,7 +139,7 @@
                                 </span>
                         </li>
                         <li>
-                            لەکاتی هەبوونی کێشە لە وێبسایت:
+                            ژمارەی هۆبەی تەکنیکی:
                             <span dir="ltr">
                                       <a class="text-decoration-none text-muted"
                                          href="tel:{{ config('envAccess.DEVELOPER_NUMBER') }}">
