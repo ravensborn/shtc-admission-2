@@ -123,7 +123,7 @@ class Student extends Model implements HasMedia
     public static function getDepartmentTypes(): array
     {
         return [
-            1 => 'بەیانیان',
+            1 => 'زانکۆڵاین',
             2 => 'پاڕالێل',
             3 => 'ئێواران',
         ];

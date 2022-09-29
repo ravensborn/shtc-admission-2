@@ -13,9 +13,20 @@
             <div class="alert alert-info shadow-sm h-100">
                 <label for="status">Update Status</label>
                 <select class="form-control form-control-sm mt-2" id="status" wire:model="status">
-                    @foreach(\App\Models\Student::getStatusArray() as $id => $name)
-                        <option value="{{ $id }}"> {{ $name }}</option>
-                    @endforeach
+
+                    @if($student->status == \App\Models\Student::STATUS_PENDING)
+                        <option value="{{ \App\Models\Student::STATUS_INCOMPLETE }}"> {{ \App\Models\Student::getStatusArray()[\App\Models\Student::STATUS_INCOMPLETE] }}</option>
+                        <option value="{{ \App\Models\Student::STATUS_ACCEPTED }}"> {{ \App\Models\Student::getStatusArray()[\App\Models\Student::STATUS_ACCEPTED] }}</option>
+                    @else
+                        @foreach(\App\Models\Student::getStatusArray() as $id => $name)
+                            @if($id == \App\Models\Student::STATUS_DEFAULT)
+                                @continue
+                            @endif
+                            <option value="{{ $id }}"> {{ $name }}</option>
+                        @endforeach
+                    @endif
+
+
                 </select>
             </div>
         </div>
@@ -29,7 +40,7 @@
                             زانیاری قوتابی
                         </th>
                         <th colspan="2">
-{{--                            زانیاری بەخێوکەر--}}
+                            {{--                            زانیاری بەخێوکەر--}}
                         </th>
                     </tr>
                     <tr>
@@ -266,34 +277,34 @@
                             </p>
                         </div>
                     @endif
-                        @if($student->hasMedia('brwanama-12-photo'))
-                            <div class="col-6 col-sm-1 text-center">
-                                <a href="{{  $student->getFirstMedia('brwanama-12-photo')->getFullUrl() }}">
-                                    <img
-                                            style="width: 128px"
-                                            class="img-thumbnail"
-                                            src="{{ $student->getFirstMedia('brwanama-12-photo')->getFullUrl() }}"
-                                            alt="Student Attachment">
-                                </a>
-                                <p>
-                                    بڕوانامەی پۆلی ١٢
-                                </p>
-                            </div>
-                        @endif
-                        @if($student->hasMedia('kafala-photo'))
-                            <div class="col-6 col-sm-1 text-center">
-                                <a href="{{  $student->getFirstMedia('kafala-photo')->getFullUrl() }}">
-                                    <img
-                                            style="width: 128px"
-                                            class="img-thumbnail"
-                                            src="{{ $student->getFirstMedia('kafala-photo')->getFullUrl() }}"
-                                            alt="Student Attachment">
-                                </a>
-                                <p>
-                                    بەڵگەنامە (کەفالە)
-                                </p>
-                            </div>
-                        @endif
+                    @if($student->hasMedia('brwanama-12-photo'))
+                        <div class="col-6 col-sm-1 text-center">
+                            <a href="{{  $student->getFirstMedia('brwanama-12-photo')->getFullUrl() }}">
+                                <img
+                                        style="width: 128px"
+                                        class="img-thumbnail"
+                                        src="{{ $student->getFirstMedia('brwanama-12-photo')->getFullUrl() }}"
+                                        alt="Student Attachment">
+                            </a>
+                            <p>
+                                بڕوانامەی پۆلی ١٢
+                            </p>
+                        </div>
+                    @endif
+                    @if($student->hasMedia('kafala-photo'))
+                        <div class="col-6 col-sm-1 text-center">
+                            <a href="{{  $student->getFirstMedia('kafala-photo')->getFullUrl() }}">
+                                <img
+                                        style="width: 128px"
+                                        class="img-thumbnail"
+                                        src="{{ $student->getFirstMedia('kafala-photo')->getFullUrl() }}"
+                                        alt="Student Attachment">
+                            </a>
+                            <p>
+                                بەڵگەنامە (کەفالە)
+                            </p>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
