@@ -112,7 +112,7 @@ class StudentsTable extends DataTableComponent
         return [
             Column::make("#", "number")->searchable(),
             Column::make("Code", "code")->searchable(),
-            Column::make("Name", "name_english")->searchable(),
+            Column::make("Name", "name_kurdish")->searchable(),
             Column::make("Phone", "phone")->searchable(),
             Column::make("Department", "department_id")
                 ->format(function ($department_id, $row, $column) {
@@ -176,6 +176,8 @@ class StudentsTable extends DataTableComponent
     {
 
         $this->studentToBeDeleted->delete();
+
+        $this->emit('refresh_statistics');
 
         $this->alert('success', 'Student successfully deleted.', [
             'position' => 'top-end',

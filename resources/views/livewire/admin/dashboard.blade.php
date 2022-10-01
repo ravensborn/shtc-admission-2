@@ -2,19 +2,84 @@
 
     <div class="mt-4"></div>
     @if(auth()->user()->hasRole('admin'))
-        <div class="row">
-            <div class="col-12">
-                <div class="alert alert-info" style="direction: rtl;">
 
-                    @foreach($statistics as $name => $value)
-                        <div>
-                            {{ $name . ': ' . $value}}
+        <p>
+            <button class="btn btn-outline-primary" style="width: 200px;" type="button" data-bs-toggle="collapse" data-bs-target="#amarCollapse" aria-expanded="false" aria-controls="amarCollapse">
+                ئامار
+            </button>
+        </p>
+        <div class="collapse" id="amarCollapse" wire:ignore.self>
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="card" style="direction: rtl;">
+                        <div class="card-body row">
+                            <div class="col-md-2 col-12">
+                                <table class="table table-sm table-bordered text-center">
+                                    <tbody>
+
+                                        <tr>
+                                            <td class="fw-bold">
+                                                کۆی گشتی (هەموو حاڵەتەکان)
+                                            </td>
+                                            <td>{{ \App\Models\Student::all()->count() }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">
+                                                کۆی گشتی (وەرگیراو، داپچڕاو، دواخستن)
+                                            </td>
+                                            <td>{{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_ABSENT, \App\Models\Student::STATUS_POSTPONED])->count() }}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            @foreach($statisticsByStatusArray as $item)
+                                <div class="col-md-2 col-12">
+                                    <table class="table table-sm table-bordered text-center">
+                                        <tbody>
+                                        @foreach($item as $name => $value)
+                                            <tr>
+                                                <td @if($loop->first) class="fw-bold" @endif>{{ $name}}</td>
+                                                <td>{{ $value}}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            @endforeach
                         </div>
-                    @endforeach
-
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="card" style="direction: rtl;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <h5>کۆی گشتی قوتابیان بەپێی بەش (وەرگیراو، داپچڕان، دواخستن).</h5>
+                                    <hr>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm table-bordered text-center">
+                                            @foreach($statisticsByDepArray as $item)
+                                                @foreach($item as $name => $value)
+                                                    <tr>
+                                                        <td>{{ $name }}</td>
+                                                        <td>{{ $value }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            @endforeach
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
     @endif
 
     <div class="row">
@@ -24,7 +89,7 @@
                     All Admissions
                 </div>
                 <div class="card-body">
-                    <livewire:admin.tables.students-table status-id="{{ (int)$statusId }}" />
+                    <livewire:admin.tables.students-table status-id="{{ (int)$statusId }}"/>
                 </div>
             </div>
 

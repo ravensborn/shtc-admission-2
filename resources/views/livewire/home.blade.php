@@ -130,22 +130,19 @@
                                 </span>
                         </li>
                         <li>
-                            ژمارەی هۆبەی تۆماری کۆلێژ:
-                            <span dir="ltr">
-                                    <a class="text-decoration-none text-muted"
-                                       href="tel:{{ config('envAccess.TOMAR_NUMBER') }}">
-                                        {{ config('envAccess.TOMAR_NUMBER_FORMATTED') }}
-                                    </a>
-                                </span>
-                        </li>
-                        <li>
                             ژمارەی هۆبەی تەکنیکی:
+                            <div dir="ltr">
+                                <a class="text-decoration-none text-muted"
+                                   href="tel:{{ config('envAccess.TOMAR_NUMBER') }}">
+                                    {{ config('envAccess.TOMAR_NUMBER_FORMATTED') }}
+                                </a>
+                            </div>
                             <span dir="ltr">
                                       <a class="text-decoration-none text-muted"
                                          href="tel:{{ config('envAccess.DEVELOPER_NUMBER') }}">
                                         {{ config('envAccess.DEVELOPER_NUMBER_FORMATTED') }}
                                     </a>
-                            </span>
+                                </span>
                         </li>
                     </ul>
                 </div>

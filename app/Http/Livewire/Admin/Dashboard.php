@@ -10,41 +10,84 @@ use Livewire\Component;
 class Dashboard extends Component
 {
 
-    public array $statistics = [];
+    protected $listeners = [
+        'refresh_statistics' => 'refreshStatistics'
+    ];
 
-    public function statistics()
+    public array $statisticsByStatusArray = [];
+    public array $statisticsByDepArray = [];
+
+    public function refreshStatistics() {
+        $this->statisticsByDepartment();
+        $this->statisticsByStatus();
+    }
+
+    public function statisticsByStatus()
     {
 
-        $studentCount = Student::all()->count();
-        $statusResultArray = [];
-        $statusResultArray['ژمارەی قوتابیان'] = $studentCount;
-        $statusList = Student::getStatusArray();
-        foreach ($statusList as $status_id => $status) {
-            if($status_id == 0) {
+
+        $grandArr = [];
+
+
+        foreach (Student::getStatusArray() as $status_id => $status_name) {
+
+            $array = [];
+
+            if($status_id == Student::STATUS_DEFAULT) {
                 continue;
             }
-            $count = Student::where('status', $status_id)->count();
-            $statusResultArray[Student::getStatusName($status_id)] = $count;
 
+            $studentCount = Student::where('status', $status_id)
+                ->count();
+            $array[$status_name] = $studentCount;
+
+
+            foreach (Student::getDepartmentTypeArray() as $id => $name) {
+                $array[$name] =
+                    Student::where('status', $status_id)
+                        ->where('department_type_id', $id)
+                        ->count();
+            }
+
+            array_push($grandArr, $array);
         }
 
-        $getDepartmentTypeArray = Student::getDepartmentTypeArray();
 
-        foreach ($getDepartmentTypeArray as $item_id => $item) {
 
-            $count = Student::where('department_type_id', $item_id)->count();
-            $statusResultArray[$item] = $count;
+//        dd($grandArr);
 
+        $this->statisticsByStatusArray = $grandArr;
+    }
+    public function statisticsByDepartment()
+    {
+        $grandArr = [];
+
+        foreach (Student::getDepartments() as $depId => $depName) {
+
+            $array = [];
+
+            $studentCount = Student::where('department_type_id', $depId)
+                ->whereIn('status', [Student::STATUS_ACCEPTED, Student::STATUS_POSTPONED, Student::STATUS_ABSENT])
+                ->count();
+            $array[$depName] = $studentCount;
+
+
+            array_push($grandArr, $array);
         }
 
-        $this->statistics = array_replace($statusResultArray, []);
+
+
+//        dd($grandArr);
+
+        $this->statisticsByDepArray = $grandArr;
     }
 
     public int $statusId;
 
-    public function mount() {
+    public function mount()
+    {
 
-        if(request()->has('status_id')) {
+        if (request()->has('status_id')) {
             $this->statusId = request()->get('status_id');
         } else {
             return redirect()->route('admin.select');
@@ -54,8 +97,9 @@ class Dashboard extends Component
 
     public function render()
     {
-        if(auth()->user()->hasRole('admin')) {
-            $this->statistics();
+        if (auth()->user()->hasRole('admin')) {
+            $this->statisticsByStatus();
+            $this->statisticsByDepartment();
         }
         return view('livewire.admin.dashboard')->extends('layouts.admin')->section('content');
     }

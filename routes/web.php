@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Home as Home;
+use App\Http\Livewire\About as About;
 use App\Http\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Http\Livewire\Admin\ChooseAnOption as AdminChooseAnOption;
 use App\Http\Livewire\Admin\Students\Show as AdminStudentShow;
@@ -54,4 +55,6 @@ Route::get('/', Home::class)->name('home');
 
 Route::get('/admissions/create', AdmissionCreate::class)->name('admissions.create');
 Route::get('/admissions/result', AdmissionResult::class)->name('admissions.result');
+
+Route::get('/about', About::class)->name('about');
 

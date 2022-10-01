@@ -27,16 +27,13 @@
                                 </span>
                             </li>
                             <li>
-                                ژمارەی هۆبەی تۆماری کۆلێژ:
-                                <span dir="ltr">
+                                ژمارەی هۆبەی تەکنیکی:
+                                <div dir="ltr">
                                     <a class="text-decoration-none text-muted"
                                        href="tel:{{ config('envAccess.TOMAR_NUMBER') }}">
                                         {{ config('envAccess.TOMAR_NUMBER_FORMATTED') }}
                                     </a>
-                                </span>
-                            </li>
-                            <li>
-                                ژمارەی هۆبەی تەکنیکی:
+                                </div>
                                 <span dir="ltr">
                                       <a class="text-decoration-none text-muted"
                                          href="tel:{{ config('envAccess.DEVELOPER_NUMBER') }}">
@@ -44,6 +41,7 @@
                                     </a>
                                 </span>
                             </li>
+
                         </ul>
                     </div>
                 </div>
@@ -532,7 +530,7 @@
                                                         class="form-control">
                                                     <option>-- دانەیەک هەڵبژێرە --</option>
                                                     <option value="1">
-                                                        بەیانیان
+                                                        زانکۆڵاین
                                                     </option>
                                                     <option value="2">
                                                         پاڕالێل
