@@ -4,7 +4,7 @@
         <div class="col-12" dir="ltr">
 
             <div class="row">
-                <div class="col-3">
+                <div class="col-md-3 col-8">
                     <img src="{{ asset('logos/epu.png') }}" class="img-fluid" alt="EPU Logo">
                 </div>
             </div>
@@ -14,7 +14,7 @@
                 <h4 class="border-bottom pb-2 mb-4">Shaqlawa Technical College - Admission System</h4>
 
                 <ul>
-                    <li>
+                    <li class="pb-3">
                         Lead Developer: <span class="fw-bold">Yad H. Rasul</span>,   &nbsp;
                         <a href="https://github.com/ravensborn" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="purple"
