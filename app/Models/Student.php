@@ -24,6 +24,21 @@ class Student extends Model implements HasMedia
     const STATUS_POSTPONED = 4;
     const STATUS_ABSENT = 5;
 
+    public static function convertRoleToDepartmentId($role) {
+
+        switch ($role) {
+            case 'MIS': return 2;
+            case 'AD': return 3;
+            case 'VET': return 4;
+            case 'NURSING': return 5;
+            case 'MLT': return 6;
+            case 'ARC': return 7;
+            case 'BUILD': return 8;
+            case 'TOURISM': return 9;
+        }
+
+    }
+
     public static function getStatusArray()
     {
         return [

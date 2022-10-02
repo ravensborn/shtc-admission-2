@@ -66,7 +66,7 @@ class Dashboard extends Component
 
             $array = [];
 
-            $studentCount = Student::where('department_type_id', $depId)
+            $studentCount = Student::where('department_id', $depId)
                 ->whereIn('status', [Student::STATUS_ACCEPTED, Student::STATUS_POSTPONED, Student::STATUS_ABSENT])
                 ->count();
             $array[$depName] = $studentCount;

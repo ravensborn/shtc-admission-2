@@ -4,7 +4,8 @@
     @if(auth()->user()->hasRole('admin'))
 
         <p>
-            <button class="btn btn-outline-primary" style="width: 200px;" type="button" data-bs-toggle="collapse" data-bs-target="#amarCollapse" aria-expanded="false" aria-controls="amarCollapse">
+            <button class="btn btn-outline-primary" style="width: 200px;" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#amarCollapse" aria-expanded="false" aria-controls="amarCollapse">
                 ئامار
             </button>
         </p>
@@ -18,18 +19,18 @@
                                 <table class="table table-sm table-bordered text-center">
                                     <tbody>
 
-                                        <tr>
-                                            <td class="fw-bold">
-                                                کۆی گشتی (هەموو حاڵەتەکان)
-                                            </td>
-                                            <td>{{ \App\Models\Student::all()->count() }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">
-                                                کۆی گشتی (وەرگیراو، داپچڕاو، دواخستن)
-                                            </td>
-                                            <td>{{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_ABSENT, \App\Models\Student::STATUS_POSTPONED])->count() }}</td>
-                                        </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            کۆی گشتی (هەموو حاڵەتەکان)
+                                        </td>
+                                        <td>{{ \App\Models\Student::all()->count() }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            کۆی گشتی (وەرگیراو، داپچڕاو، دواخستن)
+                                        </td>
+                                        <td>{{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_ABSENT, \App\Models\Student::STATUS_POSTPONED])->count() }}</td>
+                                    </tr>
 
                                     </tbody>
                                 </table>
@@ -79,6 +80,68 @@
                 </div>
             </div>
         </div>
+
+    @endif
+
+
+    @if(auth()->user()->hasRole('limited'))
+
+        <p>
+            <button class="btn btn-outline-primary" style="width: 200px;" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#amarCollapse" aria-expanded="false" aria-controls="amarCollapse">
+                ئامار
+            </button>
+        </p>
+        <div class="collapse" id="amarCollapse" wire:ignore.self>
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="card" style="direction: rtl;">
+                        <div class="card-body row">
+                            <div class="col-md-2 col-12">
+                                <table class="table table-sm table-bordered text-center">
+                                    <tbody>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            کۆی گشتی قوتابی وەرگیراو
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_POSTPONED, \App\Models\Student::STATUS_ABSENT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->count() }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            زانکۆڵاین
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_POSTPONED, \App\Models\Student::STATUS_ABSENT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 1)->count() }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            پاڕالێل
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_POSTPONED, \App\Models\Student::STATUS_ABSENT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 2)->count() }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            ئێواران
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_POSTPONED, \App\Models\Student::STATUS_ABSENT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 3)->count() }}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     @endif
 
