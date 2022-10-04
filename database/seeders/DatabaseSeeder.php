@@ -52,9 +52,9 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'name' => 'Balen A.',
-                'email' => 'balen.a@shtc-tomar.com',
+                'email' => 'abdulqadr.balen@shtc-tomar.com',
                 'role_name' => 'admin',
-                'password' => 'balen@1'
+                'password' => 'tomarba46$'
             ],
             [
                 'name' => 'Rebwar Mustafa',
