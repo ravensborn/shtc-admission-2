@@ -27,9 +27,9 @@
                                     </tr>
                                     <tr>
                                         <td class="fw-bold">
-                                            کۆی گشتی (وەرگیراو، داپچڕاو، دواخستن)
+                                            کۆی گشتی (وەرگیراو، دواخستن)
                                         </td>
-                                        <td>{{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_ABSENT, \App\Models\Student::STATUS_POSTPONED])->count() }}</td>
+                                        <td>{{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_POSTPONED])->count() }}</td>
                                     </tr>
 
                                     </tbody>
@@ -59,7 +59,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 col-12">
-                                    <h5>کۆی گشتی قوتابیان بەپێی بەش (وەرگیراو، داپچڕان، دواخستن).</h5>
+                                    <h5>کۆی گشتی قوتابیان بەپێی بەش (وەرگیراو، دواخستن).</h5>
                                     <hr>
                                     <div class="table-responsive">
                                         <table class="table table-sm table-bordered text-center">
@@ -103,10 +103,10 @@
                                     <tbody>
                                     <tr>
                                         <td class="fw-bold">
-                                            کۆی گشتی قوتابی وەرگیراو
+                                            تازە تۆمارکراو
                                         </td>
                                         <td>
-                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_POSTPONED, \App\Models\Student::STATUS_ABSENT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->count() }}
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_PENDING])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->count() }}
                                         </td>
                                     </tr>
                                     <tr>
@@ -114,7 +114,7 @@
                                             زانکۆڵاین
                                         </td>
                                         <td>
-                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_POSTPONED, \App\Models\Student::STATUS_ABSENT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 1)->count() }}
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_PENDING])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 1)->count() }}
                                         </td>
                                     </tr>
                                     <tr>
@@ -122,7 +122,7 @@
                                             پاڕالێل
                                         </td>
                                         <td>
-                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_POSTPONED, \App\Models\Student::STATUS_ABSENT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 2)->count() }}
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_PENDING])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 2)->count() }}
                                         </td>
                                     </tr>
                                     <tr>
@@ -130,7 +130,164 @@
                                             ئێواران
                                         </td>
                                         <td>
-                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_POSTPONED, \App\Models\Student::STATUS_ABSENT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 3)->count() }}
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_PENDING])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 3)->count() }}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            
+                            <div class="col-md-2 col-12">
+                                <table class="table table-sm table-bordered text-center">
+                                    <tbody>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            وەرگیراو
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->count() }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            زانکۆڵاین
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_POSTPONED])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 1)->count() }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            پاڕالێل
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_POSTPONED])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 2)->count() }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            ئێواران
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_POSTPONED])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 3)->count() }}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-md-2 col-12">
+                                <table class="table table-sm table-bordered text-center">
+                                    <tbody>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            کێشەی تێدایە
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_INCOMPLETE])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->count() }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            زانکۆڵاین
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_INCOMPLETE])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 1)->count() }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            پاڕالێل
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_INCOMPLETE])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 2)->count() }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            ئێواران
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_INCOMPLETE])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 3)->count() }}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-md-2 col-12">
+                                <table class="table table-sm table-bordered text-center">
+                                    <tbody>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            دواخستن
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_POSTPONED])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->count() }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            زانکۆڵاین
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_POSTPONED])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 1)->count() }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            پاڕالێل
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_POSTPONED])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 2)->count() }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            ئێواران
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_POSTPONED])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 3)->count() }}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-md-2 col-12">
+                                <table class="table table-sm table-bordered text-center">
+                                    <tbody>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            داپچڕان
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ABSENT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->count() }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            زانکۆڵاین
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ABSENT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 1)->count() }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            پاڕالێل
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ABSENT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 2)->count() }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">
+                                            ئێواران
+                                        </td>
+                                        <td>
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ABSENT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 3)->count() }}
                                         </td>
                                     </tr>
                                     </tbody>

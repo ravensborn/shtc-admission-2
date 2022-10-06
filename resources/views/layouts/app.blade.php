@@ -10,6 +10,12 @@
         [x-cloak] {
             display: none;
         }
+
+        .dynamic-text {
+            font-size: 3.0vh !important;
+        }
+
+
     </style>
 
     @livewireStyles

@@ -24,10 +24,7 @@ class Dashboard extends Component
 
     public function statisticsByStatus()
     {
-
-
         $grandArr = [];
-
 
         foreach (Student::getStatusArray() as $status_id => $status_name) {
 
@@ -52,8 +49,6 @@ class Dashboard extends Component
             array_push($grandArr, $array);
         }
 
-
-
 //        dd($grandArr);
 
         $this->statisticsByStatusArray = $grandArr;
@@ -67,7 +62,7 @@ class Dashboard extends Component
             $array = [];
 
             $studentCount = Student::where('department_id', $depId)
-                ->whereIn('status', [Student::STATUS_ACCEPTED, Student::STATUS_POSTPONED, Student::STATUS_ABSENT])
+                ->whereIn('status', [Student::STATUS_ACCEPTED, Student::STATUS_POSTPONED])
                 ->count();
             $array[$depName] = $studentCount;
 

@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'UNIVERSITY_NAME' => env('UNIVERSITY_NAME', 'Not Specified'),
+    'UNIVERSITY_NAME_KURDISH' => env('UNIVERSITY_NAME_KURDISH', 'Not Specified'),
     'COLLEGE_NAME' => env('COLLEGE_NAME', 'Not Specified'),
     'COLLEGE_NAME_KURDISH' => env('COLLEGE_NAME_KURDISH', 'Not Specified'),
     'COLLEGE_NAME_SHORT' => env('COLLEGE_NAME_SHORT', 'Not Specified'),

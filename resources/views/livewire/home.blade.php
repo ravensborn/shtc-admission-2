@@ -17,8 +17,8 @@
     <div class="row mt-5">
         <div class="col-12 text-center">
 
-            <div class="row pb-3 fw-bold" style="font-size: 42px; color: #084298">
-                کۆلێژی تەکنیکی شەقڵاوە
+            <div class="row pb-3 fw-bold dynamic-text" style="font-size: 42px; color: #084298">
+                {{ config('envAccess.UNIVERSITY_NAME_KURDISH') . ' - ' . config('envAccess.COLLEGE_NAME_KURDISH') }}
             </div>
 
             <div class="row border-bottom pb-3">

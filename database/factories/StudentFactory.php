@@ -19,7 +19,8 @@ class StudentFactory extends Factory
     public function definition()
     {
         static $number = 1;
-        $departmentId = $this->faker->numberBetween(1, 3);
+        $departmentId = $this->faker->numberBetween(1, 9);
+//        $departmentId = $this->faker->numberBetween(1, 5);
         return [
             'code' => $this->faker->numberBetween(1000000, 9999999),
             'status' => $this->faker->numberBetween(1, 5),
