@@ -137,7 +137,7 @@
                                 </table>
                             </div>
 
-                            
+
                             <div class="col-md-2 col-12">
                                 <table class="table table-sm table-bordered text-center">
                                     <tbody>
