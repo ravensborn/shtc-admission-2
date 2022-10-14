@@ -162,11 +162,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <iframe width="100%" height="315"
-                            src="https://www.youtube.com/embed/qZXt1Aom3Cs?controls=0&amp;start=2160"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
+                    <video width="100%" height="315" controls>
+                        <source src="{{ asset('tutorial.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
         </div>

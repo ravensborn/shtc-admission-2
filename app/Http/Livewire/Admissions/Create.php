@@ -97,7 +97,6 @@ class Create extends Component
         'birthday' => 'required|date',
         'birthplace' => 'required|max:255',
 
-
         'phone' => 'required|max:255',
         'nationality' => 'required|max:255',
         'school' => 'required|max:255',
@@ -170,7 +169,8 @@ class Create extends Component
         $this->activateKartNeshtemanyMode();
     }
 
-    public function activateKartNeshtemanyMode() {
+    public function activateKartNeshtemanyMode()
+    {
         $this->uploadedIdType = 1;
         $this->disabledKartyNeshtemany = '';
         $this->disabledOldNasnama = 'disabled';
@@ -194,7 +194,8 @@ class Create extends Component
         $this->activateOldNasnamaMode();
     }
 
-    public function activateOldNasnamaMode() {
+    public function activateOldNasnamaMode()
+    {
         $this->uploadedIdType = 2;
         $this->disabledKartyNeshtemany = 'disabled';
         $this->disabledOldNasnama = '';
@@ -229,7 +230,7 @@ class Create extends Component
             ->preservingOriginal()
             ->toMediaCollection('student-photo');
 
-        if($this->hasKartyNeshtemany()) {
+        if ($this->hasKartyNeshtemany()) {
 
             $student->addMedia($this->karty_neshtemany_front_side_photo)
                 ->usingName('national-id-front-side')
@@ -245,7 +246,7 @@ class Create extends Component
 
         }
 
-        if($this->hasOldNasnama()) {
+        if ($this->hasOldNasnama()) {
 
             $student->addMedia($this->nasnama_front_side_photo)
                 ->usingName('id-front-side-photo')
@@ -280,11 +281,13 @@ class Create extends Component
             ->preservingOriginal()
             ->toMediaCollection('karty-zanyari-back-side-photo');
 
-        $student->addMedia($this->pshtgere_neshtajebwn_photo)
-            ->usingName('residency-confirmation-photo')
-            ->usingFilename('residency-confirmation-photo.' . $this->pshtgere_neshtajebwn_photo->getClientOriginalExtension())
-            ->preservingOriginal()
-            ->toMediaCollection('residency-confirmation-photo');
+        if ($this->pshtgere_neshtajebwn_photo) {
+            $student->addMedia($this->pshtgere_neshtajebwn_photo)
+                ->usingName('residency-confirmation-photo')
+                ->usingFilename('residency-confirmation-photo.' . $this->pshtgere_neshtajebwn_photo->getClientOriginalExtension())
+                ->preservingOriginal()
+                ->toMediaCollection('residency-confirmation-photo');
+        }
 
         $student->addMedia($this->psulay_xorak_photo)
             ->usingName('food-card-photo')
@@ -318,7 +321,8 @@ class Create extends Component
     }
 
 
-    public function mount() {
+    public function mount()
+    {
         //Testing mode
 //        $this->studentResultPage = true;
 //        $this->student = Student::first();
