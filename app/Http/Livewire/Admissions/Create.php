@@ -86,7 +86,7 @@ class Create extends Component
         'karty_zanyari_back_side_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
 
         'psulay_xorak_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
-        'pshtgere_neshtajebwn_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
+        'pshtgere_neshtajebwn_photo' => 'nullable|mimes:jpg,jpeg,png|max:5120',
         'brwanama_12' => 'required|mimes:jpg,jpeg,png|max:5120',
         'kafala' => 'required|mimes:jpg,jpeg,png|max:5120',
 
