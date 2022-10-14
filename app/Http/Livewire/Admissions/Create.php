@@ -4,7 +4,9 @@ namespace App\Http\Livewire\Admissions;
 
 use App\Models\Student;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -212,7 +214,46 @@ class Create extends Component
     public function submit()
     {
 
-        $validated = $this->validate($this->rules);
+        sleep(3);
+
+        $validator  = Validator::make(request()->all(), $this->rules);
+
+        if($validator->fails()) {
+//
+//            $this->alert('error', 'هەڵە هەیە لە پڕکردنەوەی فۆڕم', [
+//                'position' => 'center',
+//                'timer' => '5000',
+//                'toast' => false,
+//                'text' => '.تکایە هەڵەکان راستبکەوە و دووبارە هەوڵبدەوە',
+//                'showConfirmButton' => true,
+//                'onConfirmed' => '',
+//                'confirmButtonText' => 'باشە',
+//            ]);
+
+            $this->dispatchBrowserEvent('alert', [
+                'type' => 'error',
+                'message' => 'هەڵە هەیە لە پڕکردنەوەی فۆڕم',
+                'events' => [],
+                'options' => [
+                    'position' => 'center',
+                    'timer' => '5000',
+                    'toast' => false,
+                    'text' => 'تکایە هەڵەکان راستبکەوە و دووبارە هەوڵبدەوە.',
+                    'showConfirmButton' => true,
+                    'onConfirmed' => '',
+                    'confirmButtonText' => 'باشە',
+                ],
+                'data' => null
+            ]);
+
+        }
+
+        $this->validate($this->rules);
+
+//        $validated->validate();
+
+//        $validated = $this->validate($this->rules);
+
         $validated['code'] = $this->unique_code(10);
 
         $validated['number'] = Student::generateStudentNumber();
