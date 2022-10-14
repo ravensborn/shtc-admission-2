@@ -248,7 +248,7 @@ class Create extends Component
 
         }
 
-        $this->validate($this->rules);
+        $validated = $this->validate($this->rules);
 
 //        $validated->validate();
 
