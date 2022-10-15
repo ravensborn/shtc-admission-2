@@ -305,6 +305,21 @@
                             </p>
                         </div>
                     @endif
+                        @if($student->hasMedia('pshknini_pzishki'))
+                            <div class="col-6 col-sm-1 text-center">
+                                <a href="{{  $student->getFirstMedia('pshknini_pzishki')->getFullUrl() }}">
+                                    <img
+                                            style="width: 128px"
+                                            class="img-thumbnail"
+                                            src="{{ $student->getFirstMedia('pshknini_pzishki')->getFullUrl() }}"
+                                            alt="Student Attachment">
+                                </a>
+                                <p>
+                                    پشکنینی پزیشکی
+                                </p>
+                            </div>
+                        @endif
+
                 </div>
             </div>
         </div>

@@ -40,6 +40,7 @@ class Create extends Component
     public $pshtgere_neshtajebwn_photo;
     public $brwanama_12;
     public $kafala;
+    public $pshknini_pzishki;
 
     public string $name_kurdish = "";
     public string $name_english = "";
@@ -91,6 +92,7 @@ class Create extends Component
         'pshtgere_neshtajebwn_photo' => 'nullable|mimes:jpg,jpeg,png|max:5120',
         'brwanama_12' => 'required|mimes:jpg,jpeg,png|max:5120',
         'kafala' => 'required|mimes:jpg,jpeg,png|max:5120',
+        'pshknini_pzishki' => 'required|mimes:jpg,jpeg,png|max:5120',
 
         'name_kurdish' => 'required|max:50|min:4',
         'name_english' => 'required|max:50|min:4',
@@ -347,6 +349,14 @@ class Create extends Component
             ->usingFilename('kafala-photo.' . $this->kafala->getClientOriginalExtension())
             ->preservingOriginal()
             ->toMediaCollection('kafala-photo');
+
+        $student->addMedia($this->pshknini_pzishki)
+            ->usingName('pshknini_pzishki')
+            ->usingFilename('pshknini_pzishki.' . $this->kafala->getClientOriginalExtension())
+            ->preservingOriginal()
+            ->toMediaCollection('pshknini_pzishki');
+
+
 
         $this->alert('success', 'بەسەرکەوتوویی تۆمارکرا.');
 

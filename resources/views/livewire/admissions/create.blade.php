@@ -404,7 +404,38 @@
                                             <div class="col-6">
                                                 @if($kafala)
                                                     <img src="{{ $kafala->temporaryUrl() }}" alt="Photo"
-                                                         id="brwanama_12"
+                                                         id="kafala"
+                                                         class="img-thumbnail float-end"
+                                                         style="width: auto; height: 100px;">
+                                                @endif
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <div class="card border">
+                                    <div class="card-header">
+                                        پشکنینی پزیشکی
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    پشکنینی پزیشکی
+                                                </div>
+                                                <input type="file" class="form-control-file"
+                                                       wire:model.lazy="pshknini_pzishki"
+                                                       id="pshknini_pzishki">
+                                                @error('pshknini_pzishki')
+                                                <div class="text-danger text-start" dir="ltr">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-6">
+                                                @if($pshknini_pzishki)
+                                                    <img src="{{ $pshknini_pzishki->temporaryUrl() }}" alt="Photo"
+                                                         id="pshknini_pzishki"
                                                          class="img-thumbnail float-end"
                                                          style="width: auto; height: 100px;">
                                                 @endif
