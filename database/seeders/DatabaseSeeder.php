@@ -127,6 +127,7 @@ class DatabaseSeeder extends Seeder
         }
 
 
+<<<<<<< Updated upstream
         // \App\Models\Student::factory(100)->create();
 
         // foreach (Student::all() as $student) {
@@ -198,6 +199,91 @@ class DatabaseSeeder extends Seeder
         //         ->toMediaCollection('food-card-photo');
 
         // }
+=======
+        \App\Models\Student::factory(100)->create();
+
+        foreach (Student::all() as $student) {
+
+            $id = asset('seeder_data/id.png');
+            $id2 = asset('seeder_data/id2.png');
+            $document = asset('seeder_data/paper.png');
+            $studentPhoto = asset('seeder_data/student.png');
+
+            $student->addMediaFromUrl($studentPhoto)
+                ->usingName('student-photo')
+                ->usingFilename('student-photo.png')
+                ->preservingOriginal()
+                ->toMediaCollection('student-photo');
+
+            if ($student->uploaded_id_type == 1) {
+                $student->addMediaFromUrl($id)
+                    ->usingName('national-id-front-side')
+                    ->usingFilename('national-id-front-side.png')
+                    ->preservingOriginal()
+                    ->toMediaCollection('national-id-front-side');
+
+                $student->addMediaFromUrl($id)
+                    ->usingName('national-id-back-side')
+                    ->usingFilename('national-id-back-side.png')
+                    ->preservingOriginal()
+                    ->toMediaCollection('national-id-back-side');
+            } else {
+                $student->addMediaFromUrl($id)
+                    ->usingName('id-front-side-photo')
+                    ->usingFilename('id-front-side-photo.png')
+                    ->preservingOriginal()
+                    ->toMediaCollection('id-front-side-photo');
+
+                $student->addMediaFromUrl($id)
+                    ->usingName('id-back-side-photo')
+                    ->usingFilename('id-back-side-photo.png')
+                    ->preservingOriginal()
+                    ->toMediaCollection('id-back-side-photo');
+                $student->addMediaFromUrl($id)
+                    ->usingName('nationality-card-photo')
+                    ->usingFilename('nationality-card-photo.png')
+                    ->preservingOriginal()
+                    ->toMediaCollection('nationality-card-photo');
+            }
+
+            $student->addMediaFromUrl($id2)
+                ->usingName('karty-zanyari-front-side-photo')
+                ->usingFilename('karty-zanyari-front-side-photo.png')
+                ->preservingOriginal()
+                ->toMediaCollection('karty-zanyari-front-side-photo');
+
+            $student->addMediaFromUrl($id2)
+                ->usingName('karty-zanyari-back-side-photo')
+                ->usingFilename('karty-zanyari-back-side-photo.png')
+                ->preservingOriginal()
+                ->toMediaCollection('karty-zanyari-back-side-photo');
+
+            $student->addMediaFromUrl($id2)
+                ->usingName('residency-confirmation-photo')
+                ->usingFilename('residency-confirmation-photo.png')
+                ->preservingOriginal()
+                ->toMediaCollection('residency-confirmation-photo');
+
+            $student->addMediaFromUrl($document)
+                ->usingName('food-card-photo')
+                ->usingFilename('food-card-photo.png')
+                ->preservingOriginal()
+                ->toMediaCollection('food-card-photo');
+
+            $student->addMediaFromUrl($document)
+                ->usingName('brwanama-12-photo')
+                ->usingFilename('brwanama-12-photo.png')
+                ->preservingOriginal()
+                ->toMediaCollection('brwanama-12-photo');
+
+            $student->addMediaFromUrl($document)
+                ->usingName('kafala-photo')
+                ->usingFilename('kafala-photo.png')
+                ->preservingOriginal()
+                ->toMediaCollection('kafala-photo');
+
+        }
+>>>>>>> Stashed changes
 
     }
 }

@@ -445,6 +445,36 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-12 mt-3">
+                                <div class="card border">
+                                    <div class="card-header">
+                                        پسووڵەی دارایی
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    پسووڵەی دارایی
+                                                </div>
+                                                <input type="file" class="form-control-file"
+                                                       wire:model.lazy="daray_psula"
+                                                       id="daray_psula">
+                                                @error('daray_psula')
+                                                <div class="text-danger text-start" dir="ltr">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-6">
+                                                @if($daray_psula)
+                                                    <img src="{{ $daray_psula->temporaryUrl() }}" alt="Photo"
+                                                         id="daray_psula"
+                                                         class="img-thumbnail float-end"
+                                                         style="width: auto; height: 100px;">
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-12 mt-3">
                                 <div class="card border">

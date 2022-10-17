@@ -1,27 +1,19 @@
 <?php
 
-namespace App\Http\Livewire\Admissions;
+namespace App\Http\Livewire\Admin\Students;
 
 use App\Models\Student;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-use Illuminate\Validation\ValidationException;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class Create extends Component
+class Edit extends Component
 {
     use WithFileUploads, LivewireAlert;
 
     public $student;
-    public bool $studentResultPage = false;
-
-    public string $disabledKartyNeshtemany = '';
-    public string $disabledOldNasnama = '';
-
-    public int $uploadedIdType = 0;
 
     public $student_photo;
 
@@ -40,8 +32,6 @@ class Create extends Component
     public $pshtgere_neshtajebwn_photo;
     public $brwanama_12;
     public $kafala;
-    public $pshknini_pzishki;
-    public $daray_psula;
 
     public string $name_kurdish = "";
     public string $name_english = "";
@@ -90,12 +80,9 @@ class Create extends Component
         'karty_zanyari_back_side_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
 
         'psulay_xorak_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
-        'pshtgere_neshtajebwn_photo' => 'nullable|mimes:jpg,jpeg,png|max:5120',
+        'pshtgere_neshtajebwn_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
         'brwanama_12' => 'required|mimes:jpg,jpeg,png|max:5120',
         'kafala' => 'required|mimes:jpg,jpeg,png|max:5120',
-        'pshknini_pzishki' => 'required|mimes:jpg,jpeg,png|max:5120',
-
-        'daray_psula' => 'nullable|mimes:jpg,jpeg,png|max:5120',
 
         'name_kurdish' => 'required|max:50|min:4',
         'name_english' => 'required|max:50|min:4',
@@ -103,6 +90,7 @@ class Create extends Component
 
         'birthday' => 'required|date',
         'birthplace' => 'required|max:255',
+
 
         'phone' => 'required|max:255',
         'nationality' => 'required|max:255',
@@ -130,135 +118,10 @@ class Create extends Component
     ];
 
 
-    public function hasKartyNeshtemany(): bool
-    {
-        if ($this->karty_neshtemany_front_side_photo && $this->karty_neshtemany_back_side_photo) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public function hasPartialKartyNeshtemany(): bool
-    {
-        if ($this->karty_neshtemany_front_side_photo || $this->karty_neshtemany_back_side_photo) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public function hasOldNasnama(): bool
-    {
-        if ($this->nasnama_front_side_photo && $this->nasnama_back_side_photo && $this->ragaznama_photo) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public function hasPartialOldNasnama(): bool
-    {
-        if ($this->nasnama_front_side_photo || $this->nasnama_back_side_photo && $this->ragaznama_photo) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public function updatingKartyNeshtemanyFrontSidePhoto()
-    {
-        $this->activateKartNeshtemanyMode();
-    }
-
-    public function updatingKartyNeshtemanyBackSidePhoto()
-    {
-        $this->activateKartNeshtemanyMode();
-    }
-
-    public function activateKartNeshtemanyMode()
-    {
-        $this->uploadedIdType = 1;
-        $this->disabledKartyNeshtemany = '';
-        $this->disabledOldNasnama = 'disabled';
-        $this->rules['karty_neshtemany_front_side_photo'] = 'required|mimes:jpg,jpeg,png|max:5120';
-        $this->rules['karty_neshtemany_back_side_photo'] = 'required|mimes:jpg,jpeg,png|max:5120';
-        $this->rules['nasnama_front_side_photo'] = 'nullable|mimes:jpg,jpeg,png|max:5120';
-        $this->rules['nasnama_back_side_photo'] = 'nullable|mimes:jpg,jpeg,png|max:5120';
-        $this->rules['ragaznama_photo'] = 'nullable|mimes:jpg,jpeg,png|max:5120';
-        $this->nasnama_front_side_photo = null;
-        $this->nasnama_back_side_photo = null;
-        $this->ragaznama_photo = null;
-    }
-
-    public function updatingNasnamaFrontSidePhoto()
-    {
-        $this->activateOldNasnamaMode();
-    }
-
-    public function updatingNasnamaBackSidePhoto()
-    {
-        $this->activateOldNasnamaMode();
-    }
-
-    public function activateOldNasnamaMode()
-    {
-        $this->uploadedIdType = 2;
-        $this->disabledKartyNeshtemany = 'disabled';
-        $this->disabledOldNasnama = '';
-        $this->rules['karty_neshtemany_front_side_photo'] = 'nullable|mimes:jpg,jpeg,png|max:5120';
-        $this->rules['karty_neshtemany_back_side_photo'] = 'nullable|mimes:jpg,jpeg,png|max:5120';
-        $this->rules['nasnama_front_side_photo'] = 'required|mimes:jpg,jpeg,png|max:5120';
-        $this->rules['nasnama_back_side_photo'] = 'required|mimes:jpg,jpeg,png|max:5120';
-        $this->rules['ragaznama_photo'] = 'required|mimes:jpg,jpeg,png|max:5120';
-        $this->karty_neshtemany_front_side_photo = null;
-        $this->karty_neshtemany_back_side_photo = null;
-    }
-
-
     public function submit()
     {
 
-        sleep(3);
-
-        $validator  = Validator::make(request()->all(), $this->rules);
-
-        if($validator->fails()) {
-//
-//            $this->alert('error', 'هەڵە هەیە لە پڕکردنەوەی فۆڕم', [
-//                'position' => 'center',
-//                'timer' => '5000',
-//                'toast' => false,
-//                'text' => '.تکایە هەڵەکان راستبکەوە و دووبارە هەوڵبدەوە',
-//                'showConfirmButton' => true,
-//                'onConfirmed' => '',
-//                'confirmButtonText' => 'باشە',
-//            ]);
-
-            $this->dispatchBrowserEvent('alert', [
-                'type' => 'error',
-                'message' => 'هەڵە هەیە لە پڕکردنەوەی فۆڕم',
-                'events' => [],
-                'options' => [
-                    'position' => 'center',
-                    'timer' => '5000',
-                    'toast' => false,
-                    'text' => 'تکایە هەڵەکان راستبکەوە و دووبارە هەوڵبدەوە.',
-                    'showConfirmButton' => true,
-                    'onConfirmed' => '',
-                    'confirmButtonText' => 'باشە',
-                ],
-                'data' => null
-            ]);
-
-        }
-
         $validated = $this->validate($this->rules);
-
-//        $validated->validate();
-
-//        $validated = $this->validate($this->rules);
-
         $validated['code'] = $this->unique_code(10);
 
         $validated['number'] = Student::generateStudentNumber();
@@ -276,7 +139,7 @@ class Create extends Component
             ->preservingOriginal()
             ->toMediaCollection('student-photo');
 
-        if ($this->hasKartyNeshtemany()) {
+        if($this->hasKartyNeshtemany()) {
 
             $student->addMedia($this->karty_neshtemany_front_side_photo)
                 ->usingName('national-id-front-side')
@@ -292,7 +155,7 @@ class Create extends Component
 
         }
 
-        if ($this->hasOldNasnama()) {
+        if($this->hasOldNasnama()) {
 
             $student->addMedia($this->nasnama_front_side_photo)
                 ->usingName('id-front-side-photo')
@@ -327,13 +190,11 @@ class Create extends Component
             ->preservingOriginal()
             ->toMediaCollection('karty-zanyari-back-side-photo');
 
-        if ($this->pshtgere_neshtajebwn_photo) {
-            $student->addMedia($this->pshtgere_neshtajebwn_photo)
-                ->usingName('residency-confirmation-photo')
-                ->usingFilename('residency-confirmation-photo.' . $this->pshtgere_neshtajebwn_photo->getClientOriginalExtension())
-                ->preservingOriginal()
-                ->toMediaCollection('residency-confirmation-photo');
-        }
+        $student->addMedia($this->pshtgere_neshtajebwn_photo)
+            ->usingName('residency-confirmation-photo')
+            ->usingFilename('residency-confirmation-photo.' . $this->pshtgere_neshtajebwn_photo->getClientOriginalExtension())
+            ->preservingOriginal()
+            ->toMediaCollection('residency-confirmation-photo');
 
         $student->addMedia($this->psulay_xorak_photo)
             ->usingName('food-card-photo')
@@ -353,19 +214,6 @@ class Create extends Component
             ->preservingOriginal()
             ->toMediaCollection('kafala-photo');
 
-        $student->addMedia($this->pshknini_pzishki)
-            ->usingName('pshknini_pzishki')
-            ->usingFilename('pshknini_pzishki.' . $this->pshknini_pzishki->getClientOriginalExtension())
-            ->preservingOriginal()
-            ->toMediaCollection('pshknini_pzishki');
-
-        $student->addMedia($this->daray_psula)
-            ->usingName('daray_psula')
-            ->usingFilename('daray_psula.' . $this->daray_psula->getClientOriginalExtension())
-            ->preservingOriginal()
-            ->toMediaCollection('daray_psula');
-
-
         $this->alert('success', 'بەسەرکەوتوویی تۆمارکرا.');
 
         $this->student = $student;
@@ -380,16 +228,37 @@ class Create extends Component
     }
 
 
-    public function mount()
-    {
-        //Testing mode
-//        $this->studentResultPage = true;
-//        $this->student = Student::first();
+    public function mount(Student $student) {
+
+        $this->name_kurdish = $student->name_kurdish;
+        $this->name_english = $student->name_english;
+        $this->gender = $student->gender;
+        $this->birthday = $student->birthday->format('Y-m-d');
+        $this->birthplace = $student->birthplace;
+        $this->phone = $student->phone;
+        $this->nationality = $student->nationality;
+        $this->school = $student->school;
+        $this->education_type_id = $student->education_type_id;
+        $this->department_id = $student->department_id;
+        $this->department_type_id = $student->department_type_id;
+        $this->degree_total = $student->degree_total;
+        $this->student_type_id = $student->student_type_id;
+        $this->religion = $student->religion;
+        $this->bloodgroup_id = $student->bloodgroup_id;
+        $this->parent_name = $student->parent_name;
+        $this->parent_occupation = $student->parent_occupation;
+        $this->parent_phone = $student->parent_phone;
+        $this->province_id = $student->province_id;
+        $this->district = $student->district;
+        $this->sub_district = $student->sub_district;
+        $this->village_name = $student->village_name;
+        $this->street = $student->street;
+        $this->nearest_place = $student->nearest_place;
 
     }
 
     public function render()
     {
-        return view('livewire.admissions.create')->extends('layouts.app')->section('content');
+        return view('livewire.admin.students.edit')->extends('layouts.admin')->section('content');
     }
 }

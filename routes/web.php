@@ -5,6 +5,7 @@ use App\Http\Livewire\About as About;
 use App\Http\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Http\Livewire\Admin\ChooseAnOption as AdminChooseAnOption;
 use App\Http\Livewire\Admin\Students\Show as AdminStudentShow;
+use App\Http\Livewire\Admin\Students\Edit as AdminStudentEdit;
 use App\Http\Livewire\Admissions\Create as AdmissionCreate;
 use App\Http\Livewire\Admissions\Result as AdmissionResult;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/admin/student/{student}', AdminStudentShow::class)
         ->name('admin.students.show');
+
+    Route::get('/admin/student/{student}/edit', AdminStudentEdit::class)
+        ->name('admin.students.edit');
 
 });
 

@@ -305,20 +305,34 @@
                             </p>
                         </div>
                     @endif
-                        @if($student->hasMedia('pshknini_pzishki'))
-                            <div class="col-6 col-sm-1 text-center">
-                                <a href="{{  $student->getFirstMedia('pshknini_pzishki')->getFullUrl() }}">
-                                    <img
-                                            style="width: 128px"
-                                            class="img-thumbnail"
-                                            src="{{ $student->getFirstMedia('pshknini_pzishki')->getFullUrl() }}"
-                                            alt="Student Attachment">
-                                </a>
-                                <p>
-                                    پشکنینی پزیشکی
-                                </p>
-                            </div>
-                        @endif
+                    @if($student->hasMedia('pshknini_pzishki'))
+                        <div class="col-6 col-sm-1 text-center">
+                            <a href="{{  $student->getFirstMedia('pshknini_pzishki')->getFullUrl() }}">
+                                <img
+                                        style="width: 128px"
+                                        class="img-thumbnail"
+                                        src="{{ $student->getFirstMedia('pshknini_pzishki')->getFullUrl() }}"
+                                        alt="Student Attachment">
+                            </a>
+                            <p>
+                                پشکنینی پزیشکی
+                            </p>
+                        </div>
+                    @endif
+                    @if($student->hasMedia('daray_psula'))
+                        <div class="col-6 col-sm-1 text-center">
+                            <a href="{{  $student->getFirstMedia('daray_psula')->getFullUrl() }}">
+                                <img
+                                        style="width: 128px"
+                                        class="img-thumbnail"
+                                        src="{{ $student->getFirstMedia('daray_psula')->getFullUrl() }}"
+                                        alt="Student Attachment">
+                            </a>
+                            <p>
+                                پسووڵەی دارایی
+                            </p>
+                        </div>
+                    @endif
 
                 </div>
             </div>
