@@ -110,7 +110,7 @@
                         <td>{{ $student->street }}</td>
                     </tr>
                     <tr>
-                        <td>جۆری:</td>
+                        <td>جۆری قوتابی:</td>
                         <td>{{ $student->getStudentType() }}</td>
                         <td>نزیکترین شوێن:</td>
                         <td>{{ $student->nearest_place }}</td>

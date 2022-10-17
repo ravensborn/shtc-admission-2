@@ -101,7 +101,7 @@ class Student extends Model implements HasMedia
     }
 
     public function getStudentType() {
-        return $this->getEducationTypeArray()[$this->student_type_id];
+        return $this->getStudentTypeArray()[$this->student_type_id];
     }
 
     public static function getDepartments(): array
@@ -132,7 +132,7 @@ class Student extends Model implements HasMedia
 
     public function getGender(): string
     {
-        return $this->gender == 0 ? 'نێر' : 'مێ';
+        return $this->gender == 2 ? 'نێر' : 'مێ';
     }
 
     public static function getDepartmentTypes(): array

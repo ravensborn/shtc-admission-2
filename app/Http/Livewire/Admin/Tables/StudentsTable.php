@@ -146,8 +146,8 @@ class StudentsTable extends DataTableComponent
 
                     $deleteBtn = '<a class="btn btn-danger btn-sm" wire:click="triggerDeleteStudent(' . $id . ')"><span class="icon"> <i class="lni lni-trash-can"></i></span></a>';
                     $viewBtn = '<a href="' . route('admin.students.show', $id) . '" class="btn btn-warning btn-sm"><span class="icon"> <i class="lni lni-user"></i></span></a>';
-//                    $editBtn = '<a href="' . route('admin.students.edit', $id) . '" class="btn btn-info btn-sm"><span class="icon"> <i class="lni lni-pencil-alt"></i></span></a>';
-                    $editBtn = '';
+                    $editBtn = '<a href="' . route('admin.students.edit', $id) . '" class="btn btn-info btn-sm"><span class="icon"> <i class="lni lni-pencil-alt"></i></span></a>';
+//                    $editBtn = '';
 
                     if(auth()->user()->hasRole('admin')) {
                         return $div . $editBtn . '&nbsp;' . $viewBtn . '&nbsp;' . $deleteBtn . $closeDiv;

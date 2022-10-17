@@ -32,6 +32,7 @@ class Edit extends Component
     public $pshtgere_neshtajebwn_photo;
     public $brwanama_12;
     public $kafala;
+    public $daray_psula;
 
     public string $name_kurdish = "";
     public string $name_english = "";
@@ -66,23 +67,23 @@ class Edit extends Component
 
     public array $rules = [
 
-        'student_photo' => 'required|image|max:5120',
+        'student_photo' => 'nullable|image|max:5120',
 
-        'karty_neshtemany_front_side_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
-        'karty_neshtemany_back_side_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
+        'karty_neshtemany_front_side_photo' => 'nullable|mimes:jpg,jpeg,png|max:5120',
+        'karty_neshtemany_back_side_photo' => 'nullable|mimes:jpg,jpeg,png|max:5120',
 
-        'nasnama_front_side_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
-        'nasnama_back_side_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
+        'nasnama_front_side_photo' => 'nullable|mimes:jpg,jpeg,png|max:5120',
+        'nasnama_back_side_photo' => 'nullable|mimes:jpg,jpeg,png|max:5120',
 
-        'ragaznama_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
+        'ragaznama_photo' => 'nullable|mimes:jpg,jpeg,png|max:5120',
 
-        'karty_zanyari_front_side_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
-        'karty_zanyari_back_side_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
+        'karty_zanyari_front_side_photo' => 'nullable|mimes:jpg,jpeg,png|max:5120',
+        'karty_zanyari_back_side_photo' => 'nullable|mimes:jpg,jpeg,png|max:5120',
 
-        'psulay_xorak_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
-        'pshtgere_neshtajebwn_photo' => 'required|mimes:jpg,jpeg,png|max:5120',
-        'brwanama_12' => 'required|mimes:jpg,jpeg,png|max:5120',
-        'kafala' => 'required|mimes:jpg,jpeg,png|max:5120',
+        'psulay_xorak_photo' => 'nullable|mimes:jpg,jpeg,png|max:5120',
+        'pshtgere_neshtajebwn_photo' => 'nullable|mimes:jpg,jpeg,png|max:5120',
+        'brwanama_12' => 'nullable|mimes:jpg,jpeg,png|max:5120',
+        'kafala' => 'nullable|mimes:jpg,jpeg,png|max:5120',
 
         'name_kurdish' => 'required|max:50|min:4',
         'name_english' => 'required|max:50|min:4',
@@ -118,106 +119,185 @@ class Edit extends Component
     ];
 
 
-    public function submit()
+    public function update()
     {
 
         $validated = $this->validate($this->rules);
-        $validated['code'] = $this->unique_code(10);
 
-        $validated['number'] = Student::generateStudentNumber();
-        $validated['uploaded_id_type'] = $this->uploadedIdType;
-        $validated['department_name'] = Student::getDepartmentName($validated['department_id']);
 
-        $validated['status'] = Student::STATUS_PENDING;
+        $student = $this->student;
 
-        $student = new Student;
-        $student = $student->create($validated);
+        if ($this->student_photo) {
+            $name = 'student-photo';
+            if ($student->hasMedia($name)) {
+                $student->clearMediaCollection($name);
+            }
 
-        $student->addMedia($this->student_photo)
-            ->usingName('student-photo')
-            ->usingFilename('student-photo.' . $this->student_photo->getClientOriginalExtension())
-            ->preservingOriginal()
-            ->toMediaCollection('student-photo');
+            $student->addMedia($this->student_photo)
+                ->usingName($name)
+                ->usingFilename($name . '.' . $this->student_photo->getClientOriginalExtension())
+                ->preservingOriginal()
+                ->toMediaCollection($name);
 
-        if($this->hasKartyNeshtemany()) {
+            $this->student_photo = null;
+        }
+        if ($this->karty_neshtemany_front_side_photo) {
+            $name = 'national-id-front-side';
+            if ($student->hasMedia($name)) {
+                $student->clearMediaCollection($name);
+            }
 
             $student->addMedia($this->karty_neshtemany_front_side_photo)
-                ->usingName('national-id-front-side')
-                ->usingFilename('national-id-front-side.' . $this->karty_neshtemany_front_side_photo->getClientOriginalExtension())
+                ->usingName($name)
+                ->usingFilename($name . '.' . $this->karty_neshtemany_front_side_photo->getClientOriginalExtension())
                 ->preservingOriginal()
-                ->toMediaCollection('national-id-front-side');
+                ->toMediaCollection($name);
+
+            $this->karty_neshtemany_front_side_photo = null;
+        }
+        if ($this->karty_neshtemany_back_side_photo) {
+            $name = 'national-id-back-side';
+            if ($student->hasMedia($name)) {
+                $student->clearMediaCollection($name);
+            }
 
             $student->addMedia($this->karty_neshtemany_back_side_photo)
-                ->usingName('national-id-back-side')
-                ->usingFilename('national-id-back-side.' . $this->karty_neshtemany_back_side_photo->getClientOriginalExtension())
+                ->usingName($name)
+                ->usingFilename($name . '.' . $this->karty_neshtemany_back_side_photo->getClientOriginalExtension())
                 ->preservingOriginal()
-                ->toMediaCollection('national-id-back-side');
+                ->toMediaCollection($name);
 
+            $this->karty_neshtemany_back_side_photo = null;
         }
-
-        if($this->hasOldNasnama()) {
-
-            $student->addMedia($this->nasnama_front_side_photo)
-                ->usingName('id-front-side-photo')
-                ->usingFilename('id-front-side-photo.' . $this->nasnama_front_side_photo->getClientOriginalExtension())
-                ->preservingOriginal()
-                ->toMediaCollection('id-front-side-photo');
+        if ($this->nasnama_front_side_photo) {
+            $name = 'id-front-side-photo';
+            if ($student->hasMedia($name)) {
+                $student->clearMediaCollection($name);
+            }
 
             $student->addMedia($this->nasnama_front_side_photo)
-                ->usingName('id-back-side-photo')
-                ->usingFilename('id-back-side-photo.' . $this->nasnama_back_side_photo->getClientOriginalExtension())
+                ->usingName($name)
+                ->usingFilename($name . '.' . $this->nasnama_front_side_photo->getClientOriginalExtension())
                 ->preservingOriginal()
-                ->toMediaCollection('id-back-side-photo');
-
-
+                ->toMediaCollection($name);
+            $this->nasnama_front_side_photo = null;
+        }
+        if ($this->nasnama_back_side_photo) {
+            $name = 'id-back-side-photo';
+            if ($student->hasMedia($name)) {
+                $student->clearMediaCollection($name);
+            }
+            $student->addMedia($this->nasnama_back_side_photo)
+                ->usingName($name)
+                ->usingFilename($name . '.' . $this->nasnama_back_side_photo->getClientOriginalExtension())
+                ->preservingOriginal()
+                ->toMediaCollection($name);
+            $this->nasnama_back_side_photo = null;
+        }
+        if ($this->ragaznama_photo) {
+            $name = 'nationality-card-photo';
+            if ($student->hasMedia($name)) {
+                $student->clearMediaCollection($name);
+            }
             $student->addMedia($this->ragaznama_photo)
-                ->usingName('nationality-card-photo')
-                ->usingFilename('nationality-card-photo.' . $this->ragaznama_photo->getClientOriginalExtension())
+                ->usingName($name)
+                ->usingFilename($name . '.' . $this->ragaznama_photo->getClientOriginalExtension())
                 ->preservingOriginal()
-                ->toMediaCollection('nationality-card-photo');
-
+                ->toMediaCollection($name);
+            $this->ragaznama_photo = null;
+        }
+        if ($this->karty_zanyari_front_side_photo) {
+            $name = 'karty-zanyari-front-side-photo';
+            if ($student->hasMedia($name)) {
+                $student->clearMediaCollection($name);
+            }
+            $student->addMedia($this->karty_zanyari_front_side_photo)
+                ->usingName($name)
+                ->usingFilename($name . '.' . $this->karty_zanyari_front_side_photo->getClientOriginalExtension())
+                ->preservingOriginal()
+                ->toMediaCollection($name);
+            $this->karty_zanyari_front_side_photo = null;
+        }
+        if ($this->karty_zanyari_back_side_photo) {
+            $name = 'karty-zanyari-back-side-photo';
+            if ($student->hasMedia($name)) {
+                $student->clearMediaCollection($name);
+            }
+            $student->addMedia($this->karty_zanyari_back_side_photo)
+                ->usingName($name)
+                ->usingFilename($name . '.' . $this->karty_zanyari_back_side_photo->getClientOriginalExtension())
+                ->preservingOriginal()
+                ->toMediaCollection($name);
+            $this->karty_zanyari_back_side_photo = null;
+        }
+        if ($this->pshtgere_neshtajebwn_photo) {
+            $name = 'residency-confirmation-photo';
+            if ($student->hasMedia($name)) {
+                $student->clearMediaCollection($name);
+            }
+            $student->addMedia($this->pshtgere_neshtajebwn_photo)
+                ->usingName($name)
+                ->usingFilename($name . '.' . $this->pshtgere_neshtajebwn_photo->getClientOriginalExtension())
+                ->preservingOriginal()
+                ->toMediaCollection($name);
+            $this->pshtgere_neshtajebwn_photo = null;
+        }
+        if ($this->psulay_xorak_photo) {
+            $name = 'food-card-photo';
+            if ($student->hasMedia($name)) {
+                $student->clearMediaCollection($name);
+            }
+            $student->addMedia($this->psulay_xorak_photo)
+                ->usingName($name)
+                ->usingFilename($name . '.' . $this->psulay_xorak_photo->getClientOriginalExtension())
+                ->preservingOriginal()
+                ->toMediaCollection($name);
+            $this->psulay_xorak_photo = null;
+        }
+        if ($this->brwanama_12) {
+            $name = 'brwanama-12-photo';
+            if ($student->hasMedia($name)) {
+                $student->clearMediaCollection($name);
+            }
+            $student->addMedia($this->brwanama_12)
+                ->usingName($name)
+                ->usingFilename($name . '.' . $this->brwanama_12->getClientOriginalExtension())
+                ->preservingOriginal()
+                ->toMediaCollection($name);
+            $this->brwanama_12 = null;
+        }
+        if ($this->kafala) {
+            $name = 'kafala-photo';
+            if ($student->hasMedia($name)) {
+                $student->clearMediaCollection($name);
+            }
+            $student->addMedia($this->kafala)
+                ->usingName($name)
+                ->usingFilename($name . '.' . $this->kafala->getClientOriginalExtension())
+                ->preservingOriginal()
+                ->toMediaCollection($name);
+            $this->kafala = null;
+        }
+        if ($this->daray_psula) {
+            $name = 'daray_psula';
+            if ($student->hasMedia($name)) {
+                $student->clearMediaCollection($name);
+            }
+            $student->addMedia($this->daray_psula)
+                ->usingName($name)
+                ->usingFilename($name . '.' . $this->daray_psula->getClientOriginalExtension())
+                ->preservingOriginal()
+                ->toMediaCollection($name);
+            $this->daray_psula = null;
         }
 
-        $student->addMedia($this->karty_zanyari_front_side_photo)
-            ->usingName('karty-zanyari-front-side-photo')
-            ->usingFilename('karty-zanyari-front-side-photo.' . $this->karty_zanyari_front_side_photo->getClientOriginalExtension())
-            ->preservingOriginal()
-            ->toMediaCollection('karty-zanyari-front-side-photo');
+        $student->update($validated);
 
-        $student->addMedia($this->karty_zanyari_back_side_photo)
-            ->usingName('karty-zanyari-back-side-photo')
-            ->usingFilename('karty-zanyari-back-side-photo.' . $this->karty_zanyari_back_side_photo->getClientOriginalExtension())
-            ->preservingOriginal()
-            ->toMediaCollection('karty-zanyari-back-side-photo');
-
-        $student->addMedia($this->pshtgere_neshtajebwn_photo)
-            ->usingName('residency-confirmation-photo')
-            ->usingFilename('residency-confirmation-photo.' . $this->pshtgere_neshtajebwn_photo->getClientOriginalExtension())
-            ->preservingOriginal()
-            ->toMediaCollection('residency-confirmation-photo');
-
-        $student->addMedia($this->psulay_xorak_photo)
-            ->usingName('food-card-photo')
-            ->usingFilename('food-card-photo.' . $this->psulay_xorak_photo->getClientOriginalExtension())
-            ->preservingOriginal()
-            ->toMediaCollection('food-card-photo');
-
-        $student->addMedia($this->brwanama_12)
-            ->usingName('brwanama-12-photo')
-            ->usingFilename('brwanama-12-photo.' . $this->brwanama_12->getClientOriginalExtension())
-            ->preservingOriginal()
-            ->toMediaCollection('brwanama-12-photo');
-
-        $student->addMedia($this->kafala)
-            ->usingName('kafala-photo')
-            ->usingFilename('kafala-photo.' . $this->kafala->getClientOriginalExtension())
-            ->preservingOriginal()
-            ->toMediaCollection('kafala-photo');
-
-        $this->alert('success', 'بەسەرکەوتوویی تۆمارکرا.');
+        $this->alert('success', 'بەسەرکەوتوویی نوێکرایەوە.');
 
         $this->student = $student;
-        $this->studentResultPage = true;
+
+
 
 
     }
@@ -228,7 +308,10 @@ class Edit extends Component
     }
 
 
-    public function mount(Student $student) {
+    public function mount(Student $student)
+    {
+
+        $this->student = $student;
 
         $this->name_kurdish = $student->name_kurdish;
         $this->name_english = $student->name_english;
