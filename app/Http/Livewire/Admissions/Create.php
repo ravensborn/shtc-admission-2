@@ -359,11 +359,13 @@ class Create extends Component
             ->preservingOriginal()
             ->toMediaCollection('pshknini_pzishki');
 
-        $student->addMedia($this->daray_psula)
+        if($this->daray_psula) {
+            $student->addMedia($this->daray_psula)
             ->usingName('daray_psula')
             ->usingFilename('daray_psula.' . $this->daray_psula->getClientOriginalExtension())
             ->preservingOriginal()
             ->toMediaCollection('daray_psula');
+        }
 
 
         $this->alert('success', 'بەسەرکەوتوویی تۆمارکرا.');
