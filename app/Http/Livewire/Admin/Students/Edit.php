@@ -32,6 +32,7 @@ class Edit extends Component
     public $pshtgere_neshtajebwn_photo;
     public $brwanama_12;
     public $kafala;
+    public $pshknini_pzishki;
     public $daray_psula;
 
     public string $name_kurdish = "";
@@ -84,6 +85,7 @@ class Edit extends Component
         'pshtgere_neshtajebwn_photo' => 'nullable|mimes:jpg,jpeg,png|max:5120',
         'brwanama_12' => 'nullable|mimes:jpg,jpeg,png|max:5120',
         'kafala' => 'nullable|mimes:jpg,jpeg,png|max:5120',
+        'pshknini_pzishki' => 'nullable|mimes:jpg,jpeg,png|max:5120',
 
         'name_kurdish' => 'required|max:50|min:4',
         'name_english' => 'required|max:50|min:4',
@@ -277,6 +279,18 @@ class Edit extends Component
                 ->preservingOriginal()
                 ->toMediaCollection($name);
             $this->kafala = null;
+        }
+        if ($this->pshknini_pzishki) {
+            $name = 'pshknini_pzishki';
+            if ($student->hasMedia($name)) {
+                $student->clearMediaCollection($name);
+            }
+            $student->addMedia($this->pshknini_pzishki)
+                ->usingName($name)
+                ->usingFilename($name . '.' . $this->pshknini_pzishki->getClientOriginalExtension())
+                ->preservingOriginal()
+                ->toMediaCollection($name);
+            $this->pshknini_pzishki = null;
         }
         if ($this->daray_psula) {
             $name = 'daray_psula';

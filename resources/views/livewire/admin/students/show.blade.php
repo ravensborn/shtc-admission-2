@@ -1,30 +1,45 @@
 <div>
 
     <div class="row mt-4">
+
         <div class="col-12 col-md-9">
             <div class="alert alert-info shadow-sm h-100">
                 <h5>Viewing {{ $student->number }}</h5>
                 <div>Student Code: {{ $student->code }}</div>
                 <div>Register Date: {{ $student->created_at->format('d-m-Y') }}</div>
                 <div>Current Status: {{ $student->getStatusName($student->status) }}</div>
+                <div class="mt-2 text-end">
+                    <a href="{{ route('admin.students.edit', $student->id) }}" style="text-decoration: none;">
+                        دەستکاری کردنی زانیاری قوتابی
+                    </a>
+                </div>
             </div>
+
         </div>
+
         <div class="col-12 col-md-3 mt-3 mt-md-0">
             <div class="alert alert-info shadow-sm h-100">
                 <label for="status">Update Status</label>
                 <select class="form-control form-control-sm mt-2" id="status" wire:model="status">
 
-                    @if($student->status == \App\Models\Student::STATUS_PENDING)
-                        <option value="{{ \App\Models\Student::STATUS_INCOMPLETE }}"> {{ \App\Models\Student::getStatusArray()[\App\Models\Student::STATUS_INCOMPLETE] }}</option>
-                        <option value="{{ \App\Models\Student::STATUS_ACCEPTED }}"> {{ \App\Models\Student::getStatusArray()[\App\Models\Student::STATUS_ACCEPTED] }}</option>
-                    @else
-                        @foreach(\App\Models\Student::getStatusArray() as $id => $name)
-                            @if($id == \App\Models\Student::STATUS_DEFAULT)
-                                @continue
-                            @endif
-                            <option value="{{ $id }}"> {{ $name }}</option>
-                        @endforeach
-                    @endif
+                    @foreach(\App\Models\Student::getStatusArray() as $id => $name)
+                        @if($id == \App\Models\Student::STATUS_DEFAULT)
+                            @continue
+                        @endif
+                        <option value="{{ $id }}"> {{ $name }}</option>
+                    @endforeach
+
+{{--                    @if($student->status == \App\Models\Student::STATUS_PENDING)--}}
+{{--                        <option value="{{ \App\Models\Student::STATUS_INCOMPLETE }}"> {{ \App\Models\Student::getStatusArray()[\App\Models\Student::STATUS_INCOMPLETE] }}</option>--}}
+{{--                        <option value="{{ \App\Models\Student::STATUS_ACCEPTED }}"> {{ \App\Models\Student::getStatusArray()[\App\Models\Student::STATUS_ACCEPTED] }}</option>--}}
+{{--                    @else--}}
+{{--                        @foreach(\App\Models\Student::getStatusArray() as $id => $name)--}}
+{{--                            @if($id == \App\Models\Student::STATUS_DEFAULT)--}}
+{{--                                @continue--}}
+{{--                            @endif--}}
+{{--                            <option value="{{ $id }}"> {{ $name }}</option>--}}
+{{--                        @endforeach--}}
+{{--                    @endif--}}
 
 
                 </select>
