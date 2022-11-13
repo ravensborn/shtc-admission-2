@@ -44,12 +44,7 @@
                                             {{ config('envAccess.TOMAR_NUMBER_FORMATTED') }}
                                         </a>
                                     </div>
-                                    <span dir="ltr">
-                                      <a class="text-decoration-none text-muted"
-                                         href="tel:{{ config('envAccess.DEVELOPER_NUMBER') }}">
-                                        {{ config('envAccess.DEVELOPER_NUMBER_FORMATTED') }}
-                                    </a>
-                                </span>
+                                  
                                 </li>
 
                             </ul>

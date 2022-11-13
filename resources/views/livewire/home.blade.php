@@ -60,7 +60,7 @@
                         کەنەیان دەتوانی درێژە بە خوێندنى خۆیان بدەن دوور لە ماڵەوە.
                     </p>
                     <p class="mt-3 text-start">
-                        بۆیە بە پێ بریارى ئەنجوومەنى فێرکردنى
+                        بۆیە بە پێ بریارى ئەنجوومەنى خوێندنی
                         باڵا ژمارە (٥) لە ٢٨/٨/١٩٩٧ ولە گەڵ دەست بە کاربوونى کابینى سێ یەمى حکومەتى هەرێمێ کوردستان لە
                         ژێر چاودێرى شەهید (سامى عبدالرحمان) ئەم دیاریە پێشکەش بە شەقڵاوە کرا.
                     </p>
@@ -137,12 +137,6 @@
                                     {{ config('envAccess.TOMAR_NUMBER_FORMATTED') }}
                                 </a>
                             </div>
-                            <span dir="ltr">
-                                      <a class="text-decoration-none text-muted"
-                                         href="tel:{{ config('envAccess.DEVELOPER_NUMBER') }}">
-                                        {{ config('envAccess.DEVELOPER_NUMBER_FORMATTED') }}
-                                    </a>
-                                </span>
                         </li>
                     </ul>
                     <div>
