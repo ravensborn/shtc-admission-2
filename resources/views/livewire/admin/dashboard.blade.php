@@ -80,11 +80,19 @@
                 </div>
             </div>
         </div>
-
+        @if(auth()->user()->email == 'yad.hoshyar@gmail.com')
+            <a href="{{ route('admin.students.export.all') }}" class="btn btn-outline-primary mb-3"
+               style="width: 200px;" type="button">
+                Export All
+            </a>
+        @endif
     @endif
 
 
+
+
     @if(auth()->user()->hasRole('limited'))
+
 
         <p>
             <button class="btn btn-outline-primary" style="width: 200px;" type="button" data-bs-toggle="collapse"
