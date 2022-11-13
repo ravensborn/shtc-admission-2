@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Student;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 
 class Dashboard extends Component
@@ -85,7 +87,7 @@ class Dashboard extends Component
         if (request()->has('status_id')) {
             $this->statusId = request()->get('status_id');
         } else {
-            return redirect()->route('admin.select');
+            redirect()->route('admin.select');
         }
 
     }

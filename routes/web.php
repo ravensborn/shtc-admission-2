@@ -10,6 +10,7 @@ use App\Http\Livewire\Admissions\Create as AdmissionCreate;
 use App\Http\Livewire\Admissions\Result as AdmissionResult;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +46,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/admin/student/{student}/edit', AdminStudentEdit::class)
         ->name('admin.students.edit');
+
+    Route::get('/admin/student/export/all',
+        [\App\Http\Controllers\ExportController::class, 'exportAdmin']
+    )->name('admin.students.export.all');
+
+
+
 
 });
 
