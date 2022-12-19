@@ -15,7 +15,7 @@
 
                 <ul>
                     <li class="pb-3">
-                        Developer: <span class="fw-bold">Yad H. Rasul</span>,   &nbsp;
+                        Lead Developer: <span class="fw-bold">Yad H. Rasul</span>,   &nbsp;
                         <a href="https://github.com/ravensborn" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="purple"
                                  class="bi bi-github" viewBox="0 0 16 16">
@@ -32,15 +32,7 @@
                             </svg>
                         </a>
                     </li>
-                    <li>Developer: <span class="fw-bold">Mahmood J. Hayni</span>, &nbsp;
-                    <a href="https://www.facebook.com/profile.php?id=100006028742251" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                 class="bi bi-facebook" viewBox="0 0 16 16">
-                                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-                            </svg></a>
-                        <a href="mailto:mjabbarkawani@gmail.com"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="darkgray" class="bi bi-envelope" viewBox="0 0 16 16">
-                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
-                            </svg>
+                    <li>Advisor: <span class="fw-bold">Mahmood J. Hayni</span>
                         </a></l>
                 </ul>
 

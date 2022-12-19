@@ -17,8 +17,6 @@ class StudentsTable extends DataTableComponent
 
     public $productToBeDeleted = null;
 
-    public int $statusId;
-
     protected $listeners = [
         'deleteStudent',
         'refresh-students' => '$refresh',
@@ -30,10 +28,6 @@ class StudentsTable extends DataTableComponent
         $user = auth()->user();
 
         $builder = Student::query();
-
-        if ($user->hasRole('admin')) {
-
-        }
 
         if ($user->hasRole('limited')) {
 
@@ -61,11 +55,6 @@ class StudentsTable extends DataTableComponent
             if ($user->hasRole('TOURISM')) {
                 $builder->where('department_id', 9);
             }
-        }
-
-        if ($this->statusId) {
-            
-            $builder->where('status', $this->statusId);
         }
 
         return $builder;

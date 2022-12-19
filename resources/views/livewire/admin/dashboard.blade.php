@@ -317,7 +317,7 @@
                     All Admissions
                 </div>
                 <div class="card-body">
-                    <livewire:admin.tables.students-table status-id="{{ (int)$statusId }}"/>
+                    <livewire:admin.tables.students-table />
                 </div>
             </div>
 

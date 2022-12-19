@@ -7,7 +7,7 @@
 
                 <div class="alert alert-info" style="direction: ltr;">
                     You are logged in as admin,
-                    click <a href="{{ route('admin.select') }}">here</a> to navigate to dashboard.
+                    click <a href="{{ route('admin.dashboard') }}">here</a> to navigate to dashboard.
                 </div>
             </div>
 

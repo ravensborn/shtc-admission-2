@@ -40,7 +40,6 @@ class Dashboard extends Component
                 ->count();
             $array[$status_name] = $studentCount;
 
-
             foreach (Student::getDepartmentTypeArray() as $id => $name) {
                 $array[$name] =
                     Student::where('status', $status_id)
@@ -50,8 +49,6 @@ class Dashboard extends Component
 
             array_push($grandArr, $array);
         }
-
-//        dd($grandArr);
 
         $this->statisticsByStatusArray = $grandArr;
     }
@@ -72,24 +69,11 @@ class Dashboard extends Component
             array_push($grandArr, $array);
         }
 
-
-
-//        dd($grandArr);
-
         $this->statisticsByDepArray = $grandArr;
     }
 
-    public int $statusId;
-
     public function mount()
     {
-
-        if (request()->has('status_id')) {
-            $this->statusId = request()->get('status_id');
-        } else {
-            redirect()->route('admin.select');
-        }
-
     }
 
     public function render()

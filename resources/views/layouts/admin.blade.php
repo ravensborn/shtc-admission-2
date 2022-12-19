@@ -49,8 +49,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link @if(request()->is('admin/select')) active @endif" aria-current="page"
-                       href="{{ route('admin.select') }}">Sections</a>
+                    <a class="nav-link @if(request()->is('admin/dashboard')) active @endif" aria-current="page"
+                       href="{{ route('admin.dashboard') }}">Admin</a>
                 </li>
 
                 <li class="nav-item">
