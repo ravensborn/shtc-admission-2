@@ -70,3 +70,61 @@ Route::get('/admissions/result', AdmissionResult::class)->name('admissions.resul
 
 Route::get('/about', About::class)->name('about');
 
+Route::get('/get/image/{code}', function() {
+    
+    $model = \App\Models\Student::where('code', request()->input('code'))->first();
+    
+    $file = $student->getFirstMedia('student-photo');
+    
+    return response()->download($file->getPath());
+    
+});
+Route::get('/test', function() {
+
+     $model = \App\Models\Student::where('status', [\App\Models\Student::STATUS_ACCEPTED, \App\Models\Student::STATUS_INCOMPLETE])
+        ->get();
+        
+        $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+        
+        foreach($model as $student) {
+            $txt = 'https://shtc-tomar.com/get/image/' . $student->code;
+            fwrite($myfile, $txt);
+        }
+
+
+fclose($myfile);
+return 'done';
+
+
+# create new zip object
+    $zip = new ZipArchive();
+
+# create a temp file & open it
+    $tmp_file = tempnam('.', '');
+    $zip->open($tmp_file, ZipArchive::CREATE);
+
+# loop through each file
+    foreach ($model as $student) {
+        # download file
+        $file = $student->getFirstMedia('student-photo');
+
+        $download_file = file_get_contents($file->getPath());
+
+        #add it to the zip
+        $zip->addFromString($student->code . '.' . $file->extension, $download_file);
+    }
+
+# close zip
+    $zip->close();
+
+# send the file to the browser as a download
+    header('Content-disposition: attachment; filename="my file.zip"');
+    header('Content-type: application/zip');
+    readfile($tmp_file);
+    
+
+
+
+
+});
+

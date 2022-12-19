@@ -20,7 +20,9 @@ class ExportController extends Controller {
 
         $headers = [
             'ژمارە',
+    
             'کۆد',
+                'زنجیرە',
             'حاڵەت',
             'ناو',
             'ناو',
@@ -47,6 +49,7 @@ class ExportController extends Controller {
 
             $sheet->setCellValue($column++ . $iteration, $iteration - 1);
             $sheet->setCellValue($column++ . $iteration, $student->code);
+            $sheet->setCellValue($column++ . $iteration, $student->number);
             $sheet->setCellValue($column++ . $iteration, $student->getStatusName($student->status));
             $sheet->setCellValue($column++ . $iteration, $student->name_kurdish);
             $sheet->setCellValue($column++ . $iteration, $student->name_english);
