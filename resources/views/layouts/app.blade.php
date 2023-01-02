@@ -47,10 +47,10 @@
                        href="{{ route('home') }}">سەرەتا</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link @if(request()->is('admissions/create')) active @endif"
-                       href="{{ route('admissions.create') }}">تۆمارکردنی قوتابی</a>
-                </li>
+                <!--<li class="nav-item">-->
+                <!--    <a class="nav-link @if(request()->is('admissions/create')) active @endif"-->
+                <!--       href="{{ route('admissions.create') }}">تۆمارکردنی قوتابی</a>-->
+                <!--</li>-->
 
                 @if(config('envAccess.RESULT_MODE'))
                     <li class="nav-item">
