@@ -48,61 +48,61 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Yad Hoshyar',
                 'email' => 'yad.hoshyar@gmail.com',
                 'role_name' => 'admin',
-                'password' => 'password@1'
+                'password' => 'newpassword'
             ],
             [
                 'name' => 'Balen A.',
                 'email' => 'abdulqadr.balen@shtc-tomar.com',
                 'role_name' => 'admin',
-                'password' => 'tomarba46$'
+                'password' => 'newpassword'
             ],
             [
                 'name' => 'Rebwar Mustafa',
                 'email' => 'rebwar.m@shtc-tomar.com',
                 'role_name' => 'MIS',
-                'password' => 'shtc2345432'
+                'password' => 'shtc963'
             ],
             [
                 'name' => 'Rizgar Shahab',
                 'email' => 'rizgar.s@shtc-tomar.com',
                 'role_name' => 'AD',
-                'password' => 'shtc8765432'
+                'password' => 'shtc852'
             ],
             [
                 'name' => 'Kaify Jabar',
                 'email' => 'kaify.j@shtc-tomar.com',
                 'role_name' => 'VET',
-                'password' => 'shtc9876543'
+                'password' => 'shtc741'
             ],
             [
                 'name' => 'Niyaz Abdulla',
                 'email' => 'niyaz.a@shtc-tomar.com',
                 'role_name' => 'NURSING',
-                'password' => 'shtc7039489'
+                'password' => 'shtc789'
             ],
             [
                 'name' => 'Ali Zainal',
                 'email' => 'ali.z@shtc-tomar.com',
                 'role_name' => 'MLT',
-                'password' => 'shtc3048234'
+                'password' => 'shtc456'
             ],
             [
                 'name' => 'Jalal Fadhil',
                 'email' => 'jalal.f@shtc-tomar.com',
                 'role_name' => 'ARC',
-                'password' => 'shtc23913218'
+                'password' => 'shtc7541'
             ],
             [
                 'name' => 'Aras Hussein',
                 'email' => 'aras.h@shtc-tomar.com',
                 'role_name' => 'BUILD',
-                'password' => 'shtc34093843'
+                'password' => 'shtc951'
             ],
             [
                 'name' => 'Alandi A',
                 'email' => 'alandi.a@shtc-tomar.com',
                 'role_name' => 'TOURISM',
-                'password' => 'shtc329482830'
+                'password' => 'shtc753'
             ],
         ];
 
