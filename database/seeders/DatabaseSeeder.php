@@ -18,18 +18,18 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        Role::create(['name' => 'admin']);
-        Role::create(['name' => 'limited']);
-
-        Role::create(['name' => 'MIS']);
-        Role::create(['name' => 'AD']);
-        Role::create(['name' => 'VET']);
-        Role::create(['name' => 'NURSING']);
-        Role::create(['name' => 'MLT']);
-        Role::create(['name' => 'ARC']);
-        Role::create(['name' => 'BUILD']);
-        Role::create(['name' => 'TOURISM']);
-        Role::create(['name' => 'STATISTICS_ONLY']);
+//        Role::create(['name' => 'admin']);
+//        Role::create(['name' => 'limited']);
+//
+//        Role::create(['name' => 'MIS']);
+//        Role::create(['name' => 'AD']);
+//        Role::create(['name' => 'VET']);
+//        Role::create(['name' => 'NURSING']);
+//        Role::create(['name' => 'MLT']);
+//        Role::create(['name' => 'ARC']);
+//        Role::create(['name' => 'BUILD']);
+//        Role::create(['name' => 'TOURISM']);
+//        Role::create(['name' => 'STATISTICS_ONLY']);
 
         $users = [
 //            [
@@ -129,7 +129,7 @@ class DatabaseSeeder extends Seeder
 
 
 
-        \App\Models\Student::factory(100)->create();
+//        \App\Models\Student::factory(100)->create();
 
 //        foreach (Student::all() as $student) {
 //
