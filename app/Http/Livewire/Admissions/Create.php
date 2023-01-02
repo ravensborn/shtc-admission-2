@@ -384,6 +384,12 @@ class Create extends Component
 
     public function mount()
     {
+
+        //Only Admins Allowed.
+        if(!(auth()->user()->email == 'yad.hoshyar@gmail.com' || auth()->user()->email == 'abdulqadr.balen@shtc-tomar.com')) {
+            abort(401, 'Not Authorized');
+        }
+
         //Testing mode
 //        $this->studentResultPage = true;
 //        $this->student = Student::first();

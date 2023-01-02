@@ -80,10 +80,18 @@
                 </div>
             </div>
         </div>
+
         @if(auth()->user()->email == 'yad.hoshyar@gmail.com')
+
             <a href="{{ route('admin.students.export.all') }}" class="btn btn-outline-primary mb-3"
                style="width: 200px;" type="button">
                 Export All
+            </a>
+        @endif
+        @if(auth()->user()->email == 'yad.hoshyar@gmail.com' || auth()->user()->email == 'abdulqadr.balen@shtc-tomar.com')
+            <a href="{{ route('admissions.create') }}" class="btn btn-outline-success mb-3"
+               style="width: 200px;">
+                New Student
             </a>
         @endif
     @endif
@@ -317,7 +325,7 @@
                     All Admissions
                 </div>
                 <div class="card-body">
-                    <livewire:admin.tables.students-table />
+                    <livewire:admin.tables.students-table/>
                 </div>
             </div>
 

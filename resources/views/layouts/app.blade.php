@@ -42,15 +42,28 @@
                   </a>
       </span>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+              @if(auth()->user()->hasRole('admin'))
+
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+                    </li>
+
+                  @endif
+
+
+
                 <li class="nav-item">
                     <a class="nav-link @if(request()->is('/')) active @endif" aria-current="page"
                        href="{{ route('home') }}">سەرەتا</a>
                 </li>
 
                 <!--<li class="nav-item">-->
-                <!--    <a class="nav-link @if(request()->is('admissions/create')) active @endif"-->
-                <!--       href="{{ route('admissions.create') }}">تۆمارکردنی قوتابی</a>-->
+            <!--    <a class="nav-link @if(request()->is('admissions/create')) active @endif"-->
+            <!--       href="{{ route('admissions.create') }}">تۆمارکردنی قوتابی</a>-->
                 <!--</li>-->
+
 
                 @if(config('envAccess.RESULT_MODE'))
                     <li class="nav-item">
