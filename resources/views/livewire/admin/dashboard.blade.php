@@ -279,7 +279,7 @@
                                             داپچڕان
                                         </td>
                                         <td>
-                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ABSENT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->count() }}
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_QUIT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->count() }}
                                         </td>
                                     </tr>
                                     <tr>
@@ -287,7 +287,7 @@
                                             زانکۆڵاین
                                         </td>
                                         <td>
-                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ABSENT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 1)->count() }}
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_QUIT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 1)->count() }}
                                         </td>
                                     </tr>
                                     <tr>
@@ -295,7 +295,7 @@
                                             پاڕالێل
                                         </td>
                                         <td>
-                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ABSENT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 2)->count() }}
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_QUIT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 2)->count() }}
                                         </td>
                                     </tr>
                                     <tr>
@@ -303,7 +303,7 @@
                                             ئێواران
                                         </td>
                                         <td>
-                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_ABSENT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 3)->count() }}
+                                            {{ \App\Models\Student::whereIn('status', [\App\Models\Student::STATUS_QUIT])->where('department_id', \App\Models\Student::convertRoleToDepartmentId(auth()->user()->roles[1]->name))->where('department_type_id', 3)->count() }}
                                         </td>
                                     </tr>
                                     </tbody>

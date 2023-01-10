@@ -84,13 +84,13 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Ali Zainal',
                 'email' => 'ali.z@shtc-tomar.com',
                 'role_name' => 'MLT',
-                'password' => 'shtc456'
+                'password' => 'shtc40256'
             ],
             [
                 'name' => 'Jalal Fadhil',
                 'email' => 'jalal.f@shtc-tomar.com',
                 'role_name' => 'ARC',
-                'password' => 'shtc7541'
+                'password' => 'shtc0p7541'
             ],
             [
                 'name' => 'Aras Hussein',
@@ -102,7 +102,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Alandi A',
                 'email' => 'alandi.a@shtc-tomar.com',
                 'role_name' => 'TOURISM',
-                'password' => 'shtc753'
+                'password' => 'shtck62753'
             ],
         ];
 

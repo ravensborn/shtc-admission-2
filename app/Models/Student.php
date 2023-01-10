@@ -22,7 +22,8 @@ class Student extends Model implements HasMedia
     const STATUS_ACCEPTED = 2;
     const STATUS_INCOMPLETE = 3;
     const STATUS_POSTPONED = 4;
-    const STATUS_ABSENT = 5;
+    const STATUS_QUIT = 5;
+    const STATUS_DISMISSED = 6;
 
     public static function convertRoleToDepartmentId($role) {
 
@@ -47,13 +48,14 @@ class Student extends Model implements HasMedia
             self::STATUS_ACCEPTED => 'وەرگیراو',
             self::STATUS_INCOMPLETE => 'کێشەی تێدایە',
             self::STATUS_POSTPONED => 'دواخستن',
-            self::STATUS_ABSENT => 'داپچڕان',
+            self::STATUS_QUIT => 'داپچڕان',
+            self::STATUS_DISMISSED => 'دوورخستنەوە (فصل)',
         ];
     }
 
     public function getUploadedIdType(): string
     {
-        return $this->uploaded_id_type == 1 ? 'کارتی نیشتیمانی' : 'نانسنامە و ڕەگەزنامە';
+        return $this->uploaded_id_type == 1 ? 'کارتی نیشتیمانی' : 'نانسنامە و رەگەزنامە';
     }
 
     public static function getStatusName($status)
@@ -115,7 +117,7 @@ class Student extends Model implements HasMedia
             6 => 'شیکاری نەخۆشیەکان',
             7 => 'تەلارسازی',
             8 => 'بیناکاری',
-            9 => 'دەزگای کارگێڕی گەشتیاری',
+            9 => 'کارگێڕی دەزگاکانی گەشتیاری',
 
         ];
     }
