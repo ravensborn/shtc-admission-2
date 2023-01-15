@@ -8,11 +8,13 @@ use App\Http\Controllers\Controller;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-class ExportController extends Controller {
+class ExportController extends Controller
+{
 
-    public function exportAdmin() {
+    public function exportAdmin()
+    {
 
-        if(auth()->user()->email != 'yad.hoshyar@gmail.com') {
+        if (auth()->user()->email != 'yad.hoshyar@gmail.com') {
             abort(404);
         }
         $spreadsheet = new Spreadsheet();
@@ -20,9 +22,8 @@ class ExportController extends Controller {
 
         $headers = [
             'ژمارە',
-    
             'کۆد',
-                'زنجیرە',
+            'زنجیرە',
             'حاڵەت',
             'ناو',
             'ناو',
@@ -32,6 +33,9 @@ class ExportController extends Controller {
             'نەتەوە',
             'جۆری خوێندن',
             'شار',
+            'قەزا',
+            'ناحیە',
+            'گوند',
         ];
 
         $letter = 'A';
@@ -59,6 +63,9 @@ class ExportController extends Controller {
             $sheet->setCellValue($column++ . $iteration, $student->nationality);
             $sheet->setCellValue($column++ . $iteration, $student->getDepartmentType());
             $sheet->setCellValue($column++ . $iteration, $student->getProvince());
+            $sheet->setCellValue($column++ . $iteration, $student->district);
+            $sheet->setCellValue($column++ . $iteration, $student->sub_district);
+            $sheet->setCellValue($column++ . $iteration, $student->village_name);
 
             $iteration++;
         }
