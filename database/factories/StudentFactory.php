@@ -35,7 +35,7 @@ class StudentFactory extends Factory
             'gender' => $this->faker->numberBetween(1, 2),
             'birthday' => $this->faker->date,
             'birthplace' => $this->faker->city,
-            'phone' => $this->faker->phoneNumber,
+            'phone' => '+964750' . $this->faker->numberBetween(1000000, 9999999),
             'nationality' => 'Kurdish',
             'school' => 'Shaqlawa Educational Compound',
             'education_type_id' => $this->faker->numberBetween(1, 3),
