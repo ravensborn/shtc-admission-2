@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
         $users = [
             [
                 'name' => 'Yad Hoshyar',
-                'email' => 'yad@gmail.com',
+                'email' => 'yad.hoshyar@gmail.com',
                 'role_name' => 'admin',
                 'password' => 'password'
             ],
