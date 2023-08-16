@@ -52,7 +52,7 @@ class Show extends Component
     {
 
         $validated = $this->validate([
-            'note' => 'required|string|max:10000'
+            'note' => 'nullable|string|max:10000'
         ]);
 
         $this->student->update([
