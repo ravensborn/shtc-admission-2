@@ -24,7 +24,7 @@ class Dashboard extends Component
         $this->statisticsByStatus();
     }
 
-    public function statisticsByStatus()
+    public function statisticsByStatus(): void
     {
         $grandArr = [];
 
@@ -37,22 +37,24 @@ class Dashboard extends Component
             }
 
             $studentCount = Student::where('status', $status_id)
+                ->where('stage', Student::STAGE_STATUS_1)
                 ->count();
             $array[$status_name] = $studentCount;
 
             foreach (Student::getDepartmentTypeArray() as $id => $name) {
                 $array[$name] =
                     Student::where('status', $status_id)
+                        ->where('stage', Student::STAGE_STATUS_1)
                         ->where('department_type_id', $id)
                         ->count();
             }
 
-            array_push($grandArr, $array);
+            $grandArr[] = $array;
         }
 
         $this->statisticsByStatusArray = $grandArr;
     }
-    public function statisticsByDepartment()
+    public function statisticsByDepartment(): void
     {
         $grandArr = [];
 
@@ -62,11 +64,12 @@ class Dashboard extends Component
 
             $studentCount = Student::where('department_id', $depId)
                 ->whereIn('status', [Student::STATUS_ACCEPTED, Student::STATUS_POSTPONED])
+                ->where('stage', Student::STAGE_STATUS_1)
                 ->count();
             $array[$depName] = $studentCount;
 
 
-            array_push($grandArr, $array);
+            $grandArr[] = $array;
         }
 
         $this->statisticsByDepArray = $grandArr;

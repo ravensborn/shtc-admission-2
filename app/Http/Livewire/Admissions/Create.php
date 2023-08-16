@@ -381,18 +381,29 @@ class Create extends Component
         return substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, $limit);
     }
 
+    public function isAdmin(): bool
+    {
+        return auth()->check() && (auth()->user()->email == 'yad.hoshyar@gmail.com' || auth()->user()->email == 'abdulqadr.balen@shtc-tomar.com');
+    }
 
     public function mount()
     {
 
         //Only Admins Allowed.
-        if(!(auth()->user()->email == 'yad.hoshyar@gmail.com' || auth()->user()->email == 'abdulqadr.balen@shtc-tomar.com')) {
-            abort(401, 'Not Authorized');
+        if(!$this->isAdmin()) {
+
+            if(!config('envAccess.ALLOW_REGISTER')) {
+
+                return redirect()->route('home');
+            }
+
         }
 
         //Testing mode
 //        $this->studentResultPage = true;
 //        $this->student = Student::first();
+
+
 
     }
 

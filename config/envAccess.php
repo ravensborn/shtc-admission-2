@@ -13,4 +13,5 @@ return [
     'DEVELOPER_NUMBER' => env('DEVELOPER_NUMBER', null),
     'DEVELOPER_NUMBER_FORMATTED' => env('DEVELOPER_NUMBER_FORMATTED', null),
     'RESULT_MODE' => env('RESULT_MODE', false),
+    'ALLOW_REGISTER' => env('ALLOW_REGISTER', false),
 ];

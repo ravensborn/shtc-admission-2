@@ -72,6 +72,13 @@ class StudentsTable extends DataTableComponent
     public function filters(): array
     {
         return [
+            SelectFilter::make('Stage')
+                ->setFilterPillTitle('Stage')
+                ->setFilterPillValues(Student::getStageStatuses())
+                ->options(array_replace(['' => 'All'], Student::getStageStatuses()))
+                ->filter(function (Builder $builder, string $value) {
+                    $builder->where('stage', $value);
+                }),
             SelectFilter::make('Department')
                 ->setFilterPillTitle('Department')
                 ->setFilterPillValues(Student::getDepartments())
@@ -96,11 +103,30 @@ class StudentsTable extends DataTableComponent
         ];
     }
 
+    public function updateStage($student, $stage): void
+    {
+
+        $student = Student::find($student);
+        if(array_key_exists($stage, Student::getStageStatuses())) {
+            $student->update([
+                'stage' => $stage
+            ]);
+        }
+
+        $this->alert('success', 'Updated stage for student: ' . $student->name_kurdish . '.');
+
+    }
     public function columns(): array
     {
         return [
             Column::make("#", "number")->searchable(),
             Column::make("Code", "code")->searchable(),
+            Column::make("Stage", "stage")
+                ->format(function ($stage, $row, $column) {
+
+                return Student::getStageStatuses()[$stage];
+
+            })->html(),
             Column::make("Name", "name_kurdish")->searchable(),
             Column::make("Phone", "phone")->searchable(),
             Column::make("Department", "department_id")

@@ -121,7 +121,7 @@ class Edit extends Component
     ];
 
 
-    public function update()
+    public function update(): void
     {
 
         $validated = $this->validate($this->rules);
@@ -310,10 +310,6 @@ class Edit extends Component
         $this->alert('success', 'بەسەرکەوتوویی نوێکرایەوە.');
 
         $this->student = $student;
-
-
-
-
     }
 
     protected function unique_code($limit): string
@@ -322,7 +318,7 @@ class Edit extends Component
     }
 
 
-    public function mount(Student $student)
+    public function mount(Student $student): void
     {
 
         $this->student = $student;

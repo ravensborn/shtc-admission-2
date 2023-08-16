@@ -59,6 +59,7 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/', Home::class)->name('home');
 
 Route::get('/admissions/create', AdmissionCreate::class)->name('admissions.create');
+
 Route::get('/admissions/result', AdmissionResult::class)->name('admissions.result');
 
 Route::get('/about', About::class)->name('about');

@@ -14,8 +14,23 @@ class Show extends Component
 
     public $student;
     public $status;
+    public $stage;
+    public string|null $note = null;
 
-    public function updatedStatus($value) {
+    public function updatedStage($value): void
+    {
+        $this->student->update([
+            'stage' => $value
+        ]);
+
+        $this->student = Student::find($this->student->id);
+        $this->stage = $this->student->stage;
+
+        $this->alert('success', 'Stage updated successfully.');
+    }
+
+    public function updatedStatus($value): void
+    {
         $this->student->update([
             'status' => $value
         ]);
@@ -29,6 +44,22 @@ class Show extends Component
     public function mount(Student $student) {
      $this->student = $student;
      $this->status = $student->status;
+     $this->stage = $student->stage;
+     $this->note = $student->note;
+    }
+
+    public function saveNote(): void
+    {
+
+        $validated = $this->validate([
+            'note' => 'required|string|max:10000'
+        ]);
+
+        $this->student->update([
+            'note' => $validated['note']
+        ]);
+
+        $this->alert('success', 'Successfully updated student notes.');
     }
 
 

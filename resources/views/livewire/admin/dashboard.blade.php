@@ -6,7 +6,7 @@
         <p>
             <button class="btn btn-outline-primary" style="width: 200px;" type="button" data-bs-toggle="collapse"
                     data-bs-target="#amarCollapse" aria-expanded="false" aria-controls="amarCollapse">
-                ئامار
+                ئاماری قۆناغی یەکەم
             </button>
         </p>
         <div class="collapse" id="amarCollapse" wire:ignore.self>

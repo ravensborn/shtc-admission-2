@@ -6,11 +6,16 @@
             <div class="alert alert-info shadow-sm h-100">
                 <h5>Viewing {{ $student->number }}</h5>
                 <div>Student Code: {{ $student->code }}</div>
+                <div>Student Stage: {{ \App\Models\Student::getStageStatuses()[$student->stage] }}</div>
                 <div>Register Date: {{ $student->created_at->format('d-m-Y') }}</div>
                 <div>Current Status: {{ $student->getStatusName($student->status) }}</div>
                 <div class="mt-2 text-end">
                     <a href="{{ route('admin.students.edit', $student->id) }}" style="text-decoration: none;">
                         دەستکاری کردنی زانیاری قوتابی
+                    </a>
+                    |
+                    <a href="{{ route('admin.dashboard') }}" style="text-decoration: none;">
+                        گەڕانەوە بۆ لیستی قوتابیان
                     </a>
                 </div>
             </div>
@@ -29,18 +34,16 @@
                         <option value="{{ $id }}"> {{ $name }}</option>
                     @endforeach
 
-{{--                    @if($student->status == \App\Models\Student::STATUS_PENDING)--}}
-{{--                        <option value="{{ \App\Models\Student::STATUS_INCOMPLETE }}"> {{ \App\Models\Student::getStatusArray()[\App\Models\Student::STATUS_INCOMPLETE] }}</option>--}}
-{{--                        <option value="{{ \App\Models\Student::STATUS_ACCEPTED }}"> {{ \App\Models\Student::getStatusArray()[\App\Models\Student::STATUS_ACCEPTED] }}</option>--}}
-{{--                    @else--}}
-{{--                        @foreach(\App\Models\Student::getStatusArray() as $id => $name)--}}
-{{--                            @if($id == \App\Models\Student::STATUS_DEFAULT)--}}
-{{--                                @continue--}}
-{{--                            @endif--}}
-{{--                            <option value="{{ $id }}"> {{ $name }}</option>--}}
-{{--                        @endforeach--}}
-{{--                    @endif--}}
+                </select>
 
+                <hr>
+
+                <label for="stage">Update Stage</label>
+                <select class="form-control form-control-sm mt-2" id="stage" wire:model="stage">
+
+                    @foreach(\App\Models\Student::getStageStatuses() as $id => $name)
+                        <option value="{{ $id }}"> {{ $name }}</option>
+                    @endforeach
 
                 </select>
             </div>
@@ -146,7 +149,8 @@
                 </table>
             </div>
         </div>
-        <div class="col-12">
+
+        <div class="col-12 mt-3">
             <div class="shadow-sm border rounded-1 p-2">
                 Attachments
                 <hr>
@@ -351,6 +355,20 @@
 
                 </div>
             </div>
+        </div>
+
+        <div class="col-12 mt-3 ">
+
+            <div class="shadow-sm border rounded-1 p-2" dir="rtl">
+
+                <label for="note" >تێبینی:</label>
+                <textarea id="note" class="form-control mt-1" name="" id="" cols="30" rows="10" wire:model="note"></textarea>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-primary btn-sm mt-2" style="width: 160px;" wire:click.prevent="saveNote">Save</button>
+                </div>
+            </div>
+
+
         </div>
     </div>
 

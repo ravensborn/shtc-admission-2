@@ -25,6 +25,23 @@ class Student extends Model implements HasMedia
     const STATUS_QUIT = 5;
     const STATUS_DISMISSED = 6;
 
+    const STAGE_STATUS_1 = 1;
+    const STAGE_STATUS_2 = 2;
+    const STAGE_STATUS_3 = 3;
+    const STAGE_STATUS_4 = 4;
+    const STAGE_STATUS_GRADUATED = 99;
+
+    public static function getStageStatuses(): array
+    {
+        return [
+            self::STAGE_STATUS_1 => 'قۆناغی یەکەم',
+            self::STAGE_STATUS_2 => 'قۆناغی دووەم',
+            self::STAGE_STATUS_3 => 'قۆناغی سێیەم',
+            self::STAGE_STATUS_4 => 'قۆناغی چوارەم',
+            self::STAGE_STATUS_GRADUATED => 'دەرچوو'
+        ];
+    }
+
     public static function convertRoleToDepartmentId($role) {
 
         switch ($role) {
@@ -40,7 +57,7 @@ class Student extends Model implements HasMedia
 
     }
 
-    public static function getStatusArray()
+    public static function getStatusArray(): array
     {
         return [
             self::STATUS_DEFAULT => 'Default',
@@ -58,12 +75,13 @@ class Student extends Model implements HasMedia
         return $this->uploaded_id_type == 1 ? 'کارتی نیشتیمانی' : 'نانسنامە و رەگەزنامە';
     }
 
-    public static function getStatusName($status)
+    public static function getStatusName($status): string
     {
         return self::getStatusArray()[$status];
     }
 
-    public function getProvinceArray() {
+    public function getProvinceArray(): array
+    {
         return [
             1 => 'هەولێر',
             2 => 'سلێمانی',
@@ -73,11 +91,13 @@ class Student extends Model implements HasMedia
         ];
     }
 
-    public function getProvince() {
+    public function getProvince(): string
+    {
         return $this->getProvinceArray()[$this->province_id];
     }
 
-    public function getBloodgroupArray() {
+    public function getBloodgroupArray(): array
+    {
         return [
             1 => 'A+',
             2 => 'A-',
@@ -90,11 +110,12 @@ class Student extends Model implements HasMedia
         ];
     }
 
-    public function getBloodgroup() {
+    public function getBloodgroup(): string
+    {
         return $this->getBloodgroupArray()[$this->bloodgroup_id];
     }
 
-    public function getStudentTypeArray()
+    public function getStudentTypeArray(): array
     {
         return [
             1 => 'دەرەکی',
@@ -102,7 +123,8 @@ class Student extends Model implements HasMedia
         ];
     }
 
-    public function getStudentType() {
+    public function getStudentType(): string
+    {
         return $this->getStudentTypeArray()[$this->student_type_id];
     }
 
