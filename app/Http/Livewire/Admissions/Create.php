@@ -300,7 +300,7 @@ class Create extends Component
                 ->preservingOriginal()
                 ->toMediaCollection('id-front-side-photo');
 
-            $student->addMedia($this->nasnama_front_side_photo)
+            $student->addMedia($this->nasnama_back_side_photo)
                 ->usingName('id-back-side-photo')
                 ->usingFilename('id-back-side-photo.' . $this->nasnama_back_side_photo->getClientOriginalExtension())
                 ->preservingOriginal()
