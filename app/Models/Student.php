@@ -24,6 +24,10 @@ class Student extends Model implements HasMedia
     const STATUS_POSTPONED = 4;
     const STATUS_QUIT = 5;
     const STATUS_DISMISSED = 6;
+    const STATUS_TRANSFERRED = 7;
+    const STATUS_UNREGISTERED = 8;
+    const STATUS_FAIL_BY_ABSENCE = 9;
+
 
     const STAGE_STATUS_1 = 1;
     const STAGE_STATUS_2 = 2;
@@ -65,8 +69,11 @@ class Student extends Model implements HasMedia
             self::STATUS_ACCEPTED => 'وەرگیراو',
             self::STATUS_INCOMPLETE => 'کێشەی تێدایە',
             self::STATUS_POSTPONED => 'دواخستن',
-            self::STATUS_QUIT => 'داپچڕان',
+            self::STATUS_QUIT => 'داپچڕان (تەرقین قید)',
             self::STATUS_DISMISSED => 'دوورخستنەوە (فصل)',
+            self::STATUS_TRANSFERRED => 'گواستنەوە (نقل)',
+            self::STATUS_UNREGISTERED => 'راکێشانی دۆسیە (سحب اوراق)',
+            self::STATUS_FAIL_BY_ABSENCE => 'کەوتن بەهۆی غیاب',
         ];
     }
 
