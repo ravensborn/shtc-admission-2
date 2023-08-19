@@ -174,7 +174,7 @@ class StudentsTable extends DataTableComponent
         ];
     }
 
-    public function triggerDeleteStudent(Student $student)
+    public function triggerDeleteStudent(Student $student): void
     {
         $this->confirm('Are you sure that you want to delete this student?', [
             'toast' => false,

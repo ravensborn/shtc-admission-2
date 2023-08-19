@@ -19,7 +19,8 @@ class Dashboard extends Component
     public array $statisticsByStatusArray = [];
     public array $statisticsByDepArray = [];
 
-    public function refreshStatistics() {
+    public function refreshStatistics(): void
+    {
         $this->statisticsByDepartment();
         $this->statisticsByStatus();
     }
