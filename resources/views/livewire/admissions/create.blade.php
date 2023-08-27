@@ -44,7 +44,7 @@
                                             {{ config('envAccess.TOMAR_NUMBER_FORMATTED') }}
                                         </a>
                                     </div>
-                                  
+
                                 </li>
 
                             </ul>
@@ -653,6 +653,9 @@
                                                         <option value="9">دەزگای
                                                             کارگێڕی
                                                             گەشتیاری
+                                                        </option>
+                                                        <option value="10">
+                                                            کوالیتی خۆراک
                                                         </option>
                                                     </select>
                                                     @error('department_id')

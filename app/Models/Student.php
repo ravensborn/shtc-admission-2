@@ -57,6 +57,7 @@ class Student extends Model implements HasMedia
             case 'ARC': return 7;
             case 'BUILD': return 8;
             case 'TOURISM': return 9;
+            case 'FOOD_QUALITY': return 10;
         }
 
     }
@@ -147,6 +148,7 @@ class Student extends Model implements HasMedia
             7 => 'تەلارسازی',
             8 => 'بیناکاری',
             9 => 'کارگێڕی دەزگاکانی گەشتیاری',
+            10 => 'کوالێتی خۆراک',
 
         ];
     }

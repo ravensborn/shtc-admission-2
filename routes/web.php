@@ -47,6 +47,29 @@ Route::middleware(['auth'])->group(function () {
         [\App\Http\Controllers\ExportController::class, 'exportAdmin']
     )->name('admin.students.export.all');
 
+    Route::get('/admin/reset-passwords', function () {
+
+        $users = \App\Models\User::all();
+        $echo = [];
+
+        foreach ($users as $user) {
+
+            $password = 'shtc@' . random_int(10000,99999);
+            $echo[] = [
+                'email' => $user->email,
+                'password' => $password,
+//                'role' => $user->getRoleNames(),
+            ];
+
+            $user->update([
+                'password' => bcrypt($password)
+            ]);
+        }
+
+        dd($echo);
+
+    })->name('admin.reset-passwords');
+
 });
 
 //Route::middleware(['role:admin'])->group(function() {

@@ -55,6 +55,9 @@ class StudentsTable extends DataTableComponent
             if ($user->hasRole('TOURISM')) {
                 $builder->where('department_id', 9);
             }
+            if ($user->hasRole('FOOD_QUALITY')) {
+                $builder->where('department_id', 10);
+            }
         }
 
         return $builder;
@@ -188,7 +191,7 @@ class StudentsTable extends DataTableComponent
         $this->studentToBeDeleted = $student;
     }
 
-    public function deleteStudent()
+    public function deleteStudent(): void
     {
 
         $this->studentToBeDeleted->delete();
