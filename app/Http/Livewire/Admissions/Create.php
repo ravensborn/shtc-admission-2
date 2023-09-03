@@ -383,7 +383,7 @@ class Create extends Component
 
     public function isAdmin(): bool
     {
-        return auth()->check() && (auth()->user()->email == 'yad.hoshyar@gmail.com');
+        return auth()->check() && (auth()->user()->email == 'yad.hoshyar@gmail.com' || auth()->user()->email == 'abdulqadr.balen@shtc-tomar.com');
     }
 
     public function mount()

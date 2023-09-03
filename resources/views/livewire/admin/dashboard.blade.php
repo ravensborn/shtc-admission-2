@@ -81,7 +81,7 @@
             </div>
         </div>
 
-        @if(auth()->user()->email == 'yad.hoshyar@gmail.com')
+        @if(auth()->user()->email == 'yad.hoshyar@gmail.com' || auth()->user()->email == 'abdulqadr.balen@shtc-tomar.com')
 
             <a href="{{ route('admin.students.export.all') }}" class="btn btn-outline-primary mb-3"
                style="width: 200px;" type="button">
