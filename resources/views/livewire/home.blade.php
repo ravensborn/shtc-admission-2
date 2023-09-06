@@ -35,17 +35,17 @@
             </div>
 
 
-            <!--<div class="row border-bottom pb-4 mt-4">-->
-            <!--    <div class="col-12 text-start">-->
-            <!--        <a href="{{ route('admissions.create')  }}" class="btn btn-outline-primary">فۆڕمی تۆمارکردنی-->
-            <!--            قوتابی</a>-->
-            <!--        <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#tutorialModal">-->
-            <!--            فێرکاری تۆمارکردن-->
-            <!--        </button>-->
-            <!--        <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#helpModal">پەیوەندی-->
-            <!--        </button>-->
-            <!--    </div>-->
-            <!--</div>-->
+{{--            <!--<div class="row border-bottom pb-4 mt-4">-->--}}
+{{--            <!--    <div class="col-12 text-start">-->--}}
+{{--            <!--        <a href="{{ route('admissions.create')  }}" class="btn btn-outline-primary">فۆڕمی تۆمارکردنی-->--}}
+{{--            <!--            قوتابی</a>-->--}}
+{{--            <!--        <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#tutorialModal">-->--}}
+{{--            <!--            فێرکاری تۆمارکردن-->--}}
+{{--            <!--        </button>-->--}}
+{{--            <!--        <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#helpModal">پەیوەندی-->--}}
+{{--            <!--        </button>-->--}}
+{{--            <!--    </div>-->--}}
+{{--            <!--</div>-->--}}
 
 
             <div class="row pb-3">
