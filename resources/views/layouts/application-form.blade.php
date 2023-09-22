@@ -29,7 +29,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('home') }}">
+        <a class="navbar-brand" style="margin-right: var(--bs-navbar-brand-margin-end) !important; margin-left: 0 !important;"
+           href="{{ route('home') }}">
 
             <img src="{{ asset('logos/epu-logo.png') }}" alt="EPU Logo" width="64px" height="auto">
         </a>
