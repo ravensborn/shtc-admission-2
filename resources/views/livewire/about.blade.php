@@ -3,15 +3,15 @@
 
         <div class="col-12" dir="ltr">
 
-            <div class="row">
-                <div class="col-md-3 col-8">
-                    <img src="{{ asset('logos/epu.png') }}" class="img-fluid" alt="EPU Logo">
+            <div class="row mb-3 text-center">
+                <div class="col-12">
+                    <img src="{{ asset('logos/epu.png') }}" style="width: 240px;" class="img-fluid" alt="EPU Logo">
                 </div>
             </div>
 
-            <div class="p-3 border rounded mt-3">
+            <div class="rounded p-3" style="background-color: #f8f9fa;">
 
-                <h4 class="border-bottom pb-2 mb-4">Shaqlawa Technical College - Admission System</h4>
+                <h4 class="border-bottom pb-2 mb-4">Erbil Polytechnic University - Admissions System</h4>
 
                 <ul>
                     <li class="pb-3">
@@ -40,8 +40,8 @@
                 <p>
                     Supervised by: <span class="fw-bold">Mr. Balen Abdoulqadir</span>
                 </p>
-
             </div>
+
 
         </div>
     </div>

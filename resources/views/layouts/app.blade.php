@@ -1,11 +1,17 @@
 <!doctype html>
-<html lang="ckb" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SHTC - Admissions</title>
+    <title>EPU - Admissions</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css">
+    @if(isset($enableRtl) && $enableRtl)
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css">
+    @else
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+    @endif
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
         [x-cloak] {
             display: none;
@@ -14,8 +20,6 @@
         .dynamic-text {
             font-size: 3.0vh !important;
         }
-
-
     </style>
 
     @livewireStyles
@@ -38,45 +42,33 @@
 
                    <a class="nav-link aria-current="
                       href="{{ route('home') }}">
-                  {{ config('envAccess.COLLEGE_NAME_KURDISH') }}
+                  {{ config('envAccess.COLLEGE_NAME') }}
                   </a>
       </span>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-              @if(auth()->check() && auth()->user()->hasRole('admin'))
-
+                @if(auth()->check() && auth()->user()->hasRole('admin'))
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
                     </li>
-
-                  @endif
-
-
+                @endif
 
                 <li class="nav-item">
                     <a class="nav-link @if(request()->is('/')) active @endif" aria-current="page"
-                       href="{{ route('home') }}">سەرەتا</a>
+                       href="{{ route('home') }}">Home</a>
                 </li>
 
-                  @if(config('envAccess.ALLOW_REGISTER'))
-                      <li class="nav-item">
-                          <a class="nav-link @if(request()->is('admissions/create')) active @endif"
-                             href="{{ route('admissions.create') }}">تۆمارکردنی قوتابی</a>
-                      </li>
-                  @endif
-
-
-                @if(config('envAccess.RESULT_MODE'))
+                @if(config('envAccess.ALLOW_REGISTER'))
                     <li class="nav-item">
-                        <a class="nav-link @if(request()->is('admissions/result')) active @endif"
-                           href="{{ route('admissions.result') }}">وەرگرتنەوەی ئەنجام</a>
+                        <a class="nav-link @if(request()->is('admissions/create')) active @endif"
+                           href="{{ route('admissions.create') }}">Application Form</a>
                     </li>
                 @endif
 
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{{ route('about') }}">دەربارە</a>
+                       href="{{ route('about') }}">About</a>
                 </li>
 
             </ul>

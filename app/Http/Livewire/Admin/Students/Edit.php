@@ -34,6 +34,8 @@ class Edit extends Component
     public $kafala;
     public $pshknini_pzishki;
     public $daray_psula;
+    public $farmany_wargrtn;
+    public $farmany_wargrtn_names;
 
     public string $name_kurdish = "";
     public string $name_english = "";
@@ -43,6 +45,7 @@ class Edit extends Component
     public string $birthplace = "";
 
     public string $phone = "";
+    public string $email = "";
     public string $nationality = "";
     public string $school = "";
 
@@ -50,6 +53,7 @@ class Edit extends Component
     public string $department_id = "";
     public string $department_type_id = "";
 
+    public string $school_code = "";
     public string $degree_total = "";
 
     public string $student_type_id = "";
@@ -86,6 +90,9 @@ class Edit extends Component
         'brwanama_12' => 'nullable|mimes:jpg,jpeg,png|max:5120',
         'kafala' => 'nullable|mimes:jpg,jpeg,png|max:5120',
         'pshknini_pzishki' => 'nullable|mimes:jpg,jpeg,png|max:5120',
+        'daray_psula' => 'nullable|mimes:jpg,jpeg,png|max:5120',
+        'farmany_wargrtn' => 'nullable|mimes:jpg,jpeg,png|max:5120',
+        'farmany_wargrtn_names' => 'nullable|mimes:jpg,jpeg,png|max:5120',
 
         'name_kurdish' => 'required|max:50|min:4',
         'name_english' => 'required|max:50|min:4',
@@ -96,6 +103,7 @@ class Edit extends Component
 
 
         'phone' => 'required|max:255',
+        'email' => 'nullable|email|max:255',
         'nationality' => 'required|max:255',
         'school' => 'required|max:255',
 
@@ -103,6 +111,7 @@ class Edit extends Component
         'department_type_id' => 'required|in:1,2,3',
         'department_id' => 'required|in:1,2,3,4,5,6,7,8,9',
 
+        'school_code' => 'required|max:255',
         'degree_total' => 'required|max:255',
 
         'student_type_id' => 'required|in:1,2',
@@ -305,6 +314,32 @@ class Edit extends Component
             $this->daray_psula = null;
         }
 
+        if ($this->farmany_wargrtn) {
+            $name = 'farmany_wargrtn';
+            if ($student->hasMedia($name)) {
+                $student->clearMediaCollection($name);
+            }
+            $student->addMedia($this->farmany_wargrtn)
+                ->usingName($name)
+                ->usingFilename($name . '.' . $this->farmany_wargrtn->getClientOriginalExtension())
+                ->preservingOriginal()
+                ->toMediaCollection($name);
+            $this->farmany_wargrtn = null;
+        }
+
+        if ($this->farmany_wargrtn_names) {
+            $name = 'farmany_wargrtn_names';
+            if ($student->hasMedia($name)) {
+                $student->clearMediaCollection($name);
+            }
+            $student->addMedia($this->farmany_wargrtn_names)
+                ->usingName($name)
+                ->usingFilename($name . '.' . $this->farmany_wargrtn_names->getClientOriginalExtension())
+                ->preservingOriginal()
+                ->toMediaCollection($name);
+            $this->farmany_wargrtn_names = null;
+        }
+
         $student->update($validated);
 
         $this->alert('success', 'بەسەرکەوتوویی نوێکرایەوە.');
@@ -329,11 +364,13 @@ class Edit extends Component
         $this->birthday = $student->birthday->format('Y-m-d');
         $this->birthplace = $student->birthplace;
         $this->phone = $student->phone;
+        $this->email = $student->email;
         $this->nationality = $student->nationality;
         $this->school = $student->school;
         $this->education_type_id = $student->education_type_id;
         $this->department_id = $student->department_id;
         $this->department_type_id = $student->department_type_id;
+        $this->school_code = $student->school_code;
         $this->degree_total = $student->degree_total;
         $this->student_type_id = $student->student_type_id;
         $this->religion = $student->religion;

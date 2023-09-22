@@ -5,26 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EPU - Admissions</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+    @if(isset($enableRtl) && $enableRtl)
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css">
+    @else
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+    @endif
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css">
     <style>
         [x-cloak] {
             display: none;
         }
 
-        .table-ltr {
-            direction: rtl !important;
-        }
-
-        .table-ltr * {
-            direction: rtl !important;
+        .dynamic-text {
+            font-size: 3.0vh !important;
         }
     </style>
 
     @livewireStyles
 </head>
 <body>
+
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
@@ -37,68 +38,46 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <span class="navbar-text">
+
+                   <a class="nav-link aria-current="
+                      href="{{ route('home') }}">
+                  {{ config('envAccess.COLLEGE_NAME') }}
+                  </a>
+      </span>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
                 <li class="nav-item">
                     <a class="nav-link @if(request()->is('/')) active @endif" aria-current="page"
-                       href="{{ route('home') }}">Home</a>
+                       href="{{ route('home') }}">سەرەتا</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link @if(request()->is('admin')) active @endif" aria-current="page"
-                       href="{{ route('admin.dashboard') }}">Admin Panel</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link @if(request()->is('admin/statistics')) active @endif" aria-current="page"
-                       href="{{ route('admin.statistics') }}">Statistics</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page"
-                       href="{{ route('admin.logout') }}">Logout</a>
+                    <a class="nav-link"
+                       href="{{ route('about') }}">دەربارە</a>
                 </li>
 
             </ul>
-            <span class="navbar-text">
-        {{ config('envAccess.COLLEGE_NAME') }}
-      </span>
+
         </div>
     </div>
 </nav>
-
 
 <div class="container">
 
     @yield('content')
 
-
-    <footer class="footer my-5 pt-3 border-top">
-        <div class="container">
-            <span class="text-muted">Copyright &copy; {{ Date('Y') }} - </span>
-            <span>
-            <span class="text-muted">
-                  Erbil Polytechnic University
-            </span>
-        </span>
-
-
-        </div>
-    </footer>
-
+    @include('pages.footer')
 </div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-<script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
 
 @livewireScripts
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <x-livewire-alert::scripts/>
-
-
 
 </body>
 </html>

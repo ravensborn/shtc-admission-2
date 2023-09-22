@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Department;
 use App\Models\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -19,11 +20,11 @@ class StudentFactory extends Factory
     public function definition()
     {
         static $number = 1;
-        $departmentId = $this->faker->numberBetween(1, 9);
+        $departmentId = $this->faker->randomElement(Department::all()->pluck('id')->toArray());
 //        $departmentId = $this->faker->numberBetween(1, 5);
         return [
             'code' => $this->faker->numberBetween(1000000, 9999999),
-            'status' => $this->faker->numberBetween(1, 5),
+            'status' => $this->faker->numberBetween(1, 9),
             'number' => sprintf(
                 '%s%s',
                 'SHTC_',
@@ -36,12 +37,13 @@ class StudentFactory extends Factory
             'birthday' => $this->faker->date,
             'birthplace' => $this->faker->city,
             'phone' => '+964750' . $this->faker->numberBetween(1000000, 9999999),
+            'email' => $this->faker->email,
             'nationality' => 'Kurdish',
             'school' => 'Shaqlawa Educational Compound',
             'education_type_id' => $this->faker->numberBetween(1, 3),
             'department_type_id' => $this->faker->numberBetween(1, 3),
             'department_id' => $departmentId,
-            'department_name' => Student::getDepartmentName($departmentId),
+            'school_code' => $this->faker->numberBetween(10000000000000,999999999999999),
             'degree_total' => $this->faker->numberBetween(51, 100),
             'student_type_id' => $this->faker->numberBetween(1, 2),
             'religion' => ['A', 'B', 'C'][array_rand(['A', 'B', 'C'])],

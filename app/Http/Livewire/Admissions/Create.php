@@ -51,6 +51,7 @@ class Create extends Component
     public string $birthplace = "";
 
     public string $phone = "";
+    public string $email = "";
     public string $nationality = "";
     public string $school = "";
 
@@ -58,6 +59,7 @@ class Create extends Component
     public string $department_id = "";
     public string $department_type_id = "";
 
+    public string $school_code = "";
     public string $degree_total = "";
 
     public string $student_type_id = "";
@@ -105,6 +107,7 @@ class Create extends Component
         'birthplace' => 'required|max:255',
 
         'phone' => 'required|max:255',
+        'email' => 'nullable|email|max:255',
         'nationality' => 'required|max:255',
         'school' => 'required|max:255',
 
@@ -112,6 +115,7 @@ class Create extends Component
         'department_type_id' => 'required|in:1,2,3',
         'department_id' => 'required|in:1,2,3,4,5,6,7,8,9',
 
+        'school_code' => 'required|max:255',
         'degree_total' => 'required|max:255',
 
         'student_type_id' => 'required|in:1,2',
@@ -383,7 +387,7 @@ class Create extends Component
 
     public function isAdmin(): bool
     {
-        return auth()->check() && (auth()->user()->email == 'yad.hoshyar@gmail.com' || auth()->user()->email == 'abdulqadr.balen@shtc-tomar.com');
+        return auth()->check() && auth()->user()->hasRole('admin');
     }
 
     public function mount()
@@ -394,12 +398,12 @@ class Create extends Component
 
             if(!config('envAccess.ALLOW_REGISTER')) {
 
-                return redirect()->route('home');
+                 redirect()->route('home');
             }
 
         }
 
-        //Testing mode
+//        Testing mode
 //        $this->studentResultPage = true;
 //        $this->student = Student::first();
 
@@ -409,6 +413,8 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.admissions.create')->extends('layouts.app')->section('content');
+        return view('livewire.admissions.create')->extends('layouts.application-form', [
+            'enableRtl' => true
+        ])->section('content');
     }
 }

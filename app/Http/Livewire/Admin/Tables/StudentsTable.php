@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Tables;
 
+use App\Models\Department;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -27,37 +28,11 @@ class StudentsTable extends DataTableComponent
     {
         $user = auth()->user();
 
-        $builder = Student::query();
+        $builder = Student::query()->with(['department']);
 
-        if ($user->hasRole('limited')) {
+        if (!$user->hasRole('admin') && $user->department_id) {
 
-            if ($user->hasRole('MIS')) {
-                $builder->where('department_id', 2);
-            }
-            if ($user->hasRole('AD')) {
-                $builder->where('department_id', 3);
-            }
-            if ($user->hasRole('VET')) {
-                $builder->where('department_id', 4);
-            }
-            if ($user->hasRole('NURSING')) {
-                $builder->where('department_id', 5);
-            }
-            if ($user->hasRole('MLT')) {
-                $builder->where('department_id', 6);
-            }
-            if ($user->hasRole('ARC')) {
-                $builder->where('department_id', 7);
-            }
-            if ($user->hasRole('BUILD')) {
-                $builder->where('department_id', 8);
-            }
-            if ($user->hasRole('TOURISM')) {
-                $builder->where('department_id', 9);
-            }
-            if ($user->hasRole('FOOD_QUALITY')) {
-                $builder->where('department_id', 10);
-            }
+            $builder->where('department_id', $user->department_id);
         }
 
         return $builder;
@@ -74,6 +49,17 @@ class StudentsTable extends DataTableComponent
 
     public function filters(): array
     {
+        $departments = Department::select('id', 'name')->get();
+
+        $filteredDepartments = [];
+
+        foreach ($departments as $department) {
+            $filteredDepartments[$department->id] = $department->name;
+        }
+
+        $statuses = Student::getStatusArray();
+        unset($statuses[0]);
+
         return [
             SelectFilter::make('Stage')
                 ->setFilterPillTitle('Stage')
@@ -84,15 +70,15 @@ class StudentsTable extends DataTableComponent
                 }),
             SelectFilter::make('Department')
                 ->setFilterPillTitle('Department')
-                ->setFilterPillValues(Student::getDepartments())
-                ->options(array_replace(['' => 'All'], Student::getDepartments()))
+                ->setFilterPillValues($filteredDepartments)
+                ->options(array_replace(['' => 'All'], $filteredDepartments))
                 ->filter(function (Builder $builder, string $value) {
                     $builder->where('department_id', $value);
                 }),
             SelectFilter::make('Status')
                 ->setFilterPillTitle('Status')
-                ->setFilterPillValues(Student::getStatusArray())
-                ->options(array_replace(['' => 'All'], Student::getStatusArray()))
+                ->setFilterPillValues($statuses)
+                ->options(array_replace(['' => 'All'], $statuses))
                 ->filter(function (Builder $builder, string $value) {
                     $builder->where('status', $value);
                 }),
@@ -110,7 +96,7 @@ class StudentsTable extends DataTableComponent
     {
 
         $student = Student::find($student);
-        if(array_key_exists($stage, Student::getStageStatuses())) {
+        if (array_key_exists($stage, Student::getStageStatuses())) {
             $student->update([
                 'stage' => $stage
             ]);
@@ -119,23 +105,21 @@ class StudentsTable extends DataTableComponent
         $this->alert('success', 'Updated stage for student: ' . $student->name_kurdish . '.');
 
     }
+
     public function columns(): array
     {
         return [
             Column::make("#", "number")->searchable(),
-            Column::make("Code", "code")->searchable(),
+            Column::make("Zankoline", "school_code")->searchable(),
             Column::make("Stage", "stage")
                 ->format(function ($stage, $row, $column) {
 
-                return Student::getStageStatuses()[$stage];
+                    return Student::getStageStatuses()[$stage];
 
-            })->html(),
+                })->html(),
             Column::make("Name", "name_kurdish")->searchable(),
             Column::make("Phone", "phone")->searchable(),
-            Column::make("Department", "department_id")
-                ->format(function ($department_id, $row, $column) {
-                    return Student::getDepartmentName($department_id);
-                })->sortable(),
+            Column::make("Department", "department.name")->sortable(),
             Column::make("Type", "department_type_id")
                 ->format(function ($department_type_id, $row, $column) {
                     return Student::getDepartmentTypeName($department_type_id);
@@ -167,10 +151,10 @@ class StudentsTable extends DataTableComponent
                     $editBtn = '<a href="' . route('admin.students.edit', $id) . '" class="btn btn-info btn-sm"><span class="icon"> <i class="lni lni-pencil-alt"></i></span></a>';
 //                    $editBtn = '';
 
-                    if(auth()->user()->hasRole('admin')) {
+                    if (auth()->user()->hasRole('admin')) {
                         return $div . $editBtn . '&nbsp;' . $viewBtn . '&nbsp;' . $deleteBtn . $closeDiv;
                     } else {
-                        return $div . $editBtn . '&nbsp;'. $viewBtn . '&nbsp;' . $closeDiv;
+                        return $div . $editBtn . '&nbsp;' . $viewBtn . '&nbsp;' . $closeDiv;
                     }
                 })
                 ->html(),

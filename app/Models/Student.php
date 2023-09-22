@@ -46,22 +46,6 @@ class Student extends Model implements HasMedia
         ];
     }
 
-    public static function convertRoleToDepartmentId($role) {
-
-        switch ($role) {
-            case 'MIS': return 2;
-            case 'AD': return 3;
-            case 'VET': return 4;
-            case 'NURSING': return 5;
-            case 'MLT': return 6;
-            case 'ARC': return 7;
-            case 'BUILD': return 8;
-            case 'TOURISM': return 9;
-            case 'FOOD_QUALITY': return 10;
-        }
-
-    }
-
     public static function getStatusArray(): array
     {
         return [
@@ -136,32 +120,26 @@ class Student extends Model implements HasMedia
         return $this->getStudentTypeArray()[$this->student_type_id];
     }
 
-    public static function getDepartments(): array
-    {
-        return [
-            1 => 'تەکنەلۆجیای زانیاری',
-            2 => 'سیستەمی زانیاری کارگێڕی',
-            3 => 'کارگێڕی کار',
-            4 => 'ڤێرتەرنەری',
-            5 => 'پەرستاری',
-            6 => 'شیکاری نەخۆشیەکان',
-            7 => 'تەلارسازی',
-            8 => 'بیناکاری',
-            9 => 'کارگێڕی دەزگاکانی گەشتیاری',
-            10 => 'کوالێتی خۆراک',
+//    public static function getDepartments(): array
+//    {
+//        return [
+//            1 => 'تەکنەلۆجیای زانیاری',
+//            2 => 'سیستەمی زانیاری کارگێڕی',
+//            3 => 'کارگێڕی کار',
+//            4 => 'ڤێرتەرنەری',
+//            5 => 'پەرستاری',
+//            6 => 'شیکاری نەخۆشیەکان',
+//            7 => 'تەلارسازی',
+//            8 => 'بیناکاری',
+//            9 => 'کارگێڕی دەزگاکانی گەشتیاری',
+//            10 => 'کوالێتی خۆراک',
+//        ];
+//    }
 
-        ];
-    }
-
-    public function getDepartment(): string
-    {
-        return self::getDepartments()[$this->department_id];
-    }
-
-    public static function getDepartmentName($id): string
-    {
-        return self::getDepartments()[$id];
-    }
+//    public static function getDepartmentName($id): string
+//    {
+//        return self::getDepartments()[$id];
+//    }
 
     public function getGender(): string
     {
@@ -240,6 +218,11 @@ class Student extends Model implements HasMedia
             $prefix,
             str_pad((string)$next, 6, "0", STR_PAD_LEFT)
         );
+    }
+
+    public function department(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Department::class);
     }
 
 }

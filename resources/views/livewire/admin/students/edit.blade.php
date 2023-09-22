@@ -557,6 +557,76 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 mt-3">
+                        <div class="card border">
+                            <div class="card-header">
+                                فەرمانی وەرگرتن
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            فەرمانی وەرگرتن
+                                        </div>
+                                        <input type="file" class="form-control-file"
+                                               wire:model.lazy="farmany_wargrtn"
+                                               id="farmany_wargrtn">
+                                        @error('farmany_wargrtn')
+                                        <div class="text-danger text-start" dir="ltr">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-6">
+                                        @if($farmany_wargrtn)
+                                            <img src="{{ $farmany_wargrtn->temporaryUrl() }}" alt="Photo"
+                                                 id="farmany_wargrtn"
+                                                 class="img-thumbnail float-end"
+                                                 style="width: auto; height: 100px;">
+                                        @endif
+                                        @if($student->hasMedia('farmany_wargrtn'))
+                                            <a href="{{ $student->getFirstMedia('farmany_wargrtn')->getFullUrl() }}">
+                                                <img
+                                                        style="width: 128px"
+                                                        class="img-thumbnail float-start"
+                                                        src="{{ $student->getFirstMedia('farmany_wargrtn')->getFullUrl() }}"
+                                                        alt="Student Attachment">
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            لیستی ناوەکان
+                                        </div>
+                                        <input type="file" class="form-control-file"
+                                               wire:model.lazy="farmany_wargrtn_names"
+                                               id="farmany_wargrtn_names">
+                                        @error('farmany_wargrtn_names')
+                                        <div class="text-danger text-start" dir="ltr">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-6">
+                                        @if($farmany_wargrtn_names)
+                                            <img src="{{ $farmany_wargrtn_names->temporaryUrl() }}" alt="Photo"
+                                                 id="farmany_wargrtn_names"
+                                                 class="img-thumbnail float-end"
+                                                 style="width: auto; height: 100px;">
+                                        @endif
+                                        @if($student->hasMedia('farmany_wargrtn_names'))
+                                            <a href="{{ $student->getFirstMedia('farmany_wargrtn_names')->getFullUrl() }}">
+                                                <img
+                                                    style="width: 128px"
+                                                    class="img-thumbnail float-start"
+                                                    src="{{ $student->getFirstMedia('farmany_wargrtn_names')->getFullUrl() }}"
+                                                    alt="Student Attachment">
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="col-12 mt-3">
                         <div class="card border">
@@ -637,6 +707,20 @@
                                     </div>
                                     <div class="col-md-4 mt-3 mt-md-0">
                                         <div>
+                                            <label for="email" class="form-label">ئیمەیل</label>
+                                            <input type="email" class="form-control"
+                                                   wire:model.lazy="email"
+                                                   id="email">
+                                        </div>
+                                        @error('email')
+                                        <div class="text-danger" dir="ltr">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-md-4">
+                                        <div>
                                             <label for="nationality" class="form-label">نەتەوە</label>
                                             <input type="text" class="form-control" wire:model.lazy="nationality"
                                                    id="nationality">
@@ -708,40 +792,29 @@
                                             <select wire:model.lazy="department_id" id="department_id"
                                                     class="form-control">
                                                 <option>-- دانەیەک هەڵبژێرە --</option>
-                                                <option value="1">
-                                                    تەکنەلۆجیای زانیاری
-                                                </option>
-                                                <option value="2">سیستەمی
-                                                    زانیاری
-                                                    کارگێڕی
-                                                </option>
-                                                <option value="3">کارگێڕی
-                                                    کار
-                                                </option>
-                                                <option value="4">
-                                                    ڤێتەرنەری
-                                                </option>
-                                                <option value="5">
-                                                    پەرستاری
-                                                </option>
-                                                <option value="6">شیکاری
-                                                    نەخۆشیەکان
-                                                </option>
-                                                <option value="7">
-                                                    تەلارسازی
-                                                </option>
-                                                <option value="8">
-                                                    بیناکاری
-                                                </option>
-                                                <option value="9">دەزگای
-                                                    کارگێڕی
-                                                    گەشتیاری
-                                                </option>
+
+                                                @foreach(\App\Models\Department::all() as $department)
+                                                    <option value="{{ $department->id }}">
+                                                        {{ $department->name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                             @error('department_id')
                                             <div class="text-danger" dir="ltr">{{ $message }}</div>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="col-md-4 mt-3 mt-md-0">
+                                        <div>
+                                            <label for="school_code" class="form-label">کۆدی زانکۆڵاین
+                                            </label>
+                                            <input type="text" class="form-control"
+                                                   wire:model.lazy="school_code"
+                                                   id="school_code">
+                                        </div>
+                                        @error('school_code')
+                                        <div class="text-danger" dir="ltr">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="col-md-4 mt-3 mt-md-0">
                                         <div>

@@ -6,7 +6,7 @@
             <div class="col-12">
 
                 <div class="alert alert-info" style="direction: ltr;">
-                    You are logged in as admin,
+                    You are logged in,
                     click <a href="{{ route('admin.dashboard') }}">here</a> to navigate to dashboard.
                 </div>
             </div>
@@ -15,99 +15,64 @@
 
     @endif
     <div class="row mt-5">
-        <div class="col-12 text-center">
-
-            <div class="row pb-3 fw-bold dynamic-text" style="font-size: 42px; color: #084298">
-                {{ config('envAccess.UNIVERSITY_NAME_KURDISH') . ' - ' . config('envAccess.COLLEGE_NAME_KURDISH') }}
-            </div>
-
-            <div class="row border-bottom pb-3">
-                <div class="col-6 col-md-3">
-{{--                    <img src="{{ asset('logos/epu.png') }}"--}}
-{{--                         style="width: 100%"--}}
-{{--                         alt="EPU Logo">--}}
-                </div>
-                <div class="col-6 col-md-3">
-{{--                    <img src="{{ asset('logos/stc.png') }}"--}}
-{{--                         style="width: 100%"--}}
-{{--                         alt="EPU Logo">--}}
-                </div>
-            </div>
+        <div class="col-12">
 
 
-           <div class="row border-bottom pb-4 mt-4">
-              <div class="col-12 text-start">
-              <a href="{{ route('admissions.create')  }}" class="btn btn-outline-primary">فۆڕمی تۆمارکردنی
-                       قوتابی</a>
-                  <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#tutorialModal">
-                        فێرکاری تۆمارکردن
-                    </button>
-                    <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#helpModal">پەیوەندی
-                    </button>
-                </div>
-            </div>
-
-
-            <div class="row pb-3">
+            <div class="row">
                 <div class="col-12">
-                    <p class="mt-4 fw-bold text-start">
-                        کورتەیەک دەربارەى دامەزراندنى کۆلێژی تەکنیکى شەقڵاوە
-                    </p>
-                    <p class="text-start">
-                        بەخشینى زانست بە قوتابیان ودەرچوانیان لە کۆلێژی تەکنیکى شەقڵاوە دەستکەوتێکى گەورەیە بۆ شارى
-                        شەقڵاوە ودانیشتوانەکەى وپێویستێکى سەردەمى مۆدێرن وبەرەو پێش بردنى زانست وسوود مەندى خەڵکى
-                        شەقڵاوە بوو بۆ تەواو کردنى خوێندن ودەستکەوتێکى گەورە بۆ قوتابیە هەژارەکان و کەم دەرامەتەکان
-                        کەنەیان دەتوانی درێژە بە خوێندنى خۆیان بدەن دوور لە ماڵەوە.
-                    </p>
-                    <p class="mt-3 text-start">
-                        بۆیە بە پێ بریارى ئەنجوومەنى خوێندنی
-                        باڵا ژمارە (٥) لە ٢٨/٨/١٩٩٧ ولە گەڵ دەست بە کاربوونى کابینى سێ یەمى حکومەتى هەرێمێ کوردستان لە
-                        ژێر چاودێرى شەهید (سامى عبدالرحمان) ئەم دیاریە پێشکەش بە شەقڵاوە کرا.
-                    </p>
-                    <p class="mt-3 text-start">
-                        کۆلێژەکە یەکەم ساڵى
-                        خوێندنى لە ناو باڵاخانەى پەیمانگەى تەکنیکى هەولێر دەستى بە وەرگرتنى قوتبیان کرد کە ژمارەیان (٢٧)
-                        قوتابیى بوو بە کردنەوەى بەشى کارگێرى ئوتێل وگەشت وگوزار. وە لە ٢٥-٩-١٩٩٩ کۆلێژی بۆ ساڵى دووەم
-                        ١٩٩٩-٢٠٠٠ گواستراوە بۆ شەقڵاوە.
-                    </p>
-                    <p class="mt-3 text-start">
-                        کۆلێژی تەکنیکی شەقڵاوە پێكدێت لەم بەشانە:
-                    </p>
-                    <ul class="text-start">
-                        <li>
-                            تەکنەلۆجیای زانیاری
-                        </li>
-                        <li>سیستەمی
-                            زانیاری
-                            کارگێڕی
-                        </li>
-                        <li>کارگێڕی
-                            کار
-                        </li>
-                        <li>
-                            ڤێتەرنەری
-                        </li>
-                        <li>
-                            پەرستاری
-                        </li>
-                        <li>شیکاری
-                            نەخۆشیەکان
-                        </li>
-                        <li>
-                            تەلارسازی
-                        </li>
-                        <li>
-                            بیناکاری
-                        </li>
-                        <li>دەزگای
-                            کارگێڕی
-                            گەشتیاری
-                        </li>
-                        <li>
-                            کوالێتی خۆراک
-                        </li>
+                    <div class="row mb-3 text-center">
+                        <div class="col-12">
+                            <img src="{{ asset('logos/epu.png') }}"
+                                 style="width: 250px;"
+                                 alt="EPU Logo">
+                        </div>
+                    </div>
+                    <div class="rounded p-3" style="background-color: #f8f9fa;">
 
-                    </ul>
+                        <div class="text-center text-md-start">
+                            <h4>{{ config('envAccess.COLLEGE_NAME') }} - Admissions</h4>
+                            <p>
+                                Erbil Polytechnic University (EPU) is proud to announce the launch of its innovative and
+                                streamlined student admission system, designed to revolutionize the process of admitting
+                                future scholars into our esteemed institution. This cutting-edge system represents a
+                                significant milestone in EPU's commitment to providing a seamless and efficient
+                                experience for prospective students, ensuring that the journey to academic excellence
+                                begins with a user-friendly and transparent admissions process. With a focus on
+                                accessibility, convenience, and fairness, the new student admission system at EPU stands
+                                as a testament to our dedication to fostering educational opportunities and welcoming
+                                the brightest minds into our vibrant academic community.
+                            </p>
+                            <p>
+                                To begin the registration process, please click on the "فۆڕمی تۆمارکردنی
+                                قوتابی" button.
+                            </p>
+
+                            @if(config('envAccess.ALLOW_REGISTER'))
+
+                                <div class="text-center border-top pt-3">
+
+                                    <a href="{{ route('admissions.create')  }}" class="btn btn-outline-primary mb-1">فۆڕمی
+                                        تۆمارکردنی
+                                        قوتابی</a>
+                                    <button class="btn btn-outline-warning mb-1" data-bs-toggle="modal"
+                                            data-bs-target="#tutorialModal">
+                                        فێرکاری تۆمارکردن
+                                    </button>
+                                    <button class="btn btn-outline-info mb-1" data-bs-toggle="modal"
+                                            data-bs-target="#helpModal">
+                                        پەیوەندی
+                                    </button>
+
+                                </div>
+                            @else
+                                <div class="text-start text-warning">
+                                    <i class="bi bi-info-circle"></i>
+                                    The application form has not yet become available.
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -119,13 +84,13 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="helpModalLabel">پەیوەندی</h5>
+                    <h5 class="modal-title" id="helpModalLabel">Contact</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <ul class="mt-3">
                         <li>
-                            ئیمەیل:
+                            E-Mail Address:
                             <span dir="ltr">
                                     <a class="text-decoration-none text-muted"
                                        href="mailto:{{ config('envAccess.HELP_EMAIL') }}">
@@ -134,18 +99,29 @@
                                 </span>
                         </li>
                         <li>
-                            ژمارەی هۆبەی تەکنیکی:
-                            <div dir="ltr">
-                                <a class="text-decoration-none text-muted"
-                                   href="tel:{{ config('envAccess.TOMAR_NUMBER') }}">
-                                    {{ config('envAccess.TOMAR_NUMBER_FORMATTED') }}
-                                </a>
-                            </div>
+                            @if(config('envAccess.SUPPORT_PRIMARY_PHONE_NUMBER'))
+                                Available Phone Numbers:
+                                <div dir="ltr">
+                                    <div>
+                                        <a class="text-decoration-none text-muted"
+                                           href="tel:{{ config('envAccess.SUPPORT_PRIMARY_PHONE_NUMBER') }}">
+                                            {{ config('envAccess.SUPPORT_PRIMARY_PHONE_NUMBER') }}
+                                        </a>
+                                    </div>
+                                    @if(config('envAccess.SUPPORT_SECONDARY_PHONE_NUMBER'))
+                                        <div>
+                                            <a class="text-decoration-none text-muted"
+                                               href="tel:{{ config('envAccess.SUPPORT_SECONDARY_PHONE_NUMBER') }}">
+                                                {{ config('envAccess.SUPPORT_SECONDARY_PHONE_NUMBER') }}
+                                            </a>
+                                        </div>
+
+                                    @endif
+                                </div>
+                            @endif
                         </li>
                     </ul>
-                    <div>
-                        بەسەرپەرشتی: م. بەڵێن عبدالقادر، بەرپرسی تۆمار.
-        </div>
+
                 </div>
             </div>
         </div>
@@ -156,7 +132,9 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="tutorialModalLabel">فێرکاری تۆمارکردن</h5>
+                    <h5 class="modal-title" id="tutorialModalLabel">
+                        Registration Tutorial
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

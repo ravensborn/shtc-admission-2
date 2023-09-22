@@ -5,8 +5,8 @@
     <div class="container">
         <span class="text-muted">Copyright &copy; {{ Date('Y') }} - </span>
         <span>
-            <a href="{{ route('admin.dashboard') }}" class="text-muted" style="text-decoration: none;">
-                {{ config('envAccess.COLLEGE_NAME_KURDISH') }}
+            <a href="https://epu.edu.iq" target="_blank" class="text-muted" style="text-decoration: none;">
+                Erbil Polytechnic University
             </a>
         </span>
 

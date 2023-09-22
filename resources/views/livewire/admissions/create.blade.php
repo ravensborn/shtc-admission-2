@@ -1,4 +1,4 @@
-<div>
+<div dir="rtl">
 
 
     <div class="row">
@@ -11,7 +11,9 @@
 
 
     <div wire:loading.remove wire:target="submit">
+
         @if(!$studentResultPage)
+
             <div class="row">
                 <div class="col-12">
 
@@ -37,14 +39,26 @@
                                 </span>
                                 </li>
                                 <li>
-                                    ژمارەی هۆبەی تەکنیکی:
-                                    <div dir="ltr">
-                                        <a class="text-decoration-none text-muted"
-                                           href="tel:{{ config('envAccess.TOMAR_NUMBER') }}">
-                                            {{ config('envAccess.TOMAR_NUMBER_FORMATTED') }}
-                                        </a>
-                                    </div>
+                                    @if(config('envAccess.SUPPORT_PRIMARY_PHONE_NUMBER'))
+                                        ژمارەی مۆبایل:
+                                        <div dir="ltr">
+                                            <div>
+                                                <a class="text-decoration-none text-muted"
+                                                   href="tel:{{ config('envAccess.SUPPORT_PRIMARY_PHONE_NUMBER') }}">
+                                                    {{ config('envAccess.SUPPORT_PRIMARY_PHONE_NUMBER') }}
+                                                </a>
+                                            </div>
+                                            @if(config('envAccess.SUPPORT_SECONDARY_PHONE_NUMBER'))
+                                                <div>
+                                                    <a class="text-decoration-none text-muted"
+                                                       href="tel:{{ config('envAccess.SUPPORT_SECONDARY_PHONE_NUMBER') }}">
+                                                        {{ config('envAccess.SUPPORT_SECONDARY_PHONE_NUMBER') }}
+                                                    </a>
+                                                </div>
 
+                                            @endif
+                                        </div>
+                                    @endif
                                 </li>
 
                             </ul>
@@ -552,6 +566,19 @@
                                             </div>
                                             <div class="col-md-4 mt-3 mt-md-0">
                                                 <div>
+                                                    <label for="email" class="form-label">ئیمەیل</label>
+                                                    <input type="email" class="form-control"
+                                                           wire:model.lazy="email"
+                                                           id="email">
+                                                </div>
+                                                @error('email')
+                                                <div class="text-danger" dir="ltr">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <div>
                                                     <label for="nationality" class="form-label">نەتەوە</label>
                                                     <input type="text" class="form-control"
                                                            wire:model.lazy="nationality"
@@ -625,43 +652,29 @@
                                                     <select wire:model.lazy="department_id" id="department_id"
                                                             class="form-control">
                                                         <option>-- دانەیەک هەڵبژێرە --</option>
-                                                        <option value="1">
-                                                            تەکنەلۆجیای زانیاری
-                                                        </option>
-                                                        <option value="2">سیستەمی
-                                                            زانیاری
-                                                            کارگێڕی
-                                                        </option>
-                                                        <option value="3">کارگێڕی
-                                                            کار
-                                                        </option>
-                                                        <option value="4">
-                                                            ڤێتەرنەری
-                                                        </option>
-                                                        <option value="5">
-                                                            پەرستاری
-                                                        </option>
-                                                        <option value="6">شیکاری
-                                                            نەخۆشیەکان
-                                                        </option>
-                                                        <option value="7">
-                                                            تەلارسازی
-                                                        </option>
-                                                        <option value="8">
-                                                            بیناکاری
-                                                        </option>
-                                                        <option value="9">دەزگای
-                                                            کارگێڕی
-                                                            گەشتیاری
-                                                        </option>
-                                                        <option value="10">
-                                                            کوالیتی خۆراک
-                                                        </option>
+
+                                                        @foreach(\App\Models\Department::all() as $department)
+                                                            <option value="{{ $department->id }}">
+                                                                {{ $department->name }}
+                                                            </option>
+                                                        @endforeach
                                                     </select>
                                                     @error('department_id')
                                                     <div class="text-danger" dir="ltr">{{ $message }}</div>
                                                     @enderror
                                                 </div>
+                                            </div>
+                                            <div class="col-md-4 mt-3 mt-md-0">
+                                                <div>
+                                                    <label for="school_code" class="form-label">کۆدی زانکۆڵاین
+                                                    </label>
+                                                    <input type="text" class="form-control"
+                                                           wire:model.lazy="school_code"
+                                                           id="school_code">
+                                                </div>
+                                                @error('school_code')
+                                                <div class="text-danger" dir="ltr">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="col-md-4 mt-3 mt-md-0">
                                                 <div>
@@ -910,12 +923,19 @@
                                 @endif
                             </div>
                             <div>
-                                کۆد:
-                                {{ $student->code }}
+                                کۆدی زانکۆڵاین:
+                                {{ $student->school_code }}
                             </div>
 
                             <div>
-                                قوتابی ئەزیز، چاوەڕێی ئەنجام بکە.
+                                قوتابی ئەزیز، سەردانی کۆلێژ / پەیمانگا بکە.
+                            </div>
+
+                            <div class="mt-4">
+                                <a class="btn btn-outline-success btn-sm" href="{{ route('home')  }}">
+                                    گەڕانەوە بۆ سەرەتا
+                                    <i class="bi bi-caret-left"></i>
+                                </a>
                             </div>
 
                         </div>

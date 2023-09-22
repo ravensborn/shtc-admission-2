@@ -14,9 +14,12 @@ class ExportController extends Controller
     public function exportAdmin()
     {
 
-        if (auth()->user()->email != 'yad.hoshyar@gmail.com') {
-            abort(404);
+        if (!auth()->user()->hasRole('export')) {
+            abort(401);
         }
+
+
+
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
@@ -57,7 +60,7 @@ class ExportController extends Controller
             $sheet->setCellValue($column++ . $iteration, $student->getStatusName($student->status));
             $sheet->setCellValue($column++ . $iteration, $student->name_kurdish);
             $sheet->setCellValue($column++ . $iteration, $student->name_english);
-            $sheet->setCellValue($column++ . $iteration, $student->getDepartment());
+            $sheet->setCellValue($column++ . $iteration, $student->department->name);
             $sheet->setCellValue($column++ . $iteration, $student->getGender());
             $sheet->setCellValue($column++ . $iteration, $student->phone);
             $sheet->setCellValue($column++ . $iteration, $student->nationality);
