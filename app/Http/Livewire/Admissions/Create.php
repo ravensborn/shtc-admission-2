@@ -96,8 +96,7 @@ class Create extends Component
         'brwanama_12' => 'required|mimes:jpg,jpeg,png|max:5120',
         'kafala' => 'required|mimes:jpg,jpeg,png|max:5120',
         'pshknini_pzishki' => 'required|mimes:jpg,jpeg,png|max:5120',
-
-        'daray_psula' => 'nullable|mimes:jpg,jpeg,png|max:5120',
+        'daray_psula' => 'required|mimes:jpg,jpeg,png|max:5120',
 
         'name_kurdish' => 'required|max:50|min:4',
         'name_english' => 'required|max:50|min:4',
@@ -267,7 +266,6 @@ class Create extends Component
 
         $validated['number'] = Student::generateStudentNumber();
         $validated['uploaded_id_type'] = $this->uploadedIdType;
-        $validated['department_name'] = Student::getDepartmentName($validated['department_id']);
 
         $validated['status'] = Student::STATUS_PENDING;
 
