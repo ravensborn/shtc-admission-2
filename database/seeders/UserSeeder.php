@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Department;
-use App\Models\log;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -60,9 +58,7 @@ class UserSeeder extends Seeder
                 'department_id' => $user['department_id']
             ]);
 
-            foreach ($user['roles'] as $role) {
-                $createdUser->assignRole($role);
-            }
+            $createdUser->syncRoles($user['roles']);
 
         }
 
