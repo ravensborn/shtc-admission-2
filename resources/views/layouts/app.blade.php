@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EPU - Admissions</title>
-
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     @if(isset($enableRtl) && $enableRtl)
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css">
     @else
