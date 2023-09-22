@@ -76,6 +76,10 @@
 
 @livewireScripts
 
+<script>
+    window.livewire_app_url = '{{route('home')}}';
+</script>
+
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <x-livewire-alert::scripts/>

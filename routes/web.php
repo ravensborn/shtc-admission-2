@@ -11,6 +11,7 @@ use App\Http\Livewire\Admissions\Create as AdmissionCreate;
 use App\Models\Department;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Livewire\Controllers\HttpConnectionHandler;
 
 
 /*
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('livewire/message/{name}', [HttpConnectionHandler::class, '__invoke']);
 
 Auth::routes([
     'register' => false,
