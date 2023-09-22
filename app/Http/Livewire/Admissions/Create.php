@@ -267,7 +267,6 @@ class Create extends Component
 
         $validated['number'] = Student::generateStudentNumber();
         $validated['uploaded_id_type'] = $this->uploadedIdType;
-        $validated['department_name'] = Student::getDepartmentName($validated['department_id']);
 
         $validated['status'] = Student::STATUS_PENDING;
 
