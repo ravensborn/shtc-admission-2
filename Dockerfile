@@ -8,7 +8,7 @@ ENV PHP_OPCACHE_VALIDATE_TIMESTAMPS=1
 ENV PHP_OPCACHE_REVALIDATE_FREQ=1
 
 # Install dependencies.
-RUN apt-get update && apt-get install -y unzip libpq-dev libcurl4-gnutls-dev nginx libonig-dev
+RUN apt-get update && apt-get install -y unzip libpq-dev libcurl4-gnutls-dev nginx libonig-dev zlib1g-dev libpng-dev
 
 # Install PHP extensions.
 RUN docker-php-ext-install pdo pdo_mysql bcmath curl mbstring opcache exif gd
