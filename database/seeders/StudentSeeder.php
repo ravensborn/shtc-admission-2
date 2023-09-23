@@ -16,9 +16,9 @@ class StudentSeeder extends Seeder
     public function run()
     {
 
-        \App\Models\Student::factory(100)->create([
-            'department_id' => 7,
-        ]);
+//        \App\Models\Student::factory(100)->create([
+//            'department_id' => 7,
+//        ]);
 //
 //        foreach (Student::all() as $student) {
 //

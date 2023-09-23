@@ -54,7 +54,8 @@ return [
     |
     */
 
-    'asset_url' => env('LIVEWIRE_ASSET_URL'),
+    'asset_url' => env('LIVEWIRE_ASSET_URL', null),
+//    'asset_url' => null,
 
     /*
     |--------------------------------------------------------------------------

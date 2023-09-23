@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($student_photo)
-                                            <img src="{{ $student_photo->temporaryUrl() }}" alt="Student Photo"
+                                            <img src="{{ asset('success.png') }}" alt="Student Photo"
                                                  id="student_photo"
                                                  class="img-thumbnail "
                                                  style="width: auto; height: 100px;">
@@ -87,7 +87,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($karty_neshtemany_front_side_photo)
-                                            <img src="{{ $karty_neshtemany_front_side_photo->temporaryUrl() }}"
+                                            <img src="{{ asset('success.png') }}"
                                                  alt="Photo"
                                                  class="img-thumbnail "
                                                  style="width: auto; height: 100px;">
@@ -120,7 +120,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($karty_neshtemany_back_side_photo)
-                                            <img src="{{ $karty_neshtemany_back_side_photo->temporaryUrl() }}"
+                                            <img src="{{ asset('success.png') }}"
                                                  alt="Photo"
                                                  class="img-thumbnail "
                                                  style="width: auto; height: 100px;">
@@ -163,7 +163,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($nasnama_front_side_photo)
-                                            <img src="{{ $nasnama_front_side_photo->temporaryUrl() }}"
+                                            <img src="{{ asset('success.png') }}"
                                                  alt="Photo" id="nasnama_front_side_photo"
                                                  class="img-thumbnail "
                                                  style="width: auto; height: 100px;">
@@ -194,7 +194,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($nasnama_back_side_photo)
-                                            <img src="{{ $nasnama_back_side_photo->temporaryUrl() }}"
+                                            <img src="{{ asset('success.png') }}"
                                                  alt="Photo" id="nasnama_back_side_photo"
                                                  class="img-thumbnail "
                                                  style="width: auto; height: 100px;">
@@ -225,7 +225,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($ragaznama_photo)
-                                            <img src="{{ $ragaznama_photo->temporaryUrl() }}"
+                                            <img src="{{ asset('success.png') }}"
                                                  alt="Photo" id="ragaznama_photo"
                                                  class="img-thumbnail "
                                                  style="width: auto; height: 100px;">
@@ -268,7 +268,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($karty_zanyari_front_side_photo)
-                                            <img src="{{ $karty_zanyari_front_side_photo->temporaryUrl() }}"
+                                            <img src="{{ asset('success.png') }}"
                                                  alt="Photo" id="karty_zanyari_front_side_photo"
                                                  class="img-thumbnail "
                                                  style="width: auto; height: 100px;">
@@ -299,7 +299,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($karty_zanyari_back_side_photo)
-                                            <img src="{{ $karty_zanyari_back_side_photo->temporaryUrl() }}"
+                                            <img src="{{ asset('success.png') }}"
                                                  alt="Photo" id="karty_zanyari_back_side_photo"
                                                  class="img-thumbnail "
                                                  style="width: auto; height: 100px;">
@@ -339,7 +339,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($psulay_xorak_photo)
-                                            <img src="{{ $psulay_xorak_photo->temporaryUrl() }}"
+                                            <img src="{{ asset('success.png') }}"
                                                  alt="Photo" id="psulay_xorak_photo"
                                                  class="img-thumbnail "
                                                  style="width: auto; height: 100px;">
@@ -378,7 +378,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($pshtgere_neshtajebwn_photo)
-                                            <img src="{{ $pshtgere_neshtajebwn_photo->temporaryUrl() }}" alt="Photo"
+                                            <img src="{{ asset('success.png') }}" alt="Photo"
                                                  id="pshtgere_neshtajebwn_photo"
                                                  class="img-thumbnail "
                                                  style="width: auto; height: 100px;">
@@ -417,7 +417,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($brwanama_12)
-                                            <img src="{{ $brwanama_12->temporaryUrl() }}" alt="Photo"
+                                            <img src="{{ asset('success.png') }}" alt="Photo"
                                                  id="brwanama_12"
                                                  class="img-thumbnail "
                                                  style="width: auto; height: 100px;">
@@ -457,7 +457,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($kafala)
-                                            <img src="{{ $kafala->temporaryUrl() }}" alt="Photo"
+                                            <img src="{{ asset('success.png') }}" alt="Photo"
                                                  id="brwanama_12"
                                                  class="img-thumbnail "
                                                  style="width: auto; height: 100px;">
@@ -497,7 +497,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($pshknini_pzishki)
-                                            <img src="{{ $pshknini_pzishki->temporaryUrl() }}" alt="Photo"
+                                            <img src="{{ asset('success.png') }}" alt="Photo"
                                                  id="pshknini_pzishki"
                                                  class="img-thumbnail"
                                                  style="width: auto; height: 100px;">
@@ -538,7 +538,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($daray_psula)
-                                            <img src="{{ $daray_psula->temporaryUrl() }}" alt="Photo"
+                                            <img src="{{ asset('success.png') }}" alt="Photo"
                                                  id="daray_psula"
                                                  class="img-thumbnail float-end"
                                                  style="width: auto; height: 100px;">
@@ -577,7 +577,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($farmany_wargrtn)
-                                            <img src="{{ $farmany_wargrtn->temporaryUrl() }}" alt="Photo"
+                                            <img src="{{ asset('success.png') }}" alt="Photo"
                                                  id="farmany_wargrtn"
                                                  class="img-thumbnail float-end"
                                                  style="width: auto; height: 100px;">
@@ -608,7 +608,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($farmany_wargrtn_names)
-                                            <img src="{{ $farmany_wargrtn_names->temporaryUrl() }}" alt="Photo"
+                                            <img src="{{ asset('success.png') }}" alt="Photo"
                                                  id="farmany_wargrtn_names"
                                                  class="img-thumbnail float-end"
                                                  style="width: auto; height: 100px;">

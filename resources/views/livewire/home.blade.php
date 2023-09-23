@@ -30,7 +30,15 @@
                     <div class="rounded p-3" style="background-color: #f8f9fa;">
 
                         <div class="text-center text-md-start">
-                            <h4>{{ config('envAccess.COLLEGE_NAME') }} - Admissions</h4>
+                            <div class="row">
+                                <div class="col-md-6 col-12 text-md-start text-center">
+                                    <h4>{{ config('envAccess.COLLEGE_NAME') }} - Admissions</h4>
+                                </div>
+                                <div class="col-md-6 col-12 text-md-end text-center">
+                                    <h4>{{ config('envAccess.COLLEGE_NAME_KURDISH') }}</h4>
+                                </div>
+                            </div>
+                            <hr>
                             <p>
                                 Erbil Polytechnic University (EPU) is proud to announce the launch of its innovative and
                                 streamlined student admission system, designed to revolutionize the process of admitting
