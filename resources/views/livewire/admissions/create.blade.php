@@ -668,7 +668,8 @@
                                             </div>
                                             <div class="col-md-4 mt-3 mt-md-0">
                                                 <div>
-                                                    <label for="school_code" class="form-label">کۆدی زانکۆڵاین
+                                                    <label for="school_code" class="form-label">
+                                                        ژمارەی ئەزموونەکان ( کۆدی زانکۆڵاین)
                                                     </label>
                                                     <input type="text" class="form-control"
                                                            wire:model.lazy="school_code"
