@@ -474,7 +474,7 @@
                                             </div>
                                             <div class="col-6">
                                                 @if($daray_psula)
-                                                    <img src="{{ $daray_psula->temporaryUrl() }}" alt="Photo"
+                                                    <img src="{{ asset('success.png') }}" alt="Photo"
                                                          id="daray_psula"
                                                          class="img-thumbnail float-end"
                                                          style="width: auto; height: 100px;">
