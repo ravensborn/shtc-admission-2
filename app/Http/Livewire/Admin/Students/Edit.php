@@ -45,7 +45,7 @@ class Edit extends Component
     public string $birthplace = "";
 
     public string $phone = "";
-    public string $email = "";
+    public string|null $email = "";
     public string $nationality = "";
     public string $school = "";
 
@@ -53,7 +53,7 @@ class Edit extends Component
     public string $department_id = "";
     public string $department_type_id = "";
 
-    public string $school_code = "";
+    public string|null $school_code = "";
     public string $degree_total = "";
 
     public string $student_type_id = "";
