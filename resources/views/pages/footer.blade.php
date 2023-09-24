@@ -5,10 +5,14 @@
             <a href="https://epu.edu.iq" target="_blank" class="text-muted" style="text-decoration: none;">
                 Erbil Polytechnic University
             </a>
+             -
+            <a class="text-muted" style="text-decoration: none;"
+                   href="https://admissions.epu.edu.iq">EPU Admissions</a>
             @if(!auth()->check())
                 -
                 <a class="text-muted" style="text-decoration: none;" href="{{ route('login') }}">Admin Login</a>
             @endif
+
         </span>
 
 
