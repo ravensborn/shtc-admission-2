@@ -64,31 +64,31 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/admin/set-passwords', function () {
 
-//        if(auth()->check() && auth()->user()->email != 'yad.hoshyar@gmail.com') {
-//            abort(401);
-//        }
+        if(auth()->check() && auth()->user()->email != 'yad.hoshyar@gmail.com') {
+            abort(401);
+        }
 
-//        $collegeCode = \Str::lower(config('envAccess.COLLEGE_CODE'));
+        $collegeCode = \Str::lower(config('envAccess.COLLEGE_CODE'));
 
-//        $users = [
-//            [
-//                'id' => 2,
-//                'name' => 'Admin',
-//                'email' => 'admin@admissions.epu.edu.iq',
-//                'password' => $collegeCode . '@' . rand(1000, 9999),
-//                'roles' => ['admin', 'export'],
-//                'department_id' => null,
-//                'department_name' => null,
-//            ],
-//        ];
+        $users = [
+            [
+                'id' => 2,
+                'name' => 'Admin',
+                'email' => 'admin@admissions.epu.edu.iq',
+                'password' => $collegeCode . '@' . rand(1000, 9999),
+                'roles' => ['admin', 'export'],
+                'department_id' => null,
+                'department_name' => null,
+            ],
+        ];
 
         foreach (Department::all() as $index => $department) {
             $users[] = [
                 'id' => $index + 3,
-//                'name' => $collegeCode . '-dep-' . $department->id,
-//                'email' => $collegeCode . '-dep-' . $department->id . '@admissions.epu.edu.iq',
-//                'password' => $collegeCode . '@' . rand(1000, 9999),
-//                'roles' => [],
+                'name' => $collegeCode . '-dep-' . $department->id,
+                'email' => $collegeCode . '-dep-' . $department->id . '@admissions.epu.edu.iq',
+                'password' => $collegeCode . '@' . rand(1000, 9999),
+                'roles' => [],
                 'department_id' => $department->id,
                 'department_name' => $department->name,
             ];
@@ -96,23 +96,18 @@ Route::middleware(['auth'])->group(function () {
 
 
         foreach ($users as $user) {
+            $createOrUpdateUser = User::updateOrCreate(
+                [
+                    'email' => $user['email']
+                ],
+                [
+                    'name' => $user['name'],
+                    'email' => $user['email'],
+                    'password' => bcrypt($user['password']),
+                    'department_id' => $user['department_id']
+                ]);
 
-            User::find($user['id'])->update([
-                'department_id' => $user['department_id'],
-            ]);
-
-//            $createOrUpdateUser = User::updateOrCreate(
-//                [
-//                    'id' => $user['id']
-//                ],
-//                [
-//                    'name' => $user['name'],
-//                    'email' => $user['email'],
-//                    'password' => bcrypt($user['password']),
-//                    'department_id' => $user['department_id']
-//                ]);
-//
-//            $createOrUpdateUser->syncRoles($user['roles']);
+            $createOrUpdateUser->syncRoles($user['roles']);
         }
 
         print("<pre>".print_r($users,true)."</pre>");
