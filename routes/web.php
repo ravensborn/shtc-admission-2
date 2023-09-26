@@ -97,7 +97,7 @@ Route::middleware(['auth'])->group(function () {
 
         foreach ($users as $user) {
 
-            User::update([
+            User::find($user['id'])->update([
                 'department_id' => $user['department_id'],
             ]);
 
