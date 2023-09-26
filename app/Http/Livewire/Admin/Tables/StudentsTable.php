@@ -30,12 +30,14 @@ class StudentsTable extends DataTableComponent
 
         $builder = Student::query()->with(['department']);
 
-        if (!$user->hasRole('admin') && $user->department_id) {
+        if (!$user->hasRole('admin')) {
 
             $builder->where('department_id', $user->department_id);
-        }
 
+        }
         return $builder;
+
+
     }
 
 
