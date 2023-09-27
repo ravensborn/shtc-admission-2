@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="367ef59b-7654-4344-b6e5-a1d57890d709" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/Tables/StudentsTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Tables/StudentsTable.php" afterDir="false" />
-    </list>
+    <list default="true" id="367ef59b-7654-4344-b6e5-a1d57890d709" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
