@@ -109,7 +109,7 @@ class Edit extends Component
 
         'education_type_id' => 'required|in:1,2,3',
         'department_type_id' => 'required|in:1,2,3',
-        'department_id' => 'required|in:1,2,3,4,5,6,7,8,9',
+        'department_id' => 'required|exists:departments,id',
 
         'school_code' => 'nullable|max:255',
         'degree_total' => 'required|max:255',
