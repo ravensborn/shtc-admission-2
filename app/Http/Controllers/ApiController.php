@@ -19,6 +19,14 @@ class ApiController extends Controller
 
        if (array_key_exists('department_id', $validated) && $validated['department_id']) {
            $students = Student::where('stage', Student::STAGE_STATUS_1)
+               ->whereIn('status', [
+                   Student::STATUS_ACCEPTED,
+                   Student::STATUS_INCOMPLETE,
+                   Student::STATUS_POSTPONED,
+                   Student::STATUS_QUIT,
+                   Student::STATUS_DISMISSED,
+                   Student::STATUS_FAIL_BY_ABSENCE,
+               ])
                ->where('department_id', $validated['department_id'])
                ->get()
                ->map(function ($student) {

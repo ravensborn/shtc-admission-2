@@ -5,27 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="367ef59b-7654-4344-b6e5-a1d57890d709" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.docker.chti" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.chti" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.docker.ertc" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.ertc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.docker.etac" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.etac" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.docker.etai" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.etai" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.docker.etec" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.etec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.docker.ethc" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.ethc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.docker.etmi" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.etmi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.docker.khti" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.khti" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.docker.koti" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.koti" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.docker.meti" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.meti" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.docker.shtc" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.shtc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.docker.sotc" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.sotc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpspec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Student.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Student.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/envAccess.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/envAccess.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DepartmentSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DepartmentSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +176,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.laravel-idea.update-module-directories": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "side2-soran",
+    "git-widget-placeholder": "side2",
     "last_opened_file_path": "/home/yad/Development/Personal/shtc-admission-2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -247,7 +228,7 @@
       <workItem from="1696271796639" duration="28000" />
       <workItem from="1696350799885" duration="21000" />
       <workItem from="1696526497176" duration="48000" />
-      <workItem from="1698229392974" duration="6966000" />
+      <workItem from="1698229392974" duration="8327000" />
     </task>
     <servers />
   </component>
