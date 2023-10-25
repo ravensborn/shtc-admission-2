@@ -19,6 +19,7 @@ class DepartmentSeeder extends Seeder
         $array = [];
 
         switch ($code) {
+
             case "ETEC":
                 $array = ['ئەندازیاری سیستەمی زانیاری', 'ئەندازیاری شارستانی', 'ئەندازیاری رێگاوبان', 'ئەندازیاری میکانیک و وزە'];
                 break;
