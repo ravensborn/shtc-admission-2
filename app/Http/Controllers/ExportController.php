@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 
+use App\Models\Student;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
@@ -31,6 +32,7 @@ class ExportController extends Controller
             'ناو',
             'ناو',
             'بەش',
+            'قۆناغ',
             'رەگەز',
             'ژمارەی مۆبایل',
             'نەتەوە',
@@ -61,6 +63,7 @@ class ExportController extends Controller
             $sheet->setCellValue($column++ . $iteration, $student->name_kurdish);
             $sheet->setCellValue($column++ . $iteration, $student->name_english);
             $sheet->setCellValue($column++ . $iteration, $student->department->name);
+            $sheet->setCellValue($column++ . $iteration, Student::getStageStatuses()[$student->stage]);
             $sheet->setCellValue($column++ . $iteration, $student->getGender());
             $sheet->setCellValue($column++ . $iteration, $student->phone);
             $sheet->setCellValue($column++ . $iteration, $student->nationality);
