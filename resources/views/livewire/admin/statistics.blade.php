@@ -73,35 +73,48 @@
 
         @endif
 
-        @if(!auth()->user()->hasRole('admin') && auth()->user()->department_id)
+        @if((!auth()->user()->hasRole('admin') && auth()->user()->department_id))
 
             <h5>Department Specific Statistics</h5>
 
             <div class="row" style="direction: rtl;">
-                @foreach($departmentSpecificStatisticsByStatusAndType as $type)
-                    <div class="col-md-2 col-12">
-                        <table class="table table-sm table-bordered text-center">
-                            <tbody>
+                @foreach($departmentSpecificStatisticsByStatusTypeAndStage as $stageData)
 
-                            @foreach($type['data'] as $data)
-                                <tr>
-                                    <td>
-                                        {{ $data['data'] }}
-                                    </td>
-                                    <td class="fw-bold">
-                                        {{ $data['title'] }}
-                                    </td>
+                    <div class="col-12">
+                        <h3>{{ $stageData['name'] }}</h3>
 
-                                </tr>
+                        <div class="row">
+                            @foreach($stageData['data'] as $type)
+
+                                <div class="col-md-2 col-12">
+                                    <table class="table table-sm table-bordered text-center">
+                                        <tbody>
+
+                                        @foreach($type['data'] as $data)
+                                            <tr>
+                                                <td>
+                                                    {{ $data['data'] }}
+                                                </td>
+                                                <td class="fw-bold">
+                                                    {{ $data['title'] }}
+                                                </td>
+
+                                            </tr>
+                                        @endforeach
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             @endforeach
+                        </div>
 
-
-                            </tbody>
-                        </table>
                     </div>
-                @endforeach
 
+                @endforeach
             </div>
+
 
         @endif
 

@@ -599,16 +599,11 @@
                                                     <select wire:model.lazy="department_type_id" id="department_type_id"
                                                             class="form-control">
                                                         <option>-- دانەیەک هەڵبژێرە --</option>
-                                                        <option value="1">
-                                                            زانکۆڵاین
-                                                        </option>
-                                                        <option value="2">
-                                                            پاڕالێل
-                                                        </option>
-                                                        <option value="3">
-                                                            ئێواران
-                                                        </option>
-
+                                                        @foreach(\App\Models\Student::getDepartmentTypeArray() as $key => $item)
+                                                            <option value="{{ $key }}">
+                                                                {{ $item }}
+                                                            </option>
+                                                        @endforeach
                                                     </select>
                                                     @error('department_type_id')
                                                     <div class="text-danger" dir="ltr">{{ $message }}</div>

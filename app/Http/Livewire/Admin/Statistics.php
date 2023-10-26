@@ -16,7 +16,7 @@ class Statistics extends Component
 
     public array $statisticsByStatusArray = [];
     public array $statisticsByDepArray = [];
-    public array $departmentSpecificStatisticsByStatusAndType = [];
+    public array $departmentSpecificStatisticsByStatusTypeAndStage = [];
 
     public function refreshStatistics(): void
     {
@@ -74,47 +74,59 @@ class Statistics extends Component
         $this->statisticsByDepArray = $resultArray;
     }
 
-    public function getDepartmentSpecificStatisticsByStatusAndType(): void
+    public function getDepartmentSpecificStatisticsByStatusTypeAndStage(): void
     {
-        $array = [];
+        $stageArray = [];
 
-        $departmentId = auth()->user()->department_id;
+        foreach (Student::getStageStatuses() as $stageKey => $stage) {
+            $array = [];
 
-        $statusArray = Student::getStatusArray();
-        unset($statusArray[0]);
+            $departmentId = auth()->user()->department_id;
 
-        foreach (Student::getDepartmentTypeArray() as $typeId => $type) {
+            $statusArray = Student::getStatusArray();
+            unset($statusArray[0]);
 
-            $students = Student::where('department_id', $departmentId)
-                ->where('department_type_id', $typeId);
-
-            $statsArr = [
-                [
-                    'title' => $type,
-                    'data' => $students->count(),
-                ]
-            ];
-
-            foreach ($statusArray as $statusId => $status) {
+            foreach (Student::getDepartmentTypeArray() as $typeId => $type) {
 
                 $students = Student::where('department_id', $departmentId)
-                    ->where('status', $statusId)
-                    ->where('department_type_id', $typeId);
+                    ->where('department_type_id', $typeId)
+                    ->where('stage', $stageKey);
 
-                $statsArr[] = [
-                    'title' => $status,
-                    'data' => $students->where('status', $statusId)->count(),
+                $statsArr = [
+                    [
+                        'title' => $type,
+                        'data' => $students->count(),
+                    ]
                 ];
+
+                foreach ($statusArray as $statusId => $status) {
+
+                    $students = Student::where('department_id', $departmentId)
+                        ->where('status', $statusId)
+                        ->where('department_type_id', $typeId)
+                        ->where('stage', $stageKey);
+
+                    $statsArr[] = [
+                        'title' => $status,
+                        'data' => $students->where('status', $statusId)->count(),
+                    ];
+                }
+
+                $array[] = [
+                    'title' => $type,
+                    'data' => $statsArr,
+                ];
+
             }
 
-            $array[] = [
-                'title' => $type,
-                'data' => $statsArr,
-            ];
 
+            $stageArray[] = [
+                'name' => Student::getStageStatuses()[$stageKey],
+                'data' => $array
+            ];
         }
 
-        $this->departmentSpecificStatisticsByStatusAndType = $array;
+        $this->departmentSpecificStatisticsByStatusTypeAndStage = $stageArray;
     }
 
     public function mount()
@@ -124,13 +136,14 @@ class Statistics extends Component
 
     public function render()
     {
+
         if (auth()->user()->hasRole('admin')) {
             $this->statisticsByStatus();
             $this->statisticsByDepartment();
         }
 
         if(!auth()->user()->hasRole('admin') && auth()->user()->department_id) {
-            $this->getDepartmentSpecificStatisticsByStatusAndType();
+            $this->getDepartmentSpecificStatisticsByStatusTypeAndStage();
         }
         return view('livewire.admin.statistics')->extends('layouts.admin')->section('content');
     }
