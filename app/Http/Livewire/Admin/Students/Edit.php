@@ -107,8 +107,8 @@ class Edit extends Component
         'nationality' => 'required|max:255',
         'school' => 'required|max:255',
 
-        'education_type_id' => 'required|in:1,2,3',
-        'department_type_id' => 'required|in:1,2,3',
+        'education_type_id' => 'required|in:1,2,3,4',
+        'department_type_id' => 'required|in:1,2,3,4,5',
         'department_id' => 'required|exists:departments,id',
 
         'school_code' => 'nullable|max:255',

@@ -16,6 +16,8 @@ class Statistics extends Component
 
     public array $statisticsByStatusArray = [];
     public array $statisticsByDepArray = [];
+
+    public int $stage = Student::STAGE_STATUS_1;
     public array $departmentSpecificStatisticsByStatusTypeAndStage = [];
 
     public function refreshStatistics(): void
@@ -36,17 +38,31 @@ class Statistics extends Component
                 continue;
             }
 
-            $studentCount = Student::where('status', $status_id)
-                ->where('stage', Student::STAGE_STATUS_1)
-                ->count();
+           if($this->stage) {
+               $studentCount = Student::where('status', $status_id)
+                   ->where('stage', $this->stage)
+                   ->count();
+           } else {
+               $studentCount = Student::where('status', $status_id)
+                   ->count();
+           }
             $array[$status_name] = $studentCount;
 
             foreach (Student::getDepartmentTypeArray() as $id => $name) {
-                $array[$name] =
-                    Student::where('status', $status_id)
-                        ->where('stage', Student::STAGE_STATUS_1)
-                        ->where('department_type_id', $id)
-                        ->count();
+
+                if($this->stage) {
+                    $array[$name] =
+                        Student::where('status', $status_id)
+                            ->where('stage', $this->stage)
+                            ->where('department_type_id', $id)
+                            ->count();
+                } else {
+                    $array[$name] =
+                        Student::where('status', $status_id)
+                            ->where('department_type_id', $id)
+                            ->count();
+                }
+
             }
 
             $grandArr[] = $array;
@@ -61,10 +77,16 @@ class Statistics extends Component
         foreach (Department::all() as $department) {
             $array = [];
 
-            $studentCount = Student::where('department_id', $department->id)
-                ->whereIn('status', [Student::STATUS_ACCEPTED, Student::STATUS_POSTPONED])
-                ->where('stage', Student::STAGE_STATUS_1)
-                ->count();
+            if($this->stage) {
+                $studentCount = Student::where('department_id', $department->id)
+                    ->whereIn('status', [Student::STATUS_ACCEPTED, Student::STATUS_POSTPONED])
+                    ->where('stage', $this->stage)
+                    ->count();
+            } else {
+                $studentCount = Student::where('department_id', $department->id)
+                    ->whereIn('status', [Student::STATUS_ACCEPTED, Student::STATUS_POSTPONED])
+                    ->count();
+            }
 
             $array[$department->name] = $studentCount;
 

@@ -586,6 +586,9 @@
                                                         <option value="3">
                                                             پیشەیی
                                                         </option>
+                                                        <option value="4">
+                                                            دەرچووی پەیمانگا
+                                                        </option>
                                                     </select>
                                                     @error('education_type_id')
                                                     <div class="text-danger" dir="ltr">{{ $message }}</div>
