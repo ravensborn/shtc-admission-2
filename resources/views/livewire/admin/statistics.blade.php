@@ -17,6 +17,20 @@
 
             <h5>System Statistics</h5>
 
+       <div class="row">
+           <div class="col-md-4 col-12">
+               <label for="stage_id" class="form-label">Select Stage</label>
+               <select class="form-control form-control-sm" wire:model="stage" id="stage_id">
+                   <option value="0">All</option>
+                   @foreach(\App\Models\Student::getStageStatuses() as $id => $name)
+                       <option value="{{ $id }}">{{ $name }}</option>
+                   @endforeach
+               </select>
+           </div>
+       </div>
+
+            <hr>
+
             <div style="direction: rtl;" class="row">
                 <div class="col-md-2 col-12">
                     <table class="table table-sm table-bordered text-center">

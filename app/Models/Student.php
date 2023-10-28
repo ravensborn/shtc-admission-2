@@ -193,6 +193,7 @@ class Student extends Model implements HasMedia
             1 => 'وێژەیی',
             2 => 'زانستی',
             3 => 'پیشەیی',
+            4 => 'دەرچووی پەیمانگا',
         ];
     }
 
