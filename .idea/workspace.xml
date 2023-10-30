@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="367ef59b-7654-4344-b6e5-a1d57890d709" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/Statistics.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Statistics.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/Students/Edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Students/Edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admissions/Create.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admissions/Create.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Student.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Student.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/statistics.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/statistics.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/students/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/students/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admissions/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admissions/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/Dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/dashboard.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +177,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.laravel-idea.update-module-directories&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;side2&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;side2-soran&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/yad/Development/Personal/shtc-admission-2&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -239,7 +234,10 @@
       <workItem from="1698304041941" duration="1134000" />
       <workItem from="1698324845265" duration="2205000" />
       <workItem from="1698349772808" duration="99000" />
-      <workItem from="1698482496352" duration="844000" />
+      <workItem from="1698482496352" duration="1469000" />
+      <workItem from="1698494177068" duration="610000" />
+      <workItem from="1698526273750" duration="7000" />
+      <workItem from="1698697076888" duration="1936000" />
     </task>
     <servers />
   </component>
