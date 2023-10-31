@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="367ef59b-7654-4344-b6e5-a1d57890d709" name="Changes" comment="" />
+    <list default="true" id="367ef59b-7654-4344-b6e5-a1d57890d709" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.env.docker.chti" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.chti" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.docker.ertc" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.ertc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.docker.etac" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.etac" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.docker.etai" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.etai" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.docker.etec" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.etec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.docker.ethc" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.ethc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.docker.etmi" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.etmi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.docker.khti" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.khti" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.docker.koti" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.koti" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.docker.meti" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.meti" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.docker.shtc" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.shtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.docker.sotc" beforeDir="false" afterPath="$PROJECT_DIR$/.env.docker.sotc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ExportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/Dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker/entrypoint.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/zip-exports/empty-file.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +41,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\development\php\php-8.2.5-Win32-vs16-x64\php.exe">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/usr/bin/php">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/league/commonmark" />
       <path value="$PROJECT_DIR$/vendor/league/config" />
@@ -173,24 +194,24 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.laravel-idea.update-module-directories": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "side2",
-    "last_opened_file_path": "/home/yad/Development/Personal/shtc-admission-2",
+    "git-widget-placeholder": "side2-soran",
+    "last_opened_file_path": "/home/yad/Development/Personal/shtc-admission-2/storage/app/public",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
+    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/storage/app/public" />
       <recent name="$PROJECT_DIR$" />
       <recent name="C:\laragon\www\shtc-admission-2\public" />
       <recent name="C:\laragon\www\shtc-admission-2\database\migrations" />
       <recent name="C:\laragon\www\shtc-admission-2\resources\views\layouts" />
-      <recent name="C:\laragon\www\shtc-admission-2\resources\views\livewire\admin" />
     </key>
   </component>
   <component name="RunManager">
@@ -233,11 +254,17 @@
       <workItem from="1698482496352" duration="1469000" />
       <workItem from="1698494177068" duration="610000" />
       <workItem from="1698526273750" duration="7000" />
-      <workItem from="1698697076888" duration="2590000" />
+      <workItem from="1698697076888" duration="6920000" />
+      <workItem from="1698731890861" duration="3999000" />
+      <workItem from="1698741727467" duration="2493000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -2,13 +2,21 @@
 
     <div class="mt-4"></div>
 
+    @if($startPolling)
+        <div wire:poll.5s="loadStudentImageExportStatus()">
+            Polling started {{ now() }}
+        </div>
+    @endif
+
+
     @if(auth()->user()->hasRole('export'))
         <a href="{{ route('admin.students.export.all') }}" class="btn btn-outline-primary mb-1"
            style="width: 200px;" type="button">
             <i class="bi bi-file-earmark-excel"></i>
             Export All
         </a>
-        <a wire:click.prevent="exportImages()" href="#" class="btn btn-outline-primary mb-1"
+        <a wire:click.prevent="handleStudentImageExport()" wire:loading.attr="disabled"
+           wire:target="handleStudentImageExport() " href="#" class="btn btn-outline-primary mb-1"
            style="width: 240px;" type="button">
             <i class="bi bi-cloud-arrow-down"></i>
             {{ $exportImagesButtonText }}

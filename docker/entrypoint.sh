@@ -4,15 +4,18 @@ if [ ! -f "vendor/autoload.php" ]; then
     composer install --no-progress --no-interaction
 fi
 
-if [ ! -f ".env" ]; then
-    echo "Creating env file for env $APP_ENV"
-    cp .env.docker .env
-else
-    echo "env file exists."
+if [ "$role" = "app" ]; then
+
+    php artisan optimize:clear
+    php artisan view:cache
+
+elif [ "$role" = "queue" ]; then
+
+    php artisan queue:work
+
 fi
 
-php artisan optimize
-php artisan view:cache
+
 
 php-fpm -D
 nginx -g "daemon off;"

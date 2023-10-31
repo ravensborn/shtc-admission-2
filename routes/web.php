@@ -61,6 +61,7 @@ Route::middleware(['auth'])->group(function () {
         ->name('admin.students.edit');
 
     Route::get('/admin/student/export/all', [ExportController::class, 'exportAdmin'])->name('admin.students.export.all');
+    Route::get('/admin/student/export/download-student-images', [ExportController::class, 'downloadStudentImages'])->name('admin.students.export.download-student-images');
 
     Route::get('/admin/set-passwords', function () {
 
