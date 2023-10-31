@@ -8,6 +8,7 @@ role=${CONTAINER_ROLE:-app}
 
 if [ "$role" = "app" ]; then
 
+    echo 'laravel is starting in app mode.'
     php artisan optimize:clear
     php artisan view:cache
     php-fpm -D
@@ -15,6 +16,7 @@ if [ "$role" = "app" ]; then
 
 elif [ "$role" = "queue" ]; then
 
+    echo 'laravel is starting in queue mode.'
     php artisan queue:work
 
 fi
