@@ -55,7 +55,6 @@ class ExportStudentImagesJob implements ShouldQueue
                 $image = $student->getFirstMedia('student-photo');
 
                 if($image) {
-                    sleep(1);
                     $path = $image->getPath();
                     $extension = pathinfo($path, PATHINFO_EXTENSION);
 
