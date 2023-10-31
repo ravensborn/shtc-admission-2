@@ -45,7 +45,8 @@ class ExportStudentImagesJob implements ShouldQueue
         if ($zip->open($zipFileName, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
 
 
-            $students = Student::whereIn('stage', [
+            $students = Student::where('stage', Student::STAGE_STATUS_1)
+                ->whereIn('status', [
                 Student::STATUS_ACCEPTED,
                 Student::STATUS_INCOMPLETE,
             ])->get();
