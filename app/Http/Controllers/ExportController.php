@@ -6,11 +6,28 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 
 use App\Models\Student;
+use Illuminate\Support\Facades\File;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ExportController extends Controller
 {
+
+    public function downloadStudentImages() {
+
+        $directory = public_path('zip-exports');
+        $files = File::files($directory);
+
+
+        if (count($files) > 0) {
+
+            $zipPath = public_path('zip-exports/' . $files[0]->getFilename());
+
+            return response()->download($zipPath)->deleteFileAfterSend();
+        }
+
+        return redirect()->back();
+    }
 
     public function exportAdmin()
     {

@@ -2,6 +2,7 @@ version: "3.8"
 services:
   app:
     container_name: ${APP_CONTAINER_NAME}
+    restart: on-failure
     build:
       context: .
       target: php
@@ -9,6 +10,7 @@ services:
         - APP_ENV=${APP_ENV}
     environment:
       - APP_ENV=${APP_ENV}
+      - CONTAINER_ROLE=app
     working_dir: /var/www
     volumes:
       - ./:/var/www
@@ -19,8 +21,29 @@ services:
     networks:
       - laravel-network
 
+
+  queue:
+      container_name: ${APP_CONTAINER_NAME}-queue
+      restart: on-failure
+      build:
+          context: .
+          target: php
+          args:
+              - APP_ENV=${APP_ENV}
+      environment:
+          - APP_ENV=${APP_ENV}
+          - CONTAINER_ROLE=queue
+      working_dir: /var/www
+      volumes:
+          - ./:/var/www
+      depends_on:
+          - database
+      networks:
+          - laravel-network
+
   database:
     container_name: ${DB_CONTAINER_NAME}
+    restart: on-failure
     image: mysql:8.0
     environment:
       - MYSQL_DATABASE=${DB_DATABASE}

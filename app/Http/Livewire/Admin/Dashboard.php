@@ -2,63 +2,90 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\Student;
+use App\Jobs\ExportStudentImagesJob;
 use Illuminate\Support\Facades\File;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
-use ZipArchive;
 
 
 class Dashboard extends Component
 {
 
-    public  string $exportImagesButtonText = 'Export Student Images';
+    use LivewireAlert;
 
-    public function exportImages() {
+    public string $exportImagesButtonText = 'Export Student Images';
+    public bool $startPolling = false;
 
-        $exportPath = public_path('zip-exports');
-        File::cleanDirectory($exportPath);
-
-        $this->exportImagesButtonText = 'Zipping images...';
-
-        $zipFileName = 'zip-exports/images_' . date('YmdHis') . '.zip';
-
-        // Initialize a ZipArchive object
-        $zip = new ZipArchive();
-
-        if ($zip->open($zipFileName, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
-
-
-            foreach (Student::all() as $student) {
-
-                $image = $student->getFirstMedia('student-photo');
-
-                if($image) {
-                    $path = $image->getPath();
-                    $extension = pathinfo($path, PATHINFO_EXTENSION);
-                    $zip->addFile($path, $student->name_english . '.' . $extension);
-                }
-
-            }
-
-            $zip->close();
-
-            // Set the appropriate headers for download
-            header('Content-Type: application/zip');
-            header('Content-Disposition: attachment; filename="' . $zipFileName . '"');
-            header('Content-Length: ' . filesize($zipFileName));
-
-            $this->exportImagesButtonText = 'Ready to download.';
-
-            return response()->download(public_path( $zipFileName));
+    public function handleStudentImageExport(): void
+    {
+        if($this->hasZippedStudentImageExportFiles()) {
+            $this->downloadZippedStudentImageExportFiles();
+            $this->startPolling = false;
 
         } else {
-            echo "Failed to create the zip file.";
+            $this->exportStudentImages();
+            $this->loadStudentImageExportStatus();
         }
 
     }
-    public function mount()
+    public function exportStudentImages(): void
     {
 
+        if(!$this->hasStudentImageExportStarted()) {
+
+            ExportStudentImagesJob::dispatch();
+        }
+    }
+
+    public function hasZippedStudentImageExportFiles(): bool
+    {
+        $directory = public_path('zip-exports');
+        $files = File::files($directory);
+
+        return (count($files) > 0);
+    }
+
+    public function downloadZippedStudentImageExportFiles(): void
+    {
+
+        $this->redirectRoute('admin.students.export.download-student-images');
+    }
+
+    public function loadStudentImageExportStatus(): void
+    {
+        $this->exportImagesButtonText = 'Export Student Images';
+
+        if($this->hasZippedStudentImageExportFiles()) {
+            $this->startPolling = true;
+            $this->exportImagesButtonText = 'Download zipped images';
+        }
+        if($this->hasStudentImageExportStarted()) {
+            $this->startPolling = true;
+            $this->exportImagesButtonText = 'Export in progress... ';
+        }
+    }
+
+    public function hasStudentImageExportStarted(): bool
+    {
+        $queueItems = \DB::table(config('queue.connections.database.table'))->get();
+
+        foreach ($queueItems as $item) {
+
+            $payload = json_decode($item->payload, true);
+
+            if ($payload['displayName'] == ExportStudentImagesJob::class) {
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    public function mount()
+    {
+        $this->loadStudentImageExportStatus();
     }
 
     public function render()
