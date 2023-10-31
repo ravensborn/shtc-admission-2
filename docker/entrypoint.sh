@@ -17,7 +17,7 @@ if [ "$role" = "app" ]; then
 elif [ "$role" = "queue" ]; then
 
     echo 'laravel is starting in queue mode.'
-    php artisan queue:work
+    php artisan queue:work --verbose --tries=3 --timeout=600
 
 fi
 

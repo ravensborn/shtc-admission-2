@@ -45,7 +45,10 @@ class ExportStudentImagesJob implements ShouldQueue
         if ($zip->open($zipFileName, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
 
 
-            $students = Student::all();
+            $students = Student::whereIn('stage', [
+                Student::STATUS_ACCEPTED,
+                Student::STATUS_INCOMPLETE,
+            ])->get();
 
             foreach ($students as $student) {
 
@@ -56,7 +59,7 @@ class ExportStudentImagesJob implements ShouldQueue
                     $path = $image->getPath();
                     $extension = pathinfo($path, PATHINFO_EXTENSION);
 
-                    $zip->addFile($path, $student->name_english . '.' . $extension);
+                    $zip->addFile($path, ucwords(strtolower($student->name_english)) . '.' . $extension);
                 }
             }
         }
