@@ -8,6 +8,8 @@ if [ "$role" = "app" ]; then
 
     php artisan optimize:clear
     php artisan view:cache
+    php-fpm -D
+    nginx -g "daemon off;"
 
 elif [ "$role" = "queue" ]; then
 
@@ -17,5 +19,3 @@ fi
 
 
 
-php-fpm -D
-nginx -g "daemon off;"
