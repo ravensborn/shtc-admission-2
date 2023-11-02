@@ -27,6 +27,7 @@ class Student extends Model implements HasMedia
     const STATUS_TRANSFERRED = 7;
     const STATUS_UNREGISTERED = 8;
     const STATUS_FAIL_BY_ABSENCE = 9;
+    const STATUS_NO_CONTACT = 10;
 
 
     const STAGE_STATUS_1 = 1;
@@ -59,6 +60,7 @@ class Student extends Model implements HasMedia
             self::STATUS_TRANSFERRED => 'گواستنەوە (نقل)',
             self::STATUS_UNREGISTERED => 'راکێشانی دۆسیە (سحب اوراق)',
             self::STATUS_FAIL_BY_ABSENCE => 'کەوتن بەهۆی غیاب',
+            self::STATUS_NO_CONTACT => 'پەیوەندی نەکراو',
         ];
     }
 
