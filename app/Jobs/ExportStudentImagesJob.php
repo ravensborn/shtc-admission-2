@@ -45,44 +45,25 @@ class ExportStudentImagesJob implements ShouldQueue
 
         if ($zip->open($zipFileName, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
 
-
-            $students = Student::where('stage', Student::STAGE_STATUS_1)->get();
-
-            $departments = Department::all();
             $departmentTypes = Student::getDepartmentTypeArray();
             $statusArray = Student::getStatusArray();
 
-            foreach ($departments as $department) {
+            $students = Student::where('stage', Student::STAGE_STATUS_1)
+                ->get();
 
-                foreach ($departmentTypes as $departmentTypeId => $departmentType) {
+            foreach ($students as $student) {
 
+                $image = $student->getFirstMedia('student-photo');
 
-                    foreach ($statusArray as $statusId => $status) {
+                if($image) {
 
-                        $student = $students
-                            ->where('department_id', $department->id)
-                            ->where('department_type_id', $departmentTypeId)
-                            ->where('status', $statusId)
-                            ->first();
+                    $path = $image->getPath();
+                    $extension = pathinfo($path, PATHINFO_EXTENSION);
 
-                       if($student) {
-
-                           $image = $student->getFirstMedia('student-photo');
-
-                           if($image) {
-
-                               $path = $image->getPath();
-                               $extension = pathinfo($path, PATHINFO_EXTENSION);
-
-                               $zip->addFile($path, '/'.$department->name . '/' . $departmentType . '/'. $status . '/'  . ucwords(strtolower($student->name_english)) . '.' . $extension);
-                           }
-                       }
-
-                    }
-
+//                    $zip->addFile($path, '/'.$student->department->name . '/' . $student->department_type_id . '/'. $student->status . '/'  . ucwords(strtolower($student->name_english)) . '.' . $extension);
+                    $zip->addFile($path, '/'.$student->department->name . '/' . $departmentTypes[$student->department_type_id] . '/'. $statusArray[$student->status] . '/'  . $student->number . '.' . $extension);
+            
                 }
-
-
             }
 
         }

@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/Dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Dashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Jobs/ExportStudentImagesJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/ExportStudentImagesJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_09_15_124337_create_students_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_09_15_124337_create_students_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/zip-exports/empty.zip" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -251,7 +250,7 @@
       <workItem from="1699426807026" duration="599000" />
       <workItem from="1699474061776" duration="39000" />
       <workItem from="1699474106508" duration="3000" />
-      <workItem from="1700028397502" duration="1775000" />
+      <workItem from="1700028397502" duration="3567000" />
     </task>
     <servers />
   </component>
