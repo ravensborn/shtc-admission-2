@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Console\Commands\ExportStudentImages;
+use App\Models\Department;
 use App\Models\Student;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -45,23 +46,45 @@ class ExportStudentImagesJob implements ShouldQueue
         if ($zip->open($zipFileName, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
 
 
-            $students = Student::where('stage', Student::STAGE_STATUS_1)
-                ->whereIn('status', [
-                Student::STATUS_ACCEPTED,
-                Student::STATUS_INCOMPLETE,
-            ])->get();
+            $students = Student::where('stage', Student::STAGE_STATUS_1)->get();
 
-            foreach ($students as $student) {
+            $departments = Department::all();
+            $departmentTypes = Student::getDepartmentTypeArray();
+            $statusArray = Student::getStatusArray();
 
-                $image = $student->getFirstMedia('student-photo');
+            foreach ($departments as $department) {
 
-                if($image) {
-                    $path = $image->getPath();
-                    $extension = pathinfo($path, PATHINFO_EXTENSION);
+                foreach ($departmentTypes as $departmentTypeId => $departmentType) {
 
-                    $zip->addFile($path, ucwords(strtolower($student->name_english)) . '.' . $extension);
+
+                    foreach ($statusArray as $statusId => $status) {
+
+                        $student = $students
+                            ->where('department_id', $department->id)
+                            ->where('department_type_id', $departmentTypeId)
+                            ->where('status', $statusId)
+                            ->first();
+
+                       if($student) {
+
+                           $image = $student->getFirstMedia('student-photo');
+
+                           if($image) {
+
+                               $path = $image->getPath();
+                               $extension = pathinfo($path, PATHINFO_EXTENSION);
+
+                               $zip->addFile($path, '/'.$department->name . '/' . $departmentType . '/'. $status . '/'  . ucwords(strtolower($student->name_english)) . '.' . $extension);
+                           }
+                       }
+
+                    }
+
                 }
+
+
             }
+
         }
         $zip->close();
     }
