@@ -58,6 +58,7 @@ class ExportController extends Controller
             'قەزا',
             'ناحیە',
             'گوند',
+            'بەرواری تۆمارکردن',
         ];
 
         $letter = 'A';
@@ -89,6 +90,7 @@ class ExportController extends Controller
             $sheet->setCellValue($column++ . $iteration, $student->district);
             $sheet->setCellValue($column++ . $iteration, $student->sub_district);
             $sheet->setCellValue($column++ . $iteration, $student->village_name);
+            $sheet->setCellValue($column++ . $iteration, $student->created_at->format('Y-m-d'));
 
             $iteration++;
         }
