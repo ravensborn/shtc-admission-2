@@ -61,8 +61,9 @@ class ExportStudentImagesJob implements ShouldQueue
                     $extension = pathinfo($path, PATHINFO_EXTENSION);
 
 //                    $zip->addFile($path, '/'.$student->department->name . '/' . $student->department_type_id . '/'. $student->status . '/'  . ucwords(strtolower($student->name_english)) . '.' . $extension);
-                    $zip->addFile($path, '/'.$student->department->name . '/' . $departmentTypes[$student->department_type_id] . '/'. $statusArray[$student->status] . '/'  . $student->number . '.' . $extension);
-            
+//                    $zip->addFile($path, '/'.$student->department->name . '/' . $departmentTypes[$student->department_type_id] . '/'. $statusArray[$student->status] . '/'  . $student->number . '.' . $extension);
+                    $zip->addFile($path, '/'.$student->department->name . '/' . $departmentTypes[$student->department_type_id] . '/'. $statusArray[$student->status] . '/'  . ucwords(strtolower($student->name_english)) . '.' . $extension);
+
                 }
             }
 
