@@ -36,8 +36,6 @@ class StudentsTable extends DataTableComponent
 
         }
         return $builder;
-
-
     }
 
 

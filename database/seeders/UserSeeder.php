@@ -27,6 +27,13 @@ class UserSeeder extends Seeder
                 'roles' => ['admin', 'export'],
                 'department_id' => null,
             ],
+            [
+                'name' => 'Superadmin',
+                'email' => 'yad.hoshyar1@gmail.com',
+                'password' => 'superadmin@',
+                'roles' => ['export'],
+                'department_id' => 1,
+            ],
 //            [
 //                'name' => 'Admin',
 //                'email' => 'admin@admissions.epu.edu.iq',

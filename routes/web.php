@@ -5,6 +5,7 @@ use App\Http\Livewire\Home as Home;
 use App\Http\Livewire\About as About;
 use App\Http\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Http\Livewire\Admin\Statistics as AdminStatistics;
+use App\Http\Livewire\Admin\AdminUnRegisteredStudents as AdminUnRegisteredStudents;
 use App\Http\Livewire\Admin\Students\Show as AdminStudentShow;
 use App\Http\Livewire\Admin\Students\Edit as AdminStudentEdit;
 use App\Http\Livewire\Admissions\Create as AdmissionCreate;
@@ -54,11 +55,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/statistics', AdminStatistics::class)
         ->name('admin.statistics');
 
+    Route::get('/admin/unregistered-students', AdminUnRegisteredStudents::class)
+        ->name('admin.unregistered-students')
+    ->middleware('role:admin');
+
     Route::get('/admin/student/{student}', AdminStudentShow::class)
         ->name('admin.students.show');
 
     Route::get('/admin/student/{student}/edit', AdminStudentEdit::class)
         ->name('admin.students.edit');
+
 
     Route::get('/admin/student/export/all', [ExportController::class, 'exportAdmin'])->name('admin.students.export.all');
     Route::get('/admin/student/export/download-student-images', [ExportController::class, 'downloadStudentImages'])->name('admin.students.export.download-student-images');
