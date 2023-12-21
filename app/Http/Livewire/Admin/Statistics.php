@@ -5,8 +5,6 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Department;
 use App\Models\Student;
 use Livewire\Component;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Statistics extends Component
 {
