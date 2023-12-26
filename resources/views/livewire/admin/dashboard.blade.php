@@ -7,13 +7,11 @@
             Polling started {{ now() }}
         </div>
     @endif
-    @if(auth()->user()->hasRole('admin'))
-        <a href="{{ route('admin.unregistered-students') }}" class="btn btn-outline-primary mb-1"
-           style="width: 200px;" type="button">
-            <i class="bi bi-people"></i>
-            پەیوەندی نەکراو
-        </a>
-    @endif
+    <a href="{{ route('admin.unregistered-students') }}" class="btn btn-outline-primary mb-1"
+       style="width: 200px;" type="button">
+        <i class="bi bi-people"></i>
+        پەیوەندی نەکراو
+    </a>
     @if(auth()->user()->hasRole('export'))
         <a href="{{ route('admin.students.export.all') }}" class="btn btn-outline-primary mb-1"
            style="width: 200px;" type="button">
