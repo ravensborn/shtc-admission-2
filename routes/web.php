@@ -56,8 +56,7 @@ Route::middleware(['auth'])->group(function () {
         ->name('admin.statistics');
 
     Route::get('/admin/unregistered-students', AdminUnRegisteredStudents::class)
-        ->name('admin.unregistered-students')
-    ->middleware('role:admin');
+        ->name('admin.unregistered-students');
 
     Route::get('/admin/student/{student}', AdminStudentShow::class)
         ->name('admin.students.show');
