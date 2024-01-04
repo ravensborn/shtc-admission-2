@@ -67,8 +67,9 @@ class AdminUnRegisteredStudents extends Component
             $data->push([
                 'name' => $cell[0],
                 'code' => $cell[1],
+                'type' => $cell[2],
                 'department' => $department,
-                'date' => Carbon::instance(ExcelDate::excelToDateTimeObject($cell[2])),
+                'date' => Carbon::instance(ExcelDate::excelToDateTimeObject($cell[3])),
                 'updated_at' => now(),
                 'created_at' => now(),
             ]);

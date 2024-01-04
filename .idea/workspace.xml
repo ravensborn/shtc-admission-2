@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="367ef59b-7654-4344-b6e5-a1d57890d709" name="Changes" comment="Allow shtc register.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/AdminUnRegisteredStudents.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/AdminUnRegisteredStudents.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/examples/example-with-data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/public/examples/example-with-data.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/examples/example.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/public/examples/example.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/unregistered-students.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/unregistered-students.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,30 +195,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.laravel-idea.update-module-directories&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;side2-soran&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/yad/Development/Personal/shtc-admission-2/public/examples&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.laravel-idea.update-module-directories": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "side2",
+    "last_opened_file_path": "/home/yad/Development/Personal/shtc-admission-2/database/migrations",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/database/migrations" />
       <recent name="$PROJECT_DIR$/public/examples" />
       <recent name="$PROJECT_DIR$/resources/views/livewire/admin" />
       <recent name="$PROJECT_DIR$/storage/app/public" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="C:\laragon\www\shtc-admission-2\public" />
     </key>
   </component>
   <component name="RunManager">
@@ -288,7 +290,8 @@
       <workItem from="1701885839638" duration="219000" />
       <workItem from="1703145511626" duration="722000" />
       <workItem from="1703146243650" duration="7437000" />
-      <workItem from="1703573001915" duration="59000" />
+      <workItem from="1703573001915" duration="742000" />
+      <workItem from="1704354813500" duration="1068000" />
     </task>
     <task id="LOCAL-00001" summary="Allow shtc register.">
       <option name="closed" value="true" />

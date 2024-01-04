@@ -96,6 +96,7 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Code</th>
+                        <th>Type</th>
                         <th>Department</th>
                         <th>Date</th>
                         <th>Date Imported</th>
@@ -108,6 +109,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $student->name }}</td>
                             <td>{{ $student->code }}</td>
+                            <td>{{ $student->type }}</td>
                             <td>{{ $student->department_name }}</td>
                             <td>{{ $student->date->format('Y-m-d') }}</td>
                             <td>{{ $student->created_at->format('Y-m-d') }}</td>
