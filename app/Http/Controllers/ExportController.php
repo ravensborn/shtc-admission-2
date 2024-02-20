@@ -51,6 +51,7 @@ class ExportController extends Controller
             'بەش',
             'قۆناغ',
             'رەگەز',
+            'بەرواری لەدایکبوون',
             'ژمارەی مۆبایل',
             'نەتەوە',
             'جۆری خوێندن',
@@ -83,6 +84,7 @@ class ExportController extends Controller
             $sheet->setCellValue($column++ . $iteration, $student->department->name);
             $sheet->setCellValue($column++ . $iteration, Student::getStageStatuses()[$student->stage]);
             $sheet->setCellValue($column++ . $iteration, $student->getGender());
+            $sheet->setCellValue($column++ . $iteration, $student->birthday->format('Y-m-d'));
             $sheet->setCellValue($column++ . $iteration, $student->phone);
             $sheet->setCellValue($column++ . $iteration, $student->nationality);
             $sheet->setCellValue($column++ . $iteration, $student->getDepartmentType());
