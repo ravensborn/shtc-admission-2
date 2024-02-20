@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="367ef59b-7654-4344-b6e5-a1d57890d709" name="Changes" comment="Allow shtc register.">
+      <change beforePath="$PROJECT_DIR$/.idea/shtc-admission-2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shtc-admission-2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/AdminUnRegisteredStudents.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/AdminUnRegisteredStudents.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/examples/example-with-data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/public/examples/example-with-data.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/examples/example.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/public/examples/example.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/unregistered-students.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/unregistered-students.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ExportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExportController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="side2" />
+        <entry key="$PROJECT_DIR$" value="side2-soran" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -202,7 +200,7 @@
     "RunOnceActivity.laravel-idea.update-module-directories": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "side2",
-    "last_opened_file_path": "/home/yad/Development/Personal/shtc-admission-2/database/migrations",
+    "last_opened_file_path": "/home/yad/Development/Personal/karokh",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -230,7 +228,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-php-predefined-ba97393d7c68-b4dcf6bb9de9-com.jetbrains.php.sharedIndexes-PS-233.13135.108" />
+        <option value="bundled-php-predefined-ba97393d7c68-6f8e3395a2b4-com.jetbrains.php.sharedIndexes-PS-233.14475.35" />
       </set>
     </attachedChunks>
   </component>
@@ -292,6 +290,8 @@
       <workItem from="1703146243650" duration="7437000" />
       <workItem from="1703573001915" duration="742000" />
       <workItem from="1704354813500" duration="1068000" />
+      <workItem from="1704890801397" duration="2000" />
+      <workItem from="1708449557520" duration="65000" />
     </task>
     <task id="LOCAL-00001" summary="Allow shtc register.">
       <option name="closed" value="true" />
